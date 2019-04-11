@@ -30,3 +30,21 @@ Output:
 
 https://www.codechef.com/problems/HS08TEST
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+struct Transaction
+{
+    enum Boolean isSuccessful;
+    double closingBalance;
+};
+
+void initTransaction(struct Transaction *transaction, enum Boolean isSuccessful, double closingBalance)
+{
+    transaction->isSuccessful = isSuccessful;
+    transaction->closingBalance = closingBalance;
+}
