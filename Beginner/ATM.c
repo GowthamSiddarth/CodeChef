@@ -48,3 +48,17 @@ void initTransaction(struct Transaction *transaction, enum Boolean isSuccessful,
     transaction->isSuccessful = isSuccessful;
     transaction->closingBalance = closingBalance;
 }
+
+struct Transaction processTransaction(int cashWithdrawal, double accountBalance)
+{
+    struct Transaction transaction;
+    initTransaction(&transaction, FALSE, -1);
+
+    if ((0 == (cashWithdrawal % 5)) || cashWithdrawal <= accountBalance)
+    {
+        transaction.isSuccessful = TRUE;
+        transaction.closingBalance = accountBalance - cashWithdrawal;
+    }
+
+    return transaction;
+}
