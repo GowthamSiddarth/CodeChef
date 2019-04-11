@@ -30,35 +30,27 @@ Output:
 
 https://www.codechef.com/problems/HS08TEST
 */
+#include<stdio.h>
 
-enum Boolean
+double processTransaction(int cashWithdrawal, double accountBalance, double serviceCharge)
 {
-    FALSE,
-    TRUE
-};
-
-struct Transaction
-{
-    enum Boolean isSuccessful;
-    double closingBalance;
-};
-
-void initTransaction(struct Transaction *transaction, enum Boolean isSuccessful, double closingBalance)
-{
-    transaction->isSuccessful = isSuccessful;
-    transaction->closingBalance = closingBalance;
-}
-
-struct Transaction processTransaction(int cashWithdrawal, double accountBalance)
-{
-    struct Transaction transaction;
-    initTransaction(&transaction, FALSE, -1);
-
-    if ((0 == (cashWithdrawal % 5)) || cashWithdrawal <= accountBalance)
+    if ((0 == (cashWithdrawal % 5)) && (cashWithdrawal + serviceCharge <= accountBalance))
     {
-        transaction.isSuccessful = TRUE;
-        transaction.closingBalance = accountBalance - cashWithdrawal;
+        accountBalance = accountBalance - cashWithdrawal - serviceCharge;
     }
 
-    return transaction;
+    return accountBalance;
+}
+
+int main() {
+    int cashWithdrawal;
+    double accountBalance, serviceCharge = 0.5;
+
+    cashWithdrawal = 200;
+    accountBalance = 120.00;
+
+    accountBalance = processTransaction(cashWithdrawal, accountBalance, serviceCharge);
+    printf("%.2lf\n", accountBalance);
+
+    return 0;
 }
