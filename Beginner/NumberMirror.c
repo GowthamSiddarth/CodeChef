@@ -17,7 +17,16 @@ Sample Output
 
 https://www.codechef.com/problems/START01
 */
+#include<stdio.h>
 
 int mirror(int num) {
     return num;
+}
+
+int main() {
+    int num = 123;
+    int mirrorNumber = mirror(num);
+    printf("%d\n", mirrorNumber);
+    
+    return 0;
 }
