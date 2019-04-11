@@ -17,3 +17,7 @@ Sample Output
 
 https://www.codechef.com/problems/START01
 */
+
+int mirror(int num) {
+    return num;
+}
