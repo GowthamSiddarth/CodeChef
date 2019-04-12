@@ -26,3 +26,7 @@ Output
 
 https://www.codechef.com/problems/FLOW001
 */
+
+int add2Nums(int num1, int num2) {
+    return num1 + num2;
+}
