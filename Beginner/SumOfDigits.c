@@ -13,6 +13,7 @@ Constraints
 
 https://www.codechef.com/problems/FLOW006
 */
+#include<stdio.h>
 
 int getSumOfDigitsOfNum(int num) {
     int sum = 0;
@@ -23,4 +24,12 @@ int getSumOfDigitsOfNum(int num) {
     }
 
     return sum;    
+}
+
+int main() {
+    int num = 23;
+    int sumOfDigits = getSumOfDigitsOfNum(num);
+    printf("%d\n", sumOfDigits);
+
+    return 0;
 }
