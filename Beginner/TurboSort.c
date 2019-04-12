@@ -27,6 +27,17 @@ https://www.codechef.com/problems/TSORT
 */
 #define MAX_SIZE 1000001
 
+#include <stdio.h>
+
+void printIntArray(int *arr, int len)
+{
+    for (int idx = 0; idx < len; idx++)
+    {
+        printf("%d ", arr[idx]);
+    }
+    printf("\n");
+}
+
 void turboSort(int *arr, int len)
 {
     int occurrences[MAX_SIZE] = {0};
