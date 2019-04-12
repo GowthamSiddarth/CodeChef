@@ -30,3 +30,23 @@ struct SmallFactorial
     int arr[MAX_SIZE];
     int numOfDigits;
 };
+
+void multiply(int num, struct SmallFactorial * factorial) {
+    int digitIdx = 0, carry = 0;
+    while (digitIdx < factorial->numOfDigits)
+    {
+        int temp = factorial->arr[digitIdx] * num + carry;
+        factorial->arr[digitIdx] = temp % 10;
+        carry = temp / 10;
+        digitIdx++;
+    }
+
+    while (carry)
+    {
+        factorial->arr[digitIdx] = carry % 10;
+        carry = carry / 10;
+        digitIdx++;
+    }
+    
+    factorial->numOfDigits = digitIdx;
+}
