@@ -25,3 +25,23 @@ Output:
 
 https://www.codechef.com/problems/TSORT
 */
+#define MAX_SIZE 1000001
+
+void turboSort(int *arr, int len)
+{
+    int occurrences[MAX_SIZE] = {0};
+    for (int i = 0; i < len; i++)
+    {
+        occurrences[arr[i]]++;
+    }
+
+    for (int i = 0, j = 0; i < MAX_SIZE; i++)
+    {
+        while (occurrences[i])
+        {
+            arr[j] = i;
+            occurrences[i]--;
+            j++;
+        }
+    }
+}
