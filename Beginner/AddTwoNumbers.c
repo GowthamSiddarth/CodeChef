@@ -26,7 +26,18 @@ Output
 
 https://www.codechef.com/problems/FLOW001
 */
+#include<stdio.h>
 
 int add2Nums(int num1, int num2) {
     return num1 + num2;
+}
+
+int main() {
+    int num1 = 9;
+    int num2 = 10;
+
+    int _2NumsSum = add2Nums(num1, num2);
+    printf("%d", _2NumsSum);
+
+    return 0;
 }
