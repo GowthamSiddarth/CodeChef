@@ -56,3 +56,15 @@ void turboSort(int *arr, int len)
         }
     }
 }
+
+int main()
+{
+    int arr[] = {5, 3, 6, 7, 1};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    printIntArray(arr, len);
+    turboSort(arr, len);
+    printIntArray(arr, len);
+
+    return 0;
+}
