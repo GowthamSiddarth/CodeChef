@@ -25,7 +25,7 @@ https://www.codechef.com/problems/FCTRL2
 */
 #define MAX_SIZE 158
 
-#include<stdio.h>
+#include <stdio.h>
 
 struct SmallFactorial
 {
@@ -33,7 +33,8 @@ struct SmallFactorial
     int numOfDigits;
 };
 
-void printSmallFactorial(struct SmallFactorial smallFactorial) {
+void printSmallFactorial(struct SmallFactorial smallFactorial)
+{
     for (int i = smallFactorial.numOfDigits - 1; i >= 0; i--)
     {
         printf("%d", smallFactorial.arr[i]);
@@ -41,7 +42,8 @@ void printSmallFactorial(struct SmallFactorial smallFactorial) {
     printf("\n");
 }
 
-void multiply(int num, struct SmallFactorial * factorial) {
+void multiply(int num, struct SmallFactorial *factorial)
+{
     int digitIdx = 0, carry = 0;
     while (digitIdx < factorial->numOfDigits)
     {
@@ -57,24 +59,26 @@ void multiply(int num, struct SmallFactorial * factorial) {
         carry = carry / 10;
         digitIdx++;
     }
-    
+
     factorial->numOfDigits = digitIdx;
 }
 
-struct SmallFactorial getFactorial(int num) {
+struct SmallFactorial getFactorial(int num)
+{
     struct SmallFactorial smallFactorial;
     smallFactorial.arr[0] = 1;
     smallFactorial.numOfDigits = 1;
 
     for (int i = 2; i <= num; i++)
-    {           
+    {
         multiply(i, &smallFactorial);
     }
-    
+
     return smallFactorial;
 }
 
-int main() {
+int main()
+{
     int num = 13;
     struct SmallFactorial smallFactorial = getFactorial(num);
     printSmallFactorial(smallFactorial);
