@@ -50,3 +50,16 @@ void multiply(int num, struct SmallFactorial * factorial) {
     
     factorial->numOfDigits = digitIdx;
 }
+
+struct SmallFactorial getFactorial(int num) {
+    struct SmallFactorial smallFactorial;
+    smallFactorial.arr[0] = 1;
+    smallFactorial.numOfDigits = 1;
+
+    for (int i = 2; i <= num; i++)
+    {
+        multiply(i, &smallFactorial);
+    }
+    
+    return smallFactorial;
+}
