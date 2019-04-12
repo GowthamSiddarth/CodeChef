@@ -23,3 +23,10 @@ Sample output:
 
 https://www.codechef.com/problems/FCTRL2
 */
+#define MAX_SIZE 158
+
+struct SmallFactorial
+{
+    int arr[MAX_SIZE];
+    int numOfDigits;
+};
