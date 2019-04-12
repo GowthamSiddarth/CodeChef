@@ -12,4 +12,15 @@ Constraints
 1 ≤ N ≤ 1000000
 
 https://www.codechef.com/problems/FLOW006
-*/ 
+*/
+
+int getSumOfDigitsOfNum(int num) {
+    int sum = 0;
+    while (num)
+    {
+        sum = num % 10 + sum;
+        num = num / 10;
+    }
+
+    return sum;    
+}
