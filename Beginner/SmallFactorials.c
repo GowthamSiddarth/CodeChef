@@ -73,3 +73,11 @@ struct SmallFactorial getFactorial(int num) {
     
     return smallFactorial;
 }
+
+int main() {
+    int num = 13;
+    struct SmallFactorial smallFactorial = getFactorial(num);
+    printSmallFactorial(smallFactorial);
+
+    return 0;
+}
