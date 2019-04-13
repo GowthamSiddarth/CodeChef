@@ -52,6 +52,7 @@ Output:
 https://www.codechef.com/problems/TLG
 */
 #include <math.h>
+#include <stdio.h>
 
 struct Player
 {
@@ -91,4 +92,19 @@ struct Player initPlayer(int id, int *scores, int maxLead)
     player.scores = scores;
 
     return player;
+}
+
+int main()
+{
+    int numOfGames = 5;
+    int player1Scores[] = {140, 89, 90, 112, 88};
+    int player2Scores[] = {82, 134, 110, 106, 90};
+
+    struct Player player1 = initPlayer(1, player1Scores, 0);
+    struct Player player2 = initPlayer(2, player2Scores, 0);
+
+    struct Player *winner = getWinner(numOfGames, &player1, &player2);
+    printf("%d %d", winner->id, winner->maxLead);
+
+    return 0;
 }
