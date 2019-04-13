@@ -67,3 +67,18 @@ void updateWinnerMaxLead(struct Player *winner, int lead)
         winner->maxLead = lead;
     }
 }
+
+struct Player *getWinner(int numOfGames, struct Player *player1, struct Player *player2)
+{
+    int cumulativeScoreOfPlayer1 = 0, cumulativeScoreOfPlayer2 = 0;
+
+    for (int i = 0; i < numOfGames; i++)
+    {
+        cumulativeScoreOfPlayer1 = cumulativeScoreOfPlayer1 + player1->scores[i];
+        cumulativeScoreOfPlayer2 = cumulativeScoreOfPlayer2 + player2->scores[i];
+        int currWinnerLead = abs(cumulativeScoreOfPlayer1 - cumulativeScoreOfPlayer2);
+        cumulativeScoreOfPlayer1 > cumulativeScoreOfPlayer2 ? updateWinnerMaxLead(player1, currWinnerLead) : updateWinnerMaxLead(player2, currWinnerLead);
+    }
+
+    return player1->maxLead > player2->maxLead ? player1 : player2;
+}
