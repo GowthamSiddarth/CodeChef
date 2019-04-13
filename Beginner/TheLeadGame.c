@@ -50,4 +50,20 @@ Output:
 1 58
 
 https://www.codechef.com/problems/TLG
-*/ 
+*/
+#include <math.h>
+
+struct Player
+{
+    int id;
+    int *scores;
+    int maxLead;
+};
+
+void updateWinnerMaxLead(struct Player *winner, int lead)
+{
+    if (winner->maxLead < lead)
+    {
+        winner->maxLead = lead;
+    }
+}
