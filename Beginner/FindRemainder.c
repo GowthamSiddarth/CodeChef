@@ -24,3 +24,14 @@ Output
 
 https://www.codechef.com/problems/FLOW002
 */
+#define mod %
+
+#include<stdio.h>
+
+int main() {
+    int a = 100;
+    int b = 2;
+
+    printf("%d\n", a mod b);
+    return 0;
+}
