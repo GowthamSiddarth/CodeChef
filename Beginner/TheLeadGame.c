@@ -82,3 +82,13 @@ struct Player *getWinner(int numOfGames, struct Player *player1, struct Player *
 
     return player1->maxLead > player2->maxLead ? player1 : player2;
 }
+
+struct Player initPlayer(int id, int *scores, int maxLead)
+{
+    struct Player player;
+    player.id = id;
+    player.maxLead = maxLead;
+    player.scores = scores;
+
+    return player;
+}
