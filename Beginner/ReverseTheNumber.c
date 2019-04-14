@@ -25,6 +25,7 @@ Output
 
 https://www.codechef.com/problems/FLOW007
 */
+#include <stdio.h>
 
 int reverse(int num)
 {
@@ -34,6 +35,16 @@ int reverse(int num)
         sum = sum * 10 + (num % 10);
         num = num / 10;
     }
-    
+
     return sum;
+}
+
+int main()
+{
+    int num = 2123;
+    int res = reverse(num);
+
+    printf("%d\n", res);
+
+    return 0;
 }
