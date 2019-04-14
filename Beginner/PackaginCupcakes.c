@@ -22,3 +22,7 @@ In the first test case, there will be no leftover cupcakes regardless of the siz
 
 https://www.codechef.com/problems/MUFFINS3
 */
+
+int getPckgSizeWithMaxLeftover(int numOfCupcakes) {
+    return numOfCupcakes / 2 + 1;
+}
