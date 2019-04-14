@@ -23,4 +23,10 @@ Output
 5
 
 https://www.codechef.com/problems/FLOW004
-*/ 
+*/
+#include <math.h>
+
+int getFirstDigit(int num)
+{
+    return num / pow(10, log10(num));
+}
