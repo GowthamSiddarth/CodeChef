@@ -22,7 +22,16 @@ In the first test case, there will be no leftover cupcakes regardless of the siz
 
 https://www.codechef.com/problems/MUFFINS3
 */
+#include<stdio.h>
 
 int getPckgSizeWithMaxLeftover(int numOfCupcakes) {
     return numOfCupcakes / 2 + 1;
+}
+
+int main() {
+    int numOfCupcakes = 2;
+    int res = getPckgSizeWithMaxLeftover(numOfCupcakes);
+
+    printf("%d", res);
+    return 0;
 }
