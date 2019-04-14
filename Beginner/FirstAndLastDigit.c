@@ -28,5 +28,5 @@ https://www.codechef.com/problems/FLOW004
 
 int getFirstDigit(int num)
 {
-    return num / pow(10, log10(num));
+    return num / pow(10, (int) log10(num));
 }
