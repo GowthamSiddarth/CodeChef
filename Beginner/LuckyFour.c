@@ -42,6 +42,7 @@ Output:
 
 https://www.codechef.com/problems/LUCKFOUR
 */
+#include <stdio.h>
 
 int numOfOccurrences(int num, int digit)
 {
@@ -50,8 +51,19 @@ int numOfOccurrences(int num, int digit)
     {
 
         count = count + (digit == num % 10);
-        num = num >> 1;
+        num = num / 10;
     }
 
     return count;
+}
+
+int main()
+{
+    int num = 81;
+    int digit = 4;
+
+    int res = numOfOccurrences(num, digit);
+    printf("%d", res);
+
+    return 0;
 }
