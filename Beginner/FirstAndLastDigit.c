@@ -25,6 +25,7 @@ Output
 https://www.codechef.com/problems/FLOW004
 */
 #include <math.h>
+#include <stdio.h>
 
 int getFirstDigit(int num)
 {
@@ -34,4 +35,14 @@ int getFirstDigit(int num)
 int getLastDigit(int num)
 {
     return num % 10;
+}
+
+int main() {
+    int num = 242323;
+    int firstDigit = getFirstDigit(num);
+    int lastDigit = getLastDigit(num);
+
+    printf("%d", firstDigit + lastDigit);
+
+    return 0;
 }
