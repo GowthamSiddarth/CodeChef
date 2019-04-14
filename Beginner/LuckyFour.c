@@ -41,4 +41,17 @@ Output:
 0
 
 https://www.codechef.com/problems/LUCKFOUR
-*/ 
+*/
+
+int numOfOccurrences(int num, int digit)
+{
+    int count = 0;
+    while (num)
+    {
+
+        count = count + (digit == num % 10);
+        num = num >> 1;
+    }
+
+    return count;
+}
