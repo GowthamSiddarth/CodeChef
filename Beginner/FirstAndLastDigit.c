@@ -37,7 +37,8 @@ int getLastDigit(int num)
     return num % 10;
 }
 
-int main() {
+int main()
+{
     int num = 242323;
     int firstDigit = getFirstDigit(num);
     int lastDigit = getLastDigit(num);
