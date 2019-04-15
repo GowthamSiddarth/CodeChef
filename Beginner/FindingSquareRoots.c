@@ -25,3 +25,9 @@ Output:
 
 https://www.codechef.com/problems/FSQRT
 */
+#include <math.h>
+
+int integralPartOfSquareRoot(int num)
+{
+    return (int)sqrt(num);
+}
