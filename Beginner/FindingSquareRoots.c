@@ -26,8 +26,18 @@ Output:
 https://www.codechef.com/problems/FSQRT
 */
 #include <math.h>
+#include <stdio.h>
 
 int integralPartOfSquareRoot(int num)
 {
     return (int)sqrt(num);
+}
+
+int main()
+{
+    int num = 10;
+    int res = integralPartOfSquareRoot(num);
+
+    printf("%d\n", res);
+    return 0;
 }
