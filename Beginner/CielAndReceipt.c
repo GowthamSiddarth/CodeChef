@@ -54,3 +54,8 @@ In the last sample, the optimal way is 2048+2048=4096 (2 menus). Note that there
 
 https://www.codechef.com/problems/CIELRCPT
 */
+
+int getNumOfSetBits(int num)
+{
+    return 0 == num ? 0 : (num & 1) + getNumOfSetBits(num >> 1);
+}
