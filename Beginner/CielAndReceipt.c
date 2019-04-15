@@ -54,8 +54,14 @@ In the last sample, the optimal way is 2048+2048=4096 (2 menus). Note that there
 
 https://www.codechef.com/problems/CIELRCPT
 */
+#define MAX_PRICE 2048
 
 int getNumOfSetBits(int num)
 {
     return 0 == num ? 0 : (num & 1) + getNumOfSetBits(num >> 1);
+}
+
+int getMinNumOfItems(int totalPrice)
+{
+    return totalPrice / MAX_PRICE + getNumOfSetBits(totalPrice % MAX_PRICE);
 }
