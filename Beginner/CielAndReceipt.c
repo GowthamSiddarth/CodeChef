@@ -56,6 +56,8 @@ https://www.codechef.com/problems/CIELRCPT
 */
 #define MAX_PRICE 2048
 
+#include <stdio.h>
+
 int getNumOfSetBits(int num)
 {
     return 0 == num ? 0 : (num & 1) + getNumOfSetBits(num >> 1);
@@ -64,4 +66,13 @@ int getNumOfSetBits(int num)
 int getMinNumOfItems(int totalPrice)
 {
     return totalPrice / MAX_PRICE + getNumOfSetBits(totalPrice % MAX_PRICE);
+}
+
+int main()
+{
+    int totalPrice = 10;
+    int res = getMinNumOfItems(totalPrice);
+
+    printf("%d\n", res);
+    return 0;
 }
