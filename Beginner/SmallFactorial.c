@@ -79,3 +79,12 @@ void printFactorial(struct SmallFactorial smallFactorial)
 
     printf("\n");
 }
+
+int main()
+{
+    int num = 3;
+    struct SmallFactorial smallFactorial = getSmallFactorial(num);
+    printFactorial(smallFactorial);
+
+    return 0;
+}
