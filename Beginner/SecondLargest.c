@@ -25,14 +25,15 @@ Output
 
 https://www.codechef.com/problems/FLOW017
 */
+#include <stdio.h>
 
 int getSecondLargest(int num1, int num2, int num3)
 {
-    if ((num1 > num2 && num1 < num3) || (num1 < num2 && num1 > num3))
+    if ((num1 > num2 && num1 < num3) || (num1 > num3 && num1 < num2))
     {
         return num1;
     }
-    else if ((num2 > num1 && num2 < num3) || (num3 > num3 && num2 < num1))
+    else if ((num2 > num1 && num2 < num3) || (num2 > num3 && num2 < num1))
     {
         return num2;
     }
@@ -40,4 +41,16 @@ int getSecondLargest(int num1, int num2, int num3)
     {
         return num3;
     }
+}
+
+int main()
+{
+    int num1 = 10;
+    int num2 = 3;
+    int num3 = 450;
+
+    int secondLargest = getSecondLargest(num1, num2, num3);
+    printf("%d\n", secondLargest);
+
+    return 0;
 }
