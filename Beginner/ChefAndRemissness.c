@@ -28,6 +28,7 @@ Output:
 
 https://www.codechef.com/problems/REMISS
 */
+#include <stdio.h>
 
 struct ChefAndRemissness
 {
@@ -42,4 +43,17 @@ int getMinNumOfChefEntries(struct ChefAndRemissness chefAndRemissness)
 int getMaxNumOfChefEntries(struct ChefAndRemissness chefAndRemissness)
 {
     return chefAndRemissness.countOfFirstGuard + chefAndRemissness.countOfSecondGuard;
+}
+
+int main()
+{
+    struct ChefAndRemissness chefAndRemissness;
+    chefAndRemissness.countOfFirstGuard = 19;
+    chefAndRemissness.countOfSecondGuard = 17;
+
+    int minChefEntries = getMinNumOfChefEntries(chefAndRemissness);
+    int maxChefEntries = getMaxNumOfChefEntries(chefAndRemissness);
+
+    printf("%d %d\n", minChefEntries, maxChefEntries);
+    return 0;
 }
