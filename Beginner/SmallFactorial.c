@@ -52,3 +52,18 @@ void multiply(int num, struct SmallFactorial *smallFactorial)
 
     smallFactorial->numOfDigits = digitIdx;
 }
+
+struct SmallFactorial getSmallFactorial(int num)
+{
+    struct SmallFactorial smallFactorial;
+    smallFactorial.factorial[0] = 1;
+    smallFactorial.numOfDigits = 1;
+
+    int carry = 0;
+    for (int i = 2; i < num; i++)
+    {
+        multiply(i, &smallFactorial);
+    }
+
+    return smallFactorial;
+}
