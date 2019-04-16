@@ -28,3 +28,8 @@ Output:
 
 https://www.codechef.com/problems/REMISS
 */
+
+struct ChefAndRemissness
+{
+    int countOfFirstGuard, countOfSecondGuard;
+};
