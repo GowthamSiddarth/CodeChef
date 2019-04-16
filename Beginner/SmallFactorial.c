@@ -27,6 +27,8 @@ https://www.codechef.com/problems/FLOW018
 */
 #define MAX_SIZE 19
 
+#include <stdio.h>
+
 struct SmallFactorial
 {
     int factorial[MAX_SIZE];
@@ -66,4 +68,14 @@ struct SmallFactorial getSmallFactorial(int num)
     }
 
     return smallFactorial;
+}
+
+void printFactorial(struct SmallFactorial smallFactorial)
+{
+    for (int i = 0; i < smallFactorial.numOfDigits; i++)
+    {
+        printf("%d", smallFactorial.factorial[i]);
+    }
+
+    printf("\n");
 }
