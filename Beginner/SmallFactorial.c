@@ -25,3 +25,10 @@ Output
 
 https://www.codechef.com/problems/FLOW018
 */
+#define MAX_SIZE 19
+
+struct SmallFactorial
+{
+    int factorial[MAX_SIZE];
+    int numOfDigits;
+};
