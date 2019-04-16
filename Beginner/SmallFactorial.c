@@ -50,6 +50,7 @@ void multiply(int num, struct SmallFactorial *smallFactorial)
     {
         smallFactorial->factorial[digitIdx] = carry % 10;
         carry = carry / 10;
+        digitIdx++;
     }
 
     smallFactorial->numOfDigits = digitIdx;
@@ -62,7 +63,7 @@ struct SmallFactorial getSmallFactorial(int num)
     smallFactorial.numOfDigits = 1;
 
     int carry = 0;
-    for (int i = 2; i < num; i++)
+    for (int i = 2; i <= num; i++)
     {
         multiply(i, &smallFactorial);
     }
@@ -72,7 +73,7 @@ struct SmallFactorial getSmallFactorial(int num)
 
 void printFactorial(struct SmallFactorial smallFactorial)
 {
-    for (int i = 0; i < smallFactorial.numOfDigits; i++)
+    for (int i = smallFactorial.numOfDigits - 1; i >= 0; i--)
     {
         printf("%d", smallFactorial.factorial[i]);
     }
@@ -82,7 +83,7 @@ void printFactorial(struct SmallFactorial smallFactorial)
 
 int main()
 {
-    int num = 3;
+    int num = 20;
     struct SmallFactorial smallFactorial = getSmallFactorial(num);
     printFactorial(smallFactorial);
 
