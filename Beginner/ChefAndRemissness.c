@@ -38,3 +38,8 @@ int getMinNumOfChefEntries(struct ChefAndRemissness chefAndRemissness)
 {
     return chefAndRemissness.countOfFirstGuard > chefAndRemissness.countOfSecondGuard ? chefAndRemissness.countOfFirstGuard : chefAndRemissness.countOfSecondGuard;
 }
+
+int getMaxNumOfChefEntries(struct ChefAndRemissness chefAndRemissness)
+{
+    return chefAndRemissness.countOfFirstGuard + chefAndRemissness.countOfSecondGuard;
+}
