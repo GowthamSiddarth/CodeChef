@@ -33,3 +33,8 @@ struct ChefAndRemissness
 {
     int countOfFirstGuard, countOfSecondGuard;
 };
+
+int getMinNumOfChefEntries(struct ChefAndRemissness chefAndRemissness)
+{
+    return chefAndRemissness.countOfFirstGuard > chefAndRemissness.countOfSecondGuard ? chefAndRemissness.countOfFirstGuard : chefAndRemissness.countOfSecondGuard;
+}
