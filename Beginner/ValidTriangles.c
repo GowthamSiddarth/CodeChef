@@ -25,6 +25,7 @@ NO
 
 https://www.codechef.com/problems/FLOW013
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -35,4 +36,22 @@ enum Boolean
 enum Boolean isValidTriangle(int angle1, int angle2, int angle3)
 {
     return 180 == angle1 + angle2 + angle3 ? TRUE : FALSE;
+}
+
+int main()
+{
+    int angle1 = 178, angle2 = 1, angle3 = 1;
+    enum Boolean res = isValidTriangle(angle1, angle2, angle3);
+
+    switch (res)
+    {
+    case FALSE:
+        printf("NO\n");
+        break;
+    case TRUE:
+        printf("YES\n");
+        break;
+    }
+
+    return 0;
 }
