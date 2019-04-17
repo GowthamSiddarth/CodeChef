@@ -25,6 +25,7 @@ Output
 
 https://www.codechef.com/problems/FLOW005
 */
+#include <stdio.h>
 
 enum Denomination
 {
@@ -65,4 +66,13 @@ int getMinNumOfNotes(int amount)
     }
 
     return minNumOfNotes;
+}
+
+int main()
+{
+    int amount = 333;
+    int res = getMinNumOfNotes(amount);
+
+    printf("%d\n", res);
+    return 0;
 }
