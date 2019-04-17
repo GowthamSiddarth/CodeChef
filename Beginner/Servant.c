@@ -26,8 +26,20 @@ https://www.codechef.com/problems/FLOW008
 #define MAX_LENGTH 34
 
 #include <string.h>
+#include <stdio.h>
 
 void setMessageForServant(int num, char *message)
 {
     memcpy(message, num < 10 ? "What an obedient servant you are!" : "-1", num < 10 ? MAX_LENGTH : 3);
+}
+
+int main()
+{
+    int num = -10;
+    char message[MAX_LENGTH];
+
+    setMessageForServant(num, message);
+    printf("%s\n", message);
+
+    return 0;
 }
