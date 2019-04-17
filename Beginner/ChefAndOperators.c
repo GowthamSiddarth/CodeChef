@@ -30,3 +30,15 @@ Output:
 
 https://www.codechef.com/problems/CHOPRT
 */
+
+enum ComparisonOperator
+{
+    LESS_THAN,
+    EQUAL,
+    GREATER_THAN
+};
+
+enum ComparisonOperator compare(int num1, int num2)
+{
+    return num1 > num2 ? GREATER_THAN : num1 < num2 ? LESS_THAN : EQUAL;
+}
