@@ -30,6 +30,7 @@ Output:
 
 https://www.codechef.com/problems/CHOPRT
 */
+#include <stdio.h>
 
 enum ComparisonOperator
 {
@@ -41,4 +42,25 @@ enum ComparisonOperator
 enum ComparisonOperator compare(int num1, int num2)
 {
     return num1 > num2 ? GREATER_THAN : num1 < num2 ? LESS_THAN : EQUAL;
+}
+
+int main()
+{
+    int num1 = 10, num2 = 20;
+    enum ComparisonOperator res = compare(num1, num2);
+
+    switch (res)
+    {
+    case LESS_THAN:
+        printf("<\n");
+        break;
+    case GREATER_THAN:
+        printf(">\n");
+        break;
+    case EQUAL:
+        printf("=\n");
+        break;
+    }
+
+    return 0;
 }
