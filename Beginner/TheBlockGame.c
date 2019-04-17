@@ -25,6 +25,7 @@ wins
 
 https://www.codechef.com/problems/PALL01
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -47,4 +48,23 @@ int reverse(int num)
 enum Boolean isPalindrome(int num)
 {
     return num == reverse(num) ? TRUE : FALSE;
+}
+
+int main()
+{
+    int num = 343;
+    enum Boolean res = isPalindrome(num);
+
+    switch (res)
+    {
+    case TRUE:
+        printf("wins\n");
+        break;
+
+    case FALSE:
+        printf("losses\n");
+        break;
+    }
+
+    return 0;
 }
