@@ -26,6 +26,12 @@ wins
 https://www.codechef.com/problems/PALL01
 */
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 int reverse(int num)
 {
     int sum = 0;
@@ -36,4 +42,9 @@ int reverse(int num)
     }
 
     return sum;
+}
+
+enum Boolean isPalindrome(int num)
+{
+    return num == reverse(num) ? TRUE : FALSE;
 }
