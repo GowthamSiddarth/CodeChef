@@ -40,3 +40,29 @@ int getMaxNumOfNotesWithAmountForDenomination(int amount, enum Denomination deno
 {
     return amount / denomination;
 }
+
+int getMinNumOfNotes(int amount)
+{
+    int minNumOfNotes = 0, currNumOfNotes;
+
+    for (int denomination = HUNDRED; denomination > 0 && amount > 0; denomination--)
+    {
+        switch (denomination)
+        {
+        case HUNDRED:
+        case FIFTY:
+        case TEN:
+        case FIVE:
+        case TWO:
+        case ONE:
+            currNumOfNotes = getMaxNumOfNotesWithAmountForDenomination(amount, denomination);
+            minNumOfNotes = minNumOfNotes + currNumOfNotes;
+            amount = amount - denomination * currNumOfNotes;
+            break;
+        default:
+            break;
+        }
+    }
+
+    return minNumOfNotes;
+}
