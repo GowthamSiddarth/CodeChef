@@ -23,3 +23,11 @@ What an obedient servant you are!
 
 https://www.codechef.com/problems/FLOW008
 */
+#define MAX_LENGTH 34
+
+#include <string.h>
+
+void setMessageForServant(int num, char *message)
+{
+    memcpy(message, num < 10 ? "What an obedient servant you are!" : "-1", num < 10 ? MAX_LENGTH : 3);
+}
