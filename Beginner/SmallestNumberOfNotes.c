@@ -35,3 +35,8 @@ enum Denomination
     FIFTY = 50,
     HUNDRED = 100
 };
+
+int getMaxNumOfNotesWithAmountForDenomination(int amount, enum Denomination denomination)
+{
+    return amount / denomination;
+}
