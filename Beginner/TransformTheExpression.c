@@ -93,3 +93,12 @@ char *pop(struct StackOfStrings *stackOfStrings)
 
     return topItem;
 }
+
+char *charToString(char c)
+{
+    char *string = (char *)malloc(sizeof(char) * 2);
+    string[0] = c;
+    string[1] = '\0';
+
+    return string;
+}
