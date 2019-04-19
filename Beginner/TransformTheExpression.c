@@ -28,6 +28,8 @@ https://www.codechef.com/problems/ONP
 #define MAX_SIZE 400
 
 #include <malloc.h>
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -44,7 +46,7 @@ struct StackOfStrings
 struct StackOfStrings *initStackOfStrings()
 {
     struct StackOfStrings *stackOfStrings = (struct StackOfStrings *)malloc(sizeof(struct StackOfStrings));
-    stackOfStrings->top = 0;
+    stackOfStrings->top = -1;
 
     return stackOfStrings;
 }
@@ -56,6 +58,7 @@ enum Boolean push(struct StackOfStrings *stackOfStrings, char *string)
         return FALSE;
     }
 
+    stackOfStrings->top = stackOfStrings->top + 1;
     int strIdx = 0, itemIdx = 0;
     while ('\0' != string[strIdx])
     {
@@ -113,27 +116,33 @@ char *charToString(char c)
 char *convertToRPN(char *operand1, char *operator, char *operand2)
 {
     char *rpn = (char *)malloc(sizeof(char) * MAX_SIZE);
-    int idx = 0;
+    int rpnIdx = 0, operIdx;
 
-    while ('\0' != operand1[idx])
+    operIdx = 0;
+    while ('\0' != operand1[operIdx])
     {
-        rpn[idx] = operand1[idx];
-        idx++;
+        rpn[rpnIdx] = operand1[operIdx];
+        operIdx++;
+        rpnIdx++;
     }
 
-    while ('\0' != operand2[idx])
+    operIdx = 0;
+    while ('\0' != operand2[operIdx])
     {
-        rpn[idx] = operand2[idx];
-        idx++;
+        rpn[rpnIdx] = operand2[operIdx];
+        operIdx++;
+        rpnIdx++;
     }
 
-    while ('\0' != operator[idx])
+    operIdx = 0;
+    while ('\0' != operator[operIdx])
     {
-        rpn[idx] = operator[idx];
-        idx++;
+        rpn[rpnIdx] = operator[operIdx];
+        operIdx++;
+        rpnIdx++;
     }
 
-    rpn[idx] = '\0';
+    rpn[rpnIdx] = '\0';
     return rpn;
 }
 
@@ -142,26 +151,29 @@ char *getRPN(char *expression)
     struct StackOfStrings *stackOfStrings = initStackOfStrings();
     int idx = 0;
     while ('\0' != expression[idx])
-    {
+    {        
         if (')' == expression[idx])
         {
             char *operand2 = pop(stackOfStrings);
             char *operator= pop(stackOfStrings);
-            char *operand1 = pop(stackOfStrings);
+            char *operand1 = pop(stackOfStrings);            
 
             char *rpn = convertToRPN(operand1, operator, operand2);
 
-            char *openParanthesis = pop(stackOfStrings);
+            char *openParanthesis = pop(stackOfStrings);            
             push(stackOfStrings, rpn);
 
             free(operand1);
             free(operator);
             free(operand2);
             free(openParanthesis);
+            free(rpn);
         }
         else
         {
-            push(stackOfStrings, charToString(expression[idx]));
+            char *stringItem = charToString(expression[idx]);
+            push(stackOfStrings, stringItem);
+            free(stringItem);
         }
 
         idx++;
