@@ -80,3 +80,16 @@ char *getTopItem(struct StackOfStrings *stackOfStrings)
     topItem[idx] = '\0';
     return topItem;
 }
+
+char *pop(struct StackOfStrings *stackOfStrings)
+{
+    char *topItem = getTopItem(stackOfStrings);
+    stackOfStrings->stack[stackOfStrings->top][0] = '\0';
+
+    if (0 != stackOfStrings->top)
+    {
+        stackOfStrings->top = stackOfStrings->top - 1;
+    }
+
+    return topItem;
+}
