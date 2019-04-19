@@ -110,11 +110,6 @@ char *charToString(char c)
     return string;
 }
 
-enum Boolean isOpenParanthesis(char *operator)
-{
-    return '(' == operator[0] ? TRUE : FALSE;
-}
-
 char *convertToRPN(char *operand1, char *operator, char *operand2)
 {
     char *rpn = (char *)malloc(sizeof(char) * MAX_SIZE);
@@ -140,4 +135,37 @@ char *convertToRPN(char *operand1, char *operator, char *operand2)
 
     rpn[idx] = '\0';
     return rpn;
+}
+
+char *getRPN(char *expression)
+{
+    struct StackOfStrings *stackOfStrings = initStackOfStrings();
+    int idx = 0;
+    while ('\0' != expression[idx])
+    {
+        if (')' == expression[idx])
+        {
+            char *operand2 = pop(stackOfStrings);
+            char *operator= pop(stackOfStrings);
+            char *operand1 = pop(stackOfStrings);
+
+            char *rpn = convertToRPN(operand1, operator, operand2);
+
+            char *openParanthesis = pop(stackOfStrings);
+            push(stackOfStrings, rpn);
+
+            free(operand1);
+            free(operator);
+            free(operand2);
+            free(openParanthesis);
+        }
+        else
+        {
+            push(stackOfStrings, charToString(expression[idx]));
+        }
+
+        idx++;
+    }
+
+    return getTopItem(stackOfStrings);
 }
