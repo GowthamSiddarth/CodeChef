@@ -109,3 +109,8 @@ char *charToString(char c)
 
     return string;
 }
+
+enum Boolean isOpenParanthesis(char *operator)
+{
+    return '(' == operator[0] ? TRUE : FALSE;
+}
