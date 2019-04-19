@@ -27,6 +27,8 @@ https://www.codechef.com/problems/ONP
 */
 #define MAX_SIZE 400
 
+#include <malloc.h>
+
 enum Boolean
 {
     FALSE,
@@ -62,4 +64,19 @@ enum Boolean push(struct StackOfStrings *stackOfStrings, char *string)
 
     stackOfStrings->stack[stackOfStrings->top][itemIdx] = '\0';
     return TRUE;
+}
+
+char *getTopItem(struct StackOfStrings *stackOfStrings)
+{
+    char *topItem = (char *)malloc(sizeof(char) * MAX_SIZE);
+    int idx = 0;
+
+    while ('\0' != stackOfStrings->stack[stackOfStrings->top][idx])
+    {
+        topItem[idx] = stackOfStrings->stack[stackOfStrings->top][idx];
+        idx++;
+    }
+
+    topItem[idx] = '\0';
+    return topItem;
 }
