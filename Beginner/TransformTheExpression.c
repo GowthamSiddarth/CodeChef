@@ -179,7 +179,10 @@ char *getRPN(char *expression)
         idx++;
     }
 
-    return getTopItem(stackOfStrings);
+    char *topItem = getTopItem(stackOfStrings);
+    free(stackOfStrings);
+
+    return topItem;
 }
 
 int main()
