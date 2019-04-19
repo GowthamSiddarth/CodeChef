@@ -151,16 +151,16 @@ char *getRPN(char *expression)
     struct StackOfStrings *stackOfStrings = initStackOfStrings();
     int idx = 0;
     while ('\0' != expression[idx])
-    {        
+    {
         if (')' == expression[idx])
         {
             char *operand2 = pop(stackOfStrings);
             char *operator= pop(stackOfStrings);
-            char *operand1 = pop(stackOfStrings);            
+            char *operand1 = pop(stackOfStrings);
 
             char *rpn = convertToRPN(operand1, operator, operand2);
 
-            char *openParanthesis = pop(stackOfStrings);            
+            char *openParanthesis = pop(stackOfStrings);
             push(stackOfStrings, rpn);
 
             free(operand1);
@@ -180,4 +180,15 @@ char *getRPN(char *expression)
     }
 
     return getTopItem(stackOfStrings);
+}
+
+int main()
+{
+    char expression[MAX_SIZE];
+    memcpy(expression, "(a+(b*c))", 10);
+
+    char *rpn = getRPN(expression);
+    printf("%s\n", rpn);
+
+    return 0;
 }
