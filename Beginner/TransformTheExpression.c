@@ -25,3 +25,16 @@ at+bac++cd+^*
 
 https://www.codechef.com/problems/ONP
 */
+#define MAX_SIZE 400
+
+struct StackOfStrings
+{
+    char stack[MAX_SIZE][MAX_SIZE];
+    int top;
+};
+
+struct StackOfStrings initStackOfStrings()
+{
+    struct StackOfStrings stackOfStrings;
+    stackOfStrings.top = 0;    
+}
