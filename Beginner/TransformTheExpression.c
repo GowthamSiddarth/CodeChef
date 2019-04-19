@@ -94,6 +94,11 @@ char *pop(struct StackOfStrings *stackOfStrings)
     return topItem;
 }
 
+enum Boolean isEmpty(struct StackOfStrings *stackOfStrings)
+{
+    return 0 == stackOfStrings->top ? TRUE : FALSE;
+}
+
 char *charToString(char c)
 {
     char *string = (char *)malloc(sizeof(char) * 2);
