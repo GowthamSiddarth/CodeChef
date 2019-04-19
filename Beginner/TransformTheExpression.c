@@ -41,10 +41,12 @@ struct StackOfStrings
     int top;
 };
 
-struct StackOfStrings initStackOfStrings()
+struct StackOfStrings *initStackOfStrings()
 {
-    struct StackOfStrings stackOfStrings;
-    stackOfStrings.top = 0;
+    struct StackOfStrings *stackOfStrings = (struct StackOfStrings *)malloc(sizeof(struct StackOfStrings));
+    stackOfStrings->top = 0;
+
+    return stackOfStrings;
 }
 
 enum Boolean push(struct StackOfStrings *stackOfStrings, char *string)
