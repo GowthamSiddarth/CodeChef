@@ -27,6 +27,12 @@ https://www.codechef.com/problems/ONP
 */
 #define MAX_SIZE 400
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 struct StackOfStrings
 {
     char stack[MAX_SIZE][MAX_SIZE];
@@ -36,5 +42,24 @@ struct StackOfStrings
 struct StackOfStrings initStackOfStrings()
 {
     struct StackOfStrings stackOfStrings;
-    stackOfStrings.top = 0;    
+    stackOfStrings.top = 0;
+}
+
+enum Boolean push(struct StackOfStrings *stackOfStrings, char *string)
+{
+    if (MAX_SIZE == stackOfStrings->top)
+    {
+        return FALSE;
+    }
+
+    int strIdx = 0, itemIdx = 0;
+    while ('\0' != string[strIdx])
+    {
+        stackOfStrings->stack[stackOfStrings->top][itemIdx] = string[strIdx];
+        strIdx++;
+        itemIdx++;
+    }
+
+    stackOfStrings->stack[stackOfStrings->top][itemIdx] = '\0';
+    return TRUE;
 }
