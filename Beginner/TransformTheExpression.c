@@ -114,3 +114,30 @@ enum Boolean isOpenParanthesis(char *operator)
 {
     return '(' == operator[0] ? TRUE : FALSE;
 }
+
+char *convertToRPN(char *operand1, char *operator, char *operand2)
+{
+    char *rpn = (char *)malloc(sizeof(char) * MAX_SIZE);
+    int idx = 0;
+
+    while ('\0' != operand1[idx])
+    {
+        rpn[idx] = operand1[idx];
+        idx++;
+    }
+
+    while ('\0' != operand2[idx])
+    {
+        rpn[idx] = operand2[idx];
+        idx++;
+    }
+
+    while ('\0' != operator[idx])
+    {
+        rpn[idx] = operator[idx];
+        idx++;
+    }
+
+    rpn[idx] = '\0';
+    return rpn;
+}
