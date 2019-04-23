@@ -37,3 +37,8 @@ enum ShipClass
     Destroyer,
     Frigate
 };
+
+char toUpper(char alphabet)
+{
+    return alphabet >= 'a' && alphabet <= 'z' ? alphabet - 32 : alphabet;
+}
