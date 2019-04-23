@@ -42,3 +42,19 @@ char toUpper(char alphabet)
 {
     return alphabet >= 'a' && alphabet <= 'z' ? alphabet - 32 : alphabet;
 }
+
+char *getShipClass(char shipId)
+{
+    shipId = toUpper(shipId);
+    switch (shipId)
+    {
+    case 'B':
+        return BattleShip;
+    case 'C':
+        return Cruiser;
+    case 'D':
+        return Destroyer;
+    case 'F':
+        return Frigate;
+    }
+}
