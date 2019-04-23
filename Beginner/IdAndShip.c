@@ -29,3 +29,11 @@ Destroyer
 
 https://www.codechef.com/problems/FLOW010
 */
+
+enum ShipClass
+{
+    BattleShip,
+    Cruiser,
+    Destroyer,
+    Frigate
+};
