@@ -29,6 +29,7 @@ Destroyer
 
 https://www.codechef.com/problems/FLOW010
 */
+#include <stdio.h>
 
 enum ShipClass
 {
@@ -57,4 +58,28 @@ char *getShipClass(char shipId)
     case 'F':
         return Frigate;
     }
+}
+
+int main()
+{
+    char shipID = 'B';
+    enum ShipClass shipClass = getShipClass(shipID);
+
+    switch (shipClass)
+    {
+    case BattleShip:
+        printf("BattleShip\n");
+        break;
+    case Cruiser:
+        printf("Cruiser\n");
+        break;
+    case Destroyer:
+        printf("Destroyer\n");
+        break;
+    case Frigate:
+        printf("Frigate\n");
+        break;
+    }
+
+    return 0;
 }
