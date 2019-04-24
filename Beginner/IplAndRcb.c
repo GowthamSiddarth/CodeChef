@@ -24,3 +24,8 @@ Sample Output:
 
 https://www.codechef.com/problems/CLIPLX
 */
+
+int minNumOfMatchestoWin(int minNumOfPointsReq)
+{
+    return minNumOfPointsReq / 2;
+}
