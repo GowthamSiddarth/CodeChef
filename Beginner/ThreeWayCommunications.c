@@ -56,6 +56,11 @@ double distance(struct Position pos1, struct Position pos2)
 }
 
 enum Boolean isCommunicable(struct Position pos1, struct Position pos2, int minDist)
-{  
+{
     return distance(pos1, pos2) <= minDist ? TRUE : FALSE;
+}
+
+enum Boolean isThreeWayCommunicationPossible(struct Position pos1, struct Position pos2, struct Position pos3, int minDist)
+{
+    return isCommunicable(pos1, pos2, minDist) + isCommunicable(pos2, pos3, minDist) + isCommunicable(pos1, pos3, minDist) >= 2 ? TRUE : FALSE;
 }
