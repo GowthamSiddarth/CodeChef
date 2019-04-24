@@ -37,6 +37,7 @@ no
 
 https://www.codechef.com/problems/COMM3
 */
+#include <math.h>
 
 enum Boolean
 {
@@ -48,3 +49,8 @@ struct Position
 {
     int x, y;
 };
+
+float distance(struct Position pos1, struct Position pos2)
+{
+    return sqrt(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2));
+}
