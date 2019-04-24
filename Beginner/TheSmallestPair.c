@@ -29,6 +29,7 @@ Output:
 https://www.codechef.com/problems/SMPAIR
 */
 #include <limits.h>
+#include <stdio.h>
 
 int getSmallestPairSum(int *arr, int len)
 {
@@ -49,4 +50,15 @@ int getSmallestPairSum(int *arr, int len)
     }
 
     return min1 + min2;
+}
+
+int main()
+{
+    int arr[] = {5, 1, 3, 4};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int res = getSmallestPairSum(arr, len);
+    printf("%d\n", res);
+
+    return 0;
 }
