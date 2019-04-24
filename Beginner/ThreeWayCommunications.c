@@ -50,7 +50,12 @@ struct Position
     int x, y;
 };
 
-float distance(struct Position pos1, struct Position pos2)
+double distance(struct Position pos1, struct Position pos2)
 {
     return sqrt(pow(pos1.x - pos2.x, 2) + pow(pos1.y - pos2.y, 2));
+}
+
+enum Boolean isCommunicable(struct Position pos1, struct Position pos2, int minDist)
+{  
+    return distance(pos1, pos2) <= minDist ? TRUE : FALSE;
 }
