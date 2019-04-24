@@ -44,7 +44,7 @@ char toUpper(char alphabet)
     return alphabet >= 'a' && alphabet <= 'z' ? alphabet - 32 : alphabet;
 }
 
-char *getShipClass(char shipId)
+enum ShipClass getShipClass(char shipId)
 {
     shipId = toUpper(shipId);
     switch (shipId)
