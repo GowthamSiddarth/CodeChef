@@ -48,3 +48,8 @@ Example case 3. After removing the 1 largest and smallest measurements, Sergey w
 
 https://www.codechef.com/problems/SIMPSTAT
 */
+
+int compareInts(const void* x, const void* y)
+{
+    return *(int *)x - *(int *)y;
+}
