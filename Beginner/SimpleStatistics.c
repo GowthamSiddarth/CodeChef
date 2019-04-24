@@ -48,8 +48,22 @@ Example case 3. After removing the 1 largest and smallest measurements, Sergey w
 
 https://www.codechef.com/problems/SIMPSTAT
 */
+#include <stdlib.h>
 
-int compareInts(const void* x, const void* y)
+int compareInts(const void *x, const void *y)
 {
     return *(int *)x - *(int *)y;
+}
+
+double getAvgWithTrimmedSubArrays(int *arr, int len, int k)
+{
+    qsort(arr, len, sizeof(arr[0]), compareInts);
+
+    int sum = 0;
+    for (int idx = k; idx < len - k; idx++)
+    {
+        sum = sum + arr[idx];
+    }
+
+    return sum / (len - 2 * k);
 }
