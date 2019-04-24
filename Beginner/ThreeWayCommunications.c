@@ -38,6 +38,7 @@ no
 https://www.codechef.com/problems/COMM3
 */
 #include <math.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -63,4 +64,21 @@ enum Boolean isCommunicable(struct Position pos1, struct Position pos2, int minD
 enum Boolean isThreeWayCommunicationPossible(struct Position pos1, struct Position pos2, struct Position pos3, int minDist)
 {
     return isCommunicable(pos1, pos2, minDist) + isCommunicable(pos2, pos3, minDist) + isCommunicable(pos1, pos3, minDist) >= 2 ? TRUE : FALSE;
+}
+
+int main()
+{
+    int minDist = 2;
+    struct Position pos1, pos2, pos3;
+    pos1.x = 0;
+    pos1.y = 0;
+    pos2.x = 0;
+    pos2.y = 2;
+    pos3.x = 2;
+    pos3.y = 1;
+
+    enum Boolean res = isThreeWayCommunicationPossible(pos1, pos2, pos3, minDist);
+    printf("%s\n", res ? "yes" : "no");
+
+    return 0;
 }
