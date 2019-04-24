@@ -28,3 +28,25 @@ Output:
 
 https://www.codechef.com/problems/SMPAIR
 */
+#include <limits.h>
+
+int getSmallestPairSum(int *arr, int len)
+{
+    int min1 = INT_MAX;
+    int min2 = INT_MAX - 1;
+
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (arr[idx] < min1)
+        {
+            min2 = min1;
+            min1 = arr[idx];
+        }
+        else if (arr[idx] > min1 && arr[idx] < min2)
+        {
+            min2 = arr[idx];
+        }
+    }
+
+    return min1 + min2;
+}
