@@ -24,8 +24,19 @@ Sample Output:
 
 https://www.codechef.com/problems/CLIPLX
 */
+#include <stdio.h>
 
-int minNumOfMatchestoWin(int minNumOfPointsReq)
+int minNumOfMatchesToWin(int minNumOfPointsReq, int numOfMatchesRem)
 {
-    return minNumOfPointsReq / 2;
+    return minNumOfPointsReq > numOfMatchesRem ? minNumOfPointsReq - numOfMatchesRem : 0;
+}
+
+int main()
+{
+    int minNumOfPointsReq = 6;
+    int numOfMatchesRem = 5;
+    int res = minNumOfMatchesToWin(minNumOfPointsReq, numOfMatchesRem);
+
+    printf("%d\n", res);
+    return 0;
 }
