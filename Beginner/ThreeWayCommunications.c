@@ -37,3 +37,14 @@ no
 
 https://www.codechef.com/problems/COMM3
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+struct Position
+{
+    int x, y;
+};
