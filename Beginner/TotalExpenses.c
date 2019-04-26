@@ -33,3 +33,14 @@ double getTotalExpenses(int quantity, int price, double discount, int minQuaniti
 {
     return quantity > minQuanitity ? (1 - discount) * price * quantity : price * quantity;
 }
+
+int main()
+{
+    double discount = 0.1;
+    int minQuantity = 1000, quantity = 100, price = 120;
+
+    double totalExpenses = getTotalExpenses(quantity, price, discount, minQuantity);
+    printf("%lf\n", totalExpenses);
+
+    return 0;
+}
