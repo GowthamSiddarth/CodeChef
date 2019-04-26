@@ -46,3 +46,8 @@ Example case 3. Change the question marks this way: S1 = aabac, S2 = abaaw, then
 
 https://www.codechef.com/problems/CHEFSTLT
 */
+
+struct MinMaxDiff
+{
+    int minDiff, maxDiff;
+};
