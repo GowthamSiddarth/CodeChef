@@ -30,3 +30,10 @@ NOT SURE
 
 https://www.codechef.com/problems/HEADBOB
 */
+
+enum Nationality
+{
+    INDIAN,
+    NOT_INDIAN,
+    NOT_SURE
+};
