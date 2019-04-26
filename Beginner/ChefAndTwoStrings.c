@@ -60,5 +60,26 @@ struct MinMaxDiff
 
 enum Boolean isLowerCase(char c)
 {
-    return c >= 'a' && c <= 'z';
+    return c >= 'a' && c <= 'z' ? TRUE : FALSE;
+}
+
+struct MinMaxDiff getMinMaxDiff(char *s1, char *s2)
+{
+    struct MinMaxDiff minMaxDiff;
+    minMaxDiff.maxDiff = minMaxDiff.minDiff = 0;
+    int idx = 0;
+    while ('\0' != s1[idx] && '\0' != s2[idx])
+    {
+        if (isLowerCase(s1[idx]) && isLowerCase(s2[idx]) && s1[idx] != s2[idx])
+        {
+            minMaxDiff.maxDiff++;
+            minMaxDiff.minDiff++;
+        }
+        else if ('?' == s1[idx] || '?' == s2[idx])
+        {
+            minMaxDiff.maxDiff++;
+        }
+    }
+
+    return minMaxDiff;
 }
