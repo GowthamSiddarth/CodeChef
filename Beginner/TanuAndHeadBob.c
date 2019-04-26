@@ -30,6 +30,8 @@ NOT SURE
 
 https://www.codechef.com/problems/HEADBOB
 */
+#include <string.h>
+#include <stdio.h>
 
 enum Nationality
 {
@@ -56,4 +58,28 @@ enum Nationality getNationality(char *headbobs)
     }
 
     return NOT_SURE;
+}
+
+int main()
+{
+    char headbobs[1001];
+    memcpy(headbobs, "NNNN", 4);
+
+    enum Nationality nationality = getNationality(headbobs);
+    switch (nationality)
+    {
+    case INDIAN:
+        printf("INDIAN\n");
+        break;
+
+    case NOT_INDIAN:
+        printf("NOT INDIAN\n");
+        break;
+
+    case NOT_SURE:
+        printf("NOT SURE\n");
+        break;
+    }
+
+    return 0;
 }
