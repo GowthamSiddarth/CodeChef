@@ -47,7 +47,18 @@ Example case 3. Change the question marks this way: S1 = aabac, S2 = abaaw, then
 https://www.codechef.com/problems/CHEFSTLT
 */
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 struct MinMaxDiff
 {
     int minDiff, maxDiff;
 };
+
+enum Boolean isLowerCase(char c)
+{
+    return c >= 'a' && c <= 'z';
+}
