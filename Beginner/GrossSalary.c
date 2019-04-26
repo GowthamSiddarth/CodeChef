@@ -27,3 +27,8 @@ Output
 
 https://www.codechef.com/problems/FLOW011
 */
+
+double getGrossSalary(int basicSalary)
+{
+    return basicSalary < 1500 ? basicSalary + 0.1 * basicSalary + 0.9 * basicSalary : basicSalary + 500 + 0.98 * basicSalary;
+}
