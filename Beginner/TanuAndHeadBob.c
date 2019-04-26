@@ -37,3 +37,23 @@ enum Nationality
     NOT_INDIAN,
     NOT_SURE
 };
+
+enum Nationality getNationality(char *headbobs)
+{
+    int idx = 0;
+    while ('\0' != headbobs[idx])
+    {
+        if ('I' == headbobs[idx])
+        {
+            return INDIAN;
+        }
+        else if ('Y' == headbobs[idx])
+        {
+            return NOT_INDIAN;
+        }
+
+        idx++;
+    }
+
+    return NOT_SURE;
+}
