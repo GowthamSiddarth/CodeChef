@@ -46,6 +46,8 @@ Example case 3. Change the question marks this way: S1 = aabac, S2 = abaaw, then
 
 https://www.codechef.com/problems/CHEFSTLT
 */
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -79,7 +81,21 @@ struct MinMaxDiff getMinMaxDiff(char *s1, char *s2)
         {
             minMaxDiff.maxDiff++;
         }
+
+        idx++;
     }
 
     return minMaxDiff;
+}
+
+int main()
+{
+    char s1[101], s2[101];
+    memcpy(s1, "?abac", 6);
+    memcpy(s2, "aba?w", 6);
+
+    struct MinMaxDiff minMaxDiff = getMinMaxDiff(s1, s2);
+    printf("%d %d\n", minMaxDiff.minDiff, minMaxDiff.maxDiff);
+
+    return 0;
 }
