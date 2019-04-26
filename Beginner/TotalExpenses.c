@@ -27,3 +27,8 @@ Output
 
 https://www.codechef.com/problems/FLOW009 
 */
+
+double getTotalExpenses(int quantity, int price, double discount, int minQuanitity)
+{
+    return quantity > minQuanitity ? (100 - discount) * price * quantity : price * quantity;
+}
