@@ -32,6 +32,7 @@ yes
 https://www.codechef.com/problems/PRB01
 */
 #include <math.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -42,11 +43,20 @@ enum Boolean
 enum Boolean isPrime(int num)
 {
     int limit = sqrt(num);
-    for (int i = 0; i <= limit; i++)
+    for (int i = 2; i <= limit; i++)
     {
         if (0 == num % i)
             return FALSE;
     }
 
     return TRUE;
+}
+
+int main()
+{
+    int num = 99991;
+    enum Boolean numIsPrime = isPrime(num);
+    printf("%s\n", numIsPrime ? "yes" : "no");
+
+    return 0;
 }
