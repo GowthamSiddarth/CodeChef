@@ -31,3 +31,22 @@ yes
 
 https://www.codechef.com/problems/PRB01
 */
+#include <math.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isPrime(int num)
+{
+    int limit = sqrt(num);
+    for (int i = 0; i <= limit; i++)
+    {
+        if (0 == num % i)
+            return FALSE;
+    }
+
+    return TRUE;
+}
