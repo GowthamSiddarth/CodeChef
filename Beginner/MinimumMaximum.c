@@ -35,6 +35,7 @@ Test 1 : Chef will make only 1 move: pick up both the elements (that is, 3 and 4
 https://www.codechef.com/problems/MNMX
 */
 #include <limits.h>
+#include <stdio.h>
 
 int minCost(int *arr, int len)
 {
@@ -48,4 +49,15 @@ int minCost(int *arr, int len)
     }
 
     return min * (len - 1);
+}
+
+int main()
+{
+    int arr[] = {4, 2, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int res = minCost(arr, len);
+    printf("%d\n", res);
+
+    return 0;
 }
