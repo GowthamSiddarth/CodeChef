@@ -35,3 +35,8 @@ int arithmeticSum(int n)
 {
     return (n * (n + 1)) / 2;
 }
+
+int puppySum(int d, int n, int f(int))
+{
+    return 0 == d ? n : puppySum(d - 1, f(n), f);
+}
