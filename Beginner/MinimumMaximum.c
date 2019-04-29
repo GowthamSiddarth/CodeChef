@@ -34,3 +34,18 @@ Test 1 : Chef will make only 1 move: pick up both the elements (that is, 3 and 4
 
 https://www.codechef.com/problems/MNMX
 */
+#include <limits.h>
+
+int minCost(int *arr, int len)
+{
+    int min = INT_MAX;
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (arr[idx] < min)
+        {
+            min = arr[idx];
+        }
+    }
+
+    return min * (len - 1);
+}
