@@ -29,6 +29,10 @@ Second Example: There is no way to match the strings.
 
 https://www.codechef.com/problems/TWOSTR
 */
+#define MAX_LEN 11
+
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -45,4 +49,16 @@ enum Boolean stringsAreMatching(char *s1, char *s2)
     }
 
     return '\0' == s1[idx] ? TRUE : FALSE;
+}
+
+int main()
+{
+    char s1[MAX_LEN], s2[MAX_LEN];
+    memcpy(s1, "stor?", 6);
+    memcpy(s2, "sco??", 6);
+
+    enum Boolean res = stringsAreMatching(s1, s2);
+    printf("%s\n", res ? "Yes" : "No");
+
+    return 0;
 }
