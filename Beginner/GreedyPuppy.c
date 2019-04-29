@@ -46,3 +46,12 @@ int getMaxCoinsRemaining(int numOfCoins, int maxNumOfPeople)
 
     return maxCoinsRemaining;
 }
+
+int main()
+{
+    int n = 11, k = 3;
+    int maxCoinsRemaining = getMaxCoinsRemaining(n, k);
+
+    printf("%d\n", maxCoinsRemaining);
+    return 0;
+}
