@@ -30,3 +30,8 @@ The second test case: sum(2, 3) = sum(sum(3)) = sum(1 + 2 + 3) = sum(6) = 1 + 2 
 
 https://www.codechef.com/problems/PPSUM
 */
+
+int arithmeticSum(int n)
+{
+    return (n * (n + 1)) / 2;
+}
