@@ -30,19 +30,19 @@ In the second example he should call 3 people.
 
 https://www.codechef.com/problems/GDOG
 */
+#include <stdio.h>
 
-int getNumOfPeopleToCall(int numOfCoins, int maxNumOfPeople)
+int getMaxCoinsRemaining(int numOfCoins, int maxNumOfPeople)
 {
-    int numOfPeopleToCall = 0, maxCoinsRemaining = 0;
-    for (int numOfPeople = 2; numOfPeople < maxNumOfPeople; numOfPeople++)
+    int maxCoinsRemaining = 0;
+    for (int numOfPeople = 2; numOfPeople <= maxNumOfPeople; numOfPeople++)
     {
         int coinsRemaining = numOfCoins % numOfPeople;
         if (coinsRemaining > maxCoinsRemaining)
         {
             maxCoinsRemaining = coinsRemaining;
-            numOfPeopleToCall = numOfPeople;
-        }        
+        }
     }
 
-    return numOfPeopleToCall;   
+    return maxCoinsRemaining;
 }
