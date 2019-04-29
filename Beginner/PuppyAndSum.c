@@ -30,6 +30,7 @@ The second test case: sum(2, 3) = sum(sum(3)) = sum(1 + 2 + 3) = sum(6) = 1 + 2 
 
 https://www.codechef.com/problems/PPSUM
 */
+#include <stdio.h>
 
 int arithmeticSum(int n)
 {
@@ -39,4 +40,13 @@ int arithmeticSum(int n)
 int puppySum(int d, int n, int f(int))
 {
     return 0 == d ? n : puppySum(d - 1, f(n), f);
+}
+
+int main()
+{
+    int d = 2, n = 3;
+    int sum = puppySum(d, n, arithmeticSum);
+
+    printf("%d\n", sum);
+    return 0;
 }
