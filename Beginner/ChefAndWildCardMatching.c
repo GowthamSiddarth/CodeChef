@@ -29,3 +29,20 @@ Second Example: There is no way to match the strings.
 
 https://www.codechef.com/problems/TWOSTR
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean stringsAreMatching(char *s1, char *s2)
+{
+    int idx = 0;
+    while ('\0' != s1[idx] && (('?' == s1[idx] || '?' == s2[idx]) || s1[idx] == s2[idx]))
+    {
+        idx++;
+    }
+
+    return '\0' == s1[idx] ? TRUE : FALSE;
+}
