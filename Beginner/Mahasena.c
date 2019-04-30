@@ -60,3 +60,14 @@ Example 5: For the fifth example, N = 5 and the array A = [1, 2, 3, 4, 5]. The 1
 
 https://www.codechef.com/problems/AMR15A
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2 ? TRUE : FALSE;
+}
