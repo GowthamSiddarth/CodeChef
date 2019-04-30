@@ -46,6 +46,7 @@ In the second test case, the source file {4} is both tracked and ignored, the so
 
 https://www.codechef.com/problems/VCS
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -63,8 +64,20 @@ int getNumOfFilesWithTrackAndIgnoreStatus(struct SourceCodeFile *sourceCodeFiles
     int count = 0;
     for (int idx = 0; idx < numOfFiles; idx++)
     {
-        count = count + (tracked == sourceCodeFiles[idx].isTracked && ignored == sourceCodeFiles[idx].isIgnored);        
+        count = count + (tracked == sourceCodeFiles[idx].isTracked && ignored == sourceCodeFiles[idx].isIgnored);
     }
 
-    return count;    
+    return count;
+}
+
+int main()
+{
+    int n = 7, m = 4, k = 6;
+    struct SourceCodeFile sourceCodeFiles[] = {{TRUE, TRUE}, {FALSE, TRUE}, {FALSE, TRUE}, {TRUE, TRUE}, {FALSE, FALSE}, {TRUE, TRUE}, {TRUE, TRUE}};
+
+    int numOfFilesIgnoredAndTracked = getNumOfFilesWithTrackAndIgnoreStatus(sourceCodeFiles, n, TRUE, TRUE);
+    int numOfFilesNotIgnoredAndNotTracked = getNumOfFilesWithTrackAndIgnoreStatus(sourceCodeFiles, n, FALSE, FALSE);
+
+    printf("%d %d\n", numOfFilesIgnoredAndTracked, numOfFilesNotIgnoredAndNotTracked);
+    return 0;
 }
