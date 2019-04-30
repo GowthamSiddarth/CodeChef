@@ -57,3 +57,14 @@ struct SourceCodeFile
 {
     enum Boolean isIgnored, isTracked;
 };
+
+int getNumOfFilesWithTrackAndIgnoreStatus(struct SourceCodeFile *sourceCodeFiles, int numOfFiles, enum Boolean tracked, enum Boolean ignored)
+{
+    int count = 0;
+    for (int idx = 0; idx < numOfFiles; idx++)
+    {
+        count = count + (tracked == sourceCodeFiles[idx].isTracked && ignored == sourceCodeFiles[idx].isIgnored);        
+    }
+
+    return count;    
+}
