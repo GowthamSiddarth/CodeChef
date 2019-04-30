@@ -71,3 +71,14 @@ enum Boolean isEven(int num)
 {
     return 0 == num % 2 ? TRUE : FALSE;
 }
+
+enum Boolean isReadyForBattle(int *arr, int len)
+{
+    int evenCount = 0;
+    for (int idx = 0; idx < len; idx++)
+    {
+        evenCount = evenCount + isEven(arr[idx]);
+    }
+
+    return evenCount > len - evenCount ? TRUE : FALSE;
+}
