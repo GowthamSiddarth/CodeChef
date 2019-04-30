@@ -60,6 +60,7 @@ Example 5: For the fifth example, N = 5 and the array A = [1, 2, 3, 4, 5]. The 1
 
 https://www.codechef.com/problems/AMR15A
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -81,4 +82,15 @@ enum Boolean isReadyForBattle(int *arr, int len)
     }
 
     return evenCount > len - evenCount ? TRUE : FALSE;
+}
+
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    enum Boolean res = isReadyForBattle(arr, len);
+    printf("%s\n", res ? "READY FOR BATTLE" : "NOT READY");
+
+    return 0;
 }
