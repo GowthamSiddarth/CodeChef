@@ -46,3 +46,14 @@ In the second test case, the source file {4} is both tracked and ignored, the so
 
 https://www.codechef.com/problems/VCS
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+struct SourceCodeFile
+{
+    enum Boolean isIgnored, isTracked;
+};
