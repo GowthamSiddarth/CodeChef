@@ -41,3 +41,8 @@ Example 2 : Cops in house 21 can cover houses 1 to 41, and cops in house 75 can 
 
 https://www.codechef.com/problems/COPS
 */
+
+int compare(void *x, void *y)
+{
+    return *((int *)x) - *((int *)y);
+}
