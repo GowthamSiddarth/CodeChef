@@ -51,3 +51,12 @@ long int getMaxTriangleHeight(int numOfCoins)
 {
     return (sqrt(1 + 8 * (long int) numOfCoins) - 1) / 2;
 }
+
+int main()
+{
+    int numOfCoins = 10;
+    long int res = getMaxTriangleHeight(numOfCoins);
+
+    printf("%ld\n", res);
+    return 0;
+}
