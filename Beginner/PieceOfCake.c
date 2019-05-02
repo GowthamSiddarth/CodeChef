@@ -29,6 +29,10 @@ YES
 
 https://www.codechef.com/problems/LCH15JAB
 */
+#define MAX_SIZE 51
+
+#include <stdio.h>
+#include <string.h>
 
 enum Boolean
 {
@@ -76,4 +80,15 @@ enum Boolean pieceOfCake(char *s)
     }
 
     return checkIfAnyNumExistsEquToRemNums(count, 26);
+}
+
+int main()
+{
+    char s[MAX_SIZE];
+    memcpy(s, "kklkwwww", 9);
+
+    enum Boolean res = pieceOfCake(s);
+    printf("%s\n", res ? "YES" : "NO");
+
+    return 0;
 }
