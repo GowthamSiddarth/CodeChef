@@ -29,6 +29,7 @@ Test case 1. If you give Bunny the command to move to the right, it will reach i
 
 https://www.codechef.com/problems/ICPC16A
 */
+#include <stdio.h>
 
 enum Direction
 {
@@ -42,4 +43,31 @@ enum Direction
 enum Direction getDirection(int x1, int y1, int x2, int y2)
 {
     return x1 == x2 ? (y2 > y1 ? UP : DOWN) : y1 == y2 ? (x2 > x1 ? RIGHT : LEFT) : SAD;
+}
+
+int main()
+{
+    int x1 = 0, y1 = 0, x2 = 1, y2 = 1;
+    enum Direction direction = getDirection(x1, y1, x2, y2);
+
+    switch (direction)
+    {
+    case UP:
+        printf("up");
+        break;
+    case DOWN:
+        printf("down");
+        break;
+    case LEFT:
+        printf("left");
+        break;
+    case RIGHT:
+        printf("right");
+        break;
+    case SAD:
+        printf("sad");
+        break;
+    }
+
+    return 0;
 }
