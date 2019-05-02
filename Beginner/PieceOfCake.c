@@ -64,3 +64,16 @@ enum Boolean checkIfAnyNumExistsEquToRemNums(int *arr, int len)
 
     return FALSE;
 }
+
+enum Boolean pieceOfCake(char *s)
+{
+    int count[26] = {0};
+    int idx = 0;
+    while ('\0' != s[idx])
+    {
+        count[s[idx] - 'a']++;
+        idx++;
+    }
+
+    return checkIfAnyNumExistsEquToRemNums(count, 26);
+}
