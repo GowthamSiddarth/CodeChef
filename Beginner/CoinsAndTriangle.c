@@ -44,9 +44,10 @@ Test 3: Chef can't form a triangle with height > 3 as it requires atleast 10 gol
 
 https://www.codechef.com/problems/TRICOIN
 */
+#include <stdio.h>
 #include <math.h>
 
-int getMaxTriangleHeight(int numOfCoins)
+long int getMaxTriangleHeight(int numOfCoins)
 {
-    return (sqrt(1 + 8 * numOfCoins) - 1) / 2;
+    return (sqrt(1 + 8 * (long int) numOfCoins) - 1) / 2;
 }
