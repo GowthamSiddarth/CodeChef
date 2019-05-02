@@ -30,6 +30,12 @@ YES
 https://www.codechef.com/problems/LCH15JAB
 */
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 int arraySum(int *arr, int len)
 {
     int sum = 0;
@@ -39,4 +45,22 @@ int arraySum(int *arr, int len)
     }
 
     return sum;
+}
+
+enum Boolean checkIfAnyNumExistsEquToRemNums(int *arr, int len)
+{
+    int sum = arraySum(arr, len);
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (0 == arr[idx])
+        {
+            continue;
+        }
+        else if (arr[idx] == sum - arr[idx])
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
