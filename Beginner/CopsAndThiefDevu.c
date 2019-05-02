@@ -43,17 +43,20 @@ https://www.codechef.com/problems/COPS
 */
 #define MAX_HOUSE_NUM 100
 
-int compare(void *x, void *y)
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare(const void *x, const void *y)
 {
     return *((int *)x) - *((int *)y);
 }
 
-int ceil(int num, int _ceil)
+int ceilWithThreshold(int num, int _ceil)
 {
     return num < _ceil ? _ceil : num;
 }
 
-int floor(int num, int _floor)
+int floorWithThreshold(int num, int _floor)
 {
     return num > _floor ? _floor : num;
 }
@@ -63,12 +66,12 @@ int getNumOfHousesSafeForHiding(int *housesOccByPolice, int numOfHousesOccByPoli
     qsort(housesOccByPolice, numOfHousesOccByPolice, sizeof(housesOccByPolice[0]), compare);
 
     int range = numOfHousesPerMin * maxNumOfMinutes;
-    int count = ceil(housesOccByPolice[0] - range, 0);
+    int count = ceilWithThreshold(housesOccByPolice[0] - range - 1, 0);
 
     for (int idx = 1; idx < numOfHousesOccByPolice; idx++)
     {
-        count = count + ceil((housesOccByPolice[idx] - range) - (housesOccByPolice[idx - 1] + range), 0);
+        count = count + ceilWithThreshold((housesOccByPolice[idx] - range) - (housesOccByPolice[idx - 1] + range + 1), 0);
     }
-    
-    return count + MAX_HOUSE_NUM - floor(housesOccByPolice[numOfHousesOccByPolice - 1] + range, MAX_HOUSE_NUM);
+
+    return count + MAX_HOUSE_NUM - floorWithThreshold(housesOccByPolice[numOfHousesOccByPolice - 1] + range, MAX_HOUSE_NUM);
 }
