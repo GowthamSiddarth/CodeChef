@@ -41,6 +41,7 @@ Example 2 : Cops in house 21 can cover houses 1 to 41, and cops in house 75 can 
 
 https://www.codechef.com/problems/COPS
 */
+#define MAX_HOUSE_NUM 100
 
 int compare(void *x, void *y)
 {
@@ -55,4 +56,19 @@ int ceil(int num, int _ceil)
 int floor(int num, int _floor)
 {
     return num > _floor ? _floor : num;
+}
+
+int getNumOfHousesSafeForHiding(int *housesOccByPolice, int numOfHousesOccByPolice, int numOfHousesPerMin, int maxNumOfMinutes)
+{
+    qsort(housesOccByPolice, numOfHousesOccByPolice, sizeof(housesOccByPolice[0]), compare);
+
+    int range = numOfHousesPerMin * maxNumOfMinutes;
+    int count = ceil(housesOccByPolice[0] - range, 0);
+
+    for (int idx = 1; idx < numOfHousesOccByPolice; idx++)
+    {
+        count = count + ceil((housesOccByPolice[idx] - range) - (housesOccByPolice[idx - 1] + range), 0);
+    }
+    
+    return count + MAX_HOUSE_NUM - floor(housesOccByPolice[numOfHousesOccByPolice - 1] + range, MAX_HOUSE_NUM);
 }
