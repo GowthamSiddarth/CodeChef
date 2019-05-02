@@ -39,3 +39,14 @@ Output:
 
 https://www.codechef.com/submit/MISSP
 */
+
+int getUnpaiedDoll(int *arr, int len)
+{
+    int unpairedDoll = 0;
+    for (int idx = 0; idx < len; idx++)
+    {
+        unpairedDoll = unpairedDoll ^ arr[idx];
+    }
+
+    return unpairedDoll;
+}
