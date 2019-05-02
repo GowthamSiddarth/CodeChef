@@ -29,3 +29,17 @@ Test case 1. If you give Bunny the command to move to the right, it will reach i
 
 https://www.codechef.com/problems/ICPC16A
 */
+
+enum Direction
+{
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN,
+    SAD
+};
+
+enum Direction getDirection(int x1, int y1, int x2, int y2)
+{
+    return x1 == x2 ? (y2 > y1 ? UP : DOWN) : y1 == y2 ? (x2 > x1 ? RIGHT : LEFT) : SAD;
+}
