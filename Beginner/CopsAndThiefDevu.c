@@ -75,3 +75,15 @@ int getNumOfHousesSafeForHiding(int *housesOccByPolice, int numOfHousesOccByPoli
 
     return count + MAX_HOUSE_NUM - floorWithThreshold(housesOccByPolice[numOfHousesOccByPolice - 1] + range, MAX_HOUSE_NUM);
 }
+
+int main()
+{
+    int x = 5, y = 8;
+    int arr[] = {10, 51};
+    int m = sizeof(arr) / sizeof(arr[0]);
+
+    int res = getNumOfHousesSafeForHiding(arr, m, x, y);
+    printf("%d\n", res);
+
+    return 0;
+}
