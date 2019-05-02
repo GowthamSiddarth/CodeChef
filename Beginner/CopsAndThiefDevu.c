@@ -46,3 +46,8 @@ int compare(void *x, void *y)
 {
     return *((int *)x) - *((int *)y);
 }
+
+int ceil(int num, int _ceil)
+{
+    return num < _ceil ? _ceil : num;
+}
