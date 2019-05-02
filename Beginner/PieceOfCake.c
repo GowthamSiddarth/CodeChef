@@ -29,3 +29,14 @@ YES
 
 https://www.codechef.com/problems/LCH15JAB
 */
+
+int arraySum(int *arr, int len)
+{
+    int sum = 0;
+    for (int idx = 0; idx < len; idx++)
+    {
+        sum = sum + arr[idx];
+    }
+
+    return sum;
+}
