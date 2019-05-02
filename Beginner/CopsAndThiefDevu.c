@@ -51,3 +51,8 @@ int ceil(int num, int _ceil)
 {
     return num < _ceil ? _ceil : num;
 }
+
+int floor(int num, int _floor)
+{
+    return num > _floor ? _floor : num;
+}
