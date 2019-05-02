@@ -39,8 +39,9 @@ Output:
 
 https://www.codechef.com/submit/MISSP
 */
+#include <stdio.h>
 
-int getUnpaiedDoll(int *arr, int len)
+int getUnpairedDoll(int *arr, int len)
 {
     int unpairedDoll = 0;
     for (int idx = 0; idx < len; idx++)
@@ -49,4 +50,15 @@ int getUnpaiedDoll(int *arr, int len)
     }
 
     return unpairedDoll;
+}
+
+int main()
+{
+    int arr[] = {1, 1, 2, 3, 2};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int res = getUnpairedDoll(arr, len);
+    printf("%d\n", res);
+
+    return 0;
 }
