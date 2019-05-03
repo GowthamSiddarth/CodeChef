@@ -29,6 +29,10 @@ In the second example, As the color of all the balloons is already the same, you
 
 https://www.codechef.com/problems/CHN09
 */
+#define MAX_LEN 101
+
+#include <string.h>
+#include <stdio.h>
 
 int getMinNumOfBalloonsToColor(char *balloons)
 {
@@ -40,4 +44,14 @@ int getMinNumOfBalloonsToColor(char *balloons)
     }
 
     return countOfAmber == countOfBrass ? countOfAmber : countOfAmber < countOfBrass ? countOfAmber : countOfBrass;
+}
+
+int main()
+{
+    char balloons[MAX_LEN];
+    memcpy(balloons, "baaba", 6);
+
+    int res = getMinNumOfBalloonsToColor(balloons);
+    printf("%d\n", res);
+    return 0;
 }
