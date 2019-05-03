@@ -48,6 +48,7 @@ Example case 2. Each of students has 10 units of time, but only the second one w
 
 https://www.codechef.com/problems/KTTABLE
 */
+#include <stdio.h>
 
 int getNumOfSuccessfulCookings(int *scheduledTimes, int *cookingTimes, int numOfStudents)
 {
@@ -59,5 +60,17 @@ int getNumOfSuccessfulCookings(int *scheduledTimes, int *cookingTimes, int numOf
         scheduledStart = scheduledEnd;
     }
 
-    return count; 
+    return count;
+}
+
+int main()
+{
+    int scheduledTimes[] = {10, 20, 30};
+    int cookingTimes[] = {15, 5, 20};
+    int numOfStudents = sizeof(scheduledTimes) / sizeof(scheduledTimes[0]);
+
+    int res = getNumOfSuccessfulCookings(scheduledTimes, cookingTimes, numOfStudents);
+    printf("%d\n", res);
+
+    return 0;
 }
