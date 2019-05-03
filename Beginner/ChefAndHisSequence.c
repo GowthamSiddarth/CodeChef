@@ -32,6 +32,7 @@ No
 
 https://www.codechef.com/problems/CHEFSQ
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -60,4 +61,17 @@ enum Boolean isSubSequence(int *seq, int seqLen, int *subSeq, int subSeqLen)
     }
 
     return TRUE;
+}
+
+int main()
+{
+    int seq[] = {22, 5, 6, 33, 1, 4};
+    int seqLen = sizeof(seq) / sizeof(seq[0]);
+
+    int subSeq[] = {4, 15};
+    int subSeqLen = sizeof(subSeq) / sizeof(subSeq[0]);
+
+    enum Boolean res = isSubSequence(seq, seqLen, subSeq, subSeqLen);
+    printf("%s\n", res ? "Yes" : "No");
+    return 0;
 }
