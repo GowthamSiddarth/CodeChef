@@ -17,8 +17,18 @@ Since 5 is not divisible by 4 hence, its value is decreased by 1.
 
 https://www.codechef.com/problems/DECINC
 */
+#include <stdio.h>
 
 int incrIfDivByNOtherwiseDecr(int num, int n)
 {
     return 0 == num % n ? num + 1 : num - 1;
+}
+
+int main()
+{
+    int num = 4, n = 4;
+    int res = incrIfDivByNOtherwiseDecr(num, n);
+
+    printf("%d", res);
+    return 0;
 }
