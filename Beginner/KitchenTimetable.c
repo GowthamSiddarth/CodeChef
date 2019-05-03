@@ -48,3 +48,16 @@ Example case 2. Each of students has 10 units of time, but only the second one w
 
 https://www.codechef.com/problems/KTTABLE
 */
+
+int getNumOfSuccessfulCookings(int *scheduledTimes, int *cookingTimes, int numOfStudents)
+{
+    int scheduledStart = 0, count = 0;
+    for (int idx = 0; idx < numOfStudents; idx++)
+    {
+        int scheduledEnd = scheduledTimes[idx];
+        count = count + (cookingTimes[idx] <= (scheduledEnd - scheduledStart));
+        scheduledStart = scheduledEnd;
+    }
+
+    return count; 
+}
