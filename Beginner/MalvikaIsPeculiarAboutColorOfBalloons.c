@@ -39,5 +39,5 @@ int getMinNumOfBalloonsToColor(char *balloons)
         idx++;
     }
 
-    return countOfAmber < countOfBrass ? countOfAmber : countOfAmber > countOfBrass ? countOfBrass : 0;
+    return countOfAmber == countOfBrass ? countOfAmber : countOfAmber < countOfBrass ? countOfAmber : countOfBrass;
 }
