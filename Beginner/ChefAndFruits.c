@@ -30,8 +30,18 @@ Test 2: Chef will buy 1 orange by paying 1 gold coin and will have 5 apples and 
 https://www.codechef.com/problems/FRUITS
 */
 #include <math.h>
+#include <stdio.h>
 
 int getMinDiff(int numOfApples, int numOfOranges, int numOfGoldCoins)
 {
     return numOfGoldCoins >= abs(numOfApples - numOfOranges) ? 0 : abs(numOfApples - numOfOranges) - numOfGoldCoins;
+}
+
+int main()
+{
+    int numOfApples = 3, numOfOranges = 4, numOfGoldCoins = 3;
+    int res = getMinDiff(numOfApples, numOfOranges, numOfGoldCoins);
+
+    printf("%d\n", res);
+    return 0;
 }
