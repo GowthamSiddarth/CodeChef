@@ -17,3 +17,8 @@ Since 5 is not divisible by 4 hence, its value is decreased by 1.
 
 https://www.codechef.com/problems/DECINC
 */
+
+int incrIfDivByNOtherwiseDecr(int num, int n)
+{
+    return 0 == num % n ? num + 1 : num - 1;
+}
