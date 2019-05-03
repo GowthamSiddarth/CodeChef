@@ -29,3 +29,15 @@ In the second example, As the color of all the balloons is already the same, you
 
 https://www.codechef.com/problems/CHN09
 */
+
+int getMinNumOfBalloonsToColor(char *balloons)
+{
+    int countOfAmber = 0, countOfBrass = 0, idx = 0;
+    while ('\0' != balloons[idx])
+    {
+        'a' == balloons[idx] ? countOfAmber++ : countOfBrass++;
+        idx++;
+    }
+
+    return countOfAmber < countOfBrass ? countOfAmber : countOfAmber > countOfBrass ? countOfBrass : 0;
+}
