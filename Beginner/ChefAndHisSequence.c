@@ -32,3 +32,32 @@ No
 
 https://www.codechef.com/problems/CHEFSQ
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isSubSequence(int *seq, int seqLen, int *subSeq, int subSeqLen)
+{
+    int subSeqIdx = 0, seqIdx = 0;
+
+    while (subSeqIdx < subSeqLen)
+    {
+        int key = subSeq[subSeqIdx];
+        while (seqIdx < seqLen && seq[seqIdx] != key)
+        {
+            seqIdx++;
+        }
+
+        if (seqIdx == seqLen)
+        {
+            return FALSE;
+        }
+
+        subSeqIdx++;
+    }
+
+    return TRUE;
+}
