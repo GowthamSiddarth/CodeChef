@@ -21,9 +21,15 @@ Sample Output:
 
 https://www.codechef.com/problems/HOWMANY
 */
+#include <stdio.h>
 
 int getNumOfDigits(int num)
 {
+    if (0 == num)
+    {
+        return 1;
+    }
+    
     int count = 0;
     while (num)
     {
