@@ -21,3 +21,15 @@ Sample Output:
 
 https://www.codechef.com/problems/HOWMANY
 */
+
+int getNumOfDigits(int num)
+{
+    int count = 0;
+    while (num)
+    {
+        count++;
+        num = num / 10;
+    }
+
+    return count;
+}
