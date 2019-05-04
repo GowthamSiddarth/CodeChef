@@ -32,6 +32,7 @@ Stairs
 https://www.codechef.com/problems/ELEVSTRS
 */
 #include <math.h>
+#include <stdio.h>
 
 enum TransportMedium
 {
@@ -45,4 +46,14 @@ enum TransportMedium getFastestTransportMedium(int heightOfBuilding, int chefVel
     double timeTakenByStaircase = (heightOfBuilding * sqrt(2)) / chefVelocity;
 
     return timeTakenByELevator < timeTakenByStaircase ? ELEVATOR : STAIRCASE;
+}
+
+int main()
+{
+    int heightOfBuilding = 2, chefVelocity = 10, elevatorVelocity = 14;
+    enum TransportMedium bestTransportMedium = getFastestTransportMedium(heightOfBuilding, chefVelocity, elevatorVelocity);
+
+    printf("%s\n", ELEVATOR == bestTransportMedium ? "Elevator" : "Stairs");
+
+    return 0;
 }
