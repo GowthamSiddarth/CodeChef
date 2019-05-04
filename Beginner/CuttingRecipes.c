@@ -23,6 +23,7 @@ All ingredient quantities are between 1 and 1000, inclusive.
 
 https://www.codechef.com/problems/RECIPE
 */
+#include <stdio.h>
 
 int getGCDofTwoNums(int num1, int num2)
 {
@@ -42,5 +43,14 @@ int getGCDofArray(int *arr, int len)
     else
     {
         return getGCDofTwoNums(getGCDofArray(arr, len / 2), getGCDofArray(arr + len / 2, len - len / 2));
+    }
+}
+
+void findMinimalRecipe(int *arr, int len)
+{
+    int gcdOfArray = getGCDofArray(arr, len);
+    for (int idx = 0; idx < len; idx++)
+    {
+        arr[idx] = arr[idx] / gcdOfArray;
     }
 }
