@@ -63,3 +63,13 @@ void printIntArray(int *arr, int len)
     }
     printf("\n");
 }
+
+int main()
+{
+    int arr[] = {3, 15, 9, 6};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    findMinimalRecipe(arr, len);
+    printIntArray(arr, len);
+    return 0;
+}
