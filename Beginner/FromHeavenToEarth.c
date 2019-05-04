@@ -31,3 +31,18 @@ Stairs
 
 https://www.codechef.com/problems/ELEVSTRS
 */
+#include <math.h>
+
+enum TransportMedium
+{
+    ELEVATOR,
+    STAIRCASE
+};
+
+enum TransportMedium getFastestTransportMedium(int heightOfBuilding, int elevatorVelocity, int chefVelocity)
+{
+    double timeTakenByELevator = (double) heightOfBuilding / elevatorVelocity;
+    double timeTakenByStaircase = (heightOfBuilding * sqrt(2)) / elevatorVelocity;
+
+    return timeTakenByELevator < timeTakenByStaircase ? timeTakenByELevator : timeTakenByStaircase;
+}
