@@ -39,10 +39,10 @@ enum TransportMedium
     STAIRCASE
 };
 
-enum TransportMedium getFastestTransportMedium(int heightOfBuilding, int elevatorVelocity, int chefVelocity)
+enum TransportMedium getFastestTransportMedium(int heightOfBuilding, int chefVelocity, int elevatorVelocity)
 {
-    double timeTakenByELevator = (double) heightOfBuilding / elevatorVelocity;
-    double timeTakenByStaircase = (heightOfBuilding * sqrt(2)) / elevatorVelocity;
+    double timeTakenByELevator = 2.0 * heightOfBuilding / elevatorVelocity;
+    double timeTakenByStaircase = (heightOfBuilding * sqrt(2)) / chefVelocity;
 
-    return timeTakenByELevator < timeTakenByStaircase ? timeTakenByELevator : timeTakenByStaircase;
+    return timeTakenByELevator < timeTakenByStaircase ? ELEVATOR : STAIRCASE;
 }
