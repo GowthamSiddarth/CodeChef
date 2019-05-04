@@ -54,3 +54,12 @@ void findMinimalRecipe(int *arr, int len)
         arr[idx] = arr[idx] / gcdOfArray;
     }
 }
+
+void printIntArray(int *arr, int len)
+{
+    for (int idx = 0; idx < len; idx++)
+    {
+        printf("%d ", arr[idx]);
+    }
+    printf("\n");
+}
