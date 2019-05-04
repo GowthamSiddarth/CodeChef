@@ -28,3 +28,19 @@ int getGCDofTwoNums(int num1, int num2)
 {
     return 0 == num2 ? num1 : getGCDofTwoNums(num2, num1 % num2);
 }
+
+int getGCDofArray(int *arr, int len)
+{
+    if (1 == len)
+    {
+        return arr[0];
+    }
+    else if (2 == len)
+    {
+        return getGCDofTwoNums(arr[0], arr[1]);
+    }
+    else
+    {
+        return getGCDofTwoNums(getGCDofArray(arr, len / 2), getGCDofArray(arr + len / 2, len - len / 2));
+    }
+}
