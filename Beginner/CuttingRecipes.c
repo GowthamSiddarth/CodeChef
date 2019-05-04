@@ -23,3 +23,8 @@ All ingredient quantities are between 1 and 1000, inclusive.
 
 https://www.codechef.com/problems/RECIPE
 */
+
+int getGCDofTwoNums(int num1, int num2)
+{
+    return 0 == num2 ? num1 : getGCDofTwoNums(num2, num1 % num2);
+}
