@@ -39,3 +39,25 @@ int getNumOfDigits(int num)
 
     return count;
 }
+
+int main()
+{
+    int num;
+    scanf("%d", &num);
+    int res = getNumOfDigits(num);
+
+    switch(res) {
+        case 1:
+            printf("1");
+            break;
+        case 2:
+            printf("2");
+            break;
+        case 3:
+            printf("3");
+            break;
+        default:
+            printf("More than 3 digits");
+    }
+    return 0;
+}
