@@ -32,3 +32,21 @@ Example case 2. No matter whichever digit you flip, you will not get the desired
 
 https://www.codechef.com/problems/LONGSEQ
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isConversionPossible(char *binNum)
+{
+    int count0 = 0, count1 = 0, idx = 0;
+    while ('\0' != binNum[idx])
+    {
+        '0' == binNum[idx] ? count0++ : count1++;
+        idx++;
+    }
+
+    return 1 == count0 || 1 == count1 ? TRUE : FALSE;
+}
