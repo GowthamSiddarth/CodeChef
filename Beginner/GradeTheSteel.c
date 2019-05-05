@@ -39,3 +39,28 @@ Output
 
 https://www.codechef.com/problems/FLOW014
 */
+#define HARDNESS_THRESHOLD 50
+#define CARBON_CONTENT_LIMIT 0.7
+#define TENSILE_STRENGTH_THRESHOLD 5600
+
+enum Grade
+{
+    FIVE,
+    SIX,
+    SEVEN,
+    EIGHT,
+    NINE,
+    TEN
+};
+
+enum Grade steelScoreGradeMap[] = {FIVE, SIX, SIX, NINE, SIX, SEVEN, EIGHT, TEN};
+
+enum Grade getGradeOfSteel(int hardness, float carbonContent, int tensileStrength)
+{
+    int score = 0;
+    score = hardness > HARDNESS_THRESHOLD ? score | 1 : score;
+    score = carbonContent < CARBON_CONTENT_LIMIT ? score | 2 : score;
+    score = tensileStrength > TENSILE_STRENGTH_THRESHOLD ? score | 4 : score;
+
+    return steelScoreGradeMap[score];
+}
