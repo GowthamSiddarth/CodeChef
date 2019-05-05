@@ -32,6 +32,10 @@ Example case 2. No matter whichever digit you flip, you will not get the desired
 
 https://www.codechef.com/problems/LONGSEQ
 */
+#define MAX_SIZE 100001
+
+#include <stdio.h>
+#include <string.h>
 
 enum Boolean
 {
@@ -49,4 +53,15 @@ enum Boolean isConversionPossible(char *binNum)
     }
 
     return 1 == count0 || 1 == count1 ? TRUE : FALSE;
+}
+
+int main()
+{
+    char binNum[MAX_SIZE];
+    memcpy(binNum, "1010", 5);
+
+    enum Boolean res = isConversionPossible(binNum);
+    printf("%s\n", res ? "Yes" : "No");
+
+    return 0;
 }
