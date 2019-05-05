@@ -25,3 +25,8 @@ Output
 
 https://www.codechef.com/problems/FLOW016
 */
+
+int getGCDOfTwoNums(int num1, int num2)
+{
+    return 0 == num2 ? num1 : getGCDOfTwoNums(num2, num1 % num2);
+}
