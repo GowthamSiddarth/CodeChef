@@ -43,9 +43,11 @@ https://www.codechef.com/problems/FLOW014
 #define CARBON_CONTENT_LIMIT 0.7
 #define TENSILE_STRENGTH_THRESHOLD 5600
 
+#include <stdio.h>
+
 enum Grade
 {
-    FIVE,
+    FIVE = 5,
     SIX,
     SEVEN,
     EIGHT,
@@ -63,4 +65,15 @@ enum Grade getGradeOfSteel(int hardness, float carbonContent, int tensileStrengt
     score = tensileStrength > TENSILE_STRENGTH_THRESHOLD ? score | 4 : score;
 
     return steelScoreGradeMap[score];
+}
+
+int main()
+{
+    int hardness = 45, tensileStrength = 4500;
+    float carbonContent = 0.6;
+
+    enum Grade steelGrade = getGradeOfSteel(hardness, carbonContent, tensileStrength);
+    printf("%d\n", steelGrade);
+
+    return 0;
 }
