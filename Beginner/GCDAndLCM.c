@@ -30,3 +30,8 @@ int getGCDOfTwoNums(int num1, int num2)
 {
     return 0 == num2 ? num1 : getGCDOfTwoNums(num2, num1 % num2);
 }
+
+int getLCMofTwoNums(int num1, int num2, int gcd)
+{
+    return (num1 * num2) / gcd;
+}
