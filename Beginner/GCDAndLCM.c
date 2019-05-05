@@ -25,6 +25,7 @@ Output
 
 https://www.codechef.com/problems/FLOW016
 */
+#include <stdio.h>
 
 int getGCDOfTwoNums(int num1, int num2)
 {
@@ -34,4 +35,14 @@ int getGCDOfTwoNums(int num1, int num2)
 long int getLCMofTwoNums(int num1, int num2, int gcd)
 {
     return ((long)num1 * num2) / gcd;
+}
+
+int main()
+{
+    int num1 = 10, num2 = 30;
+    int gcd = getGCDOfTwoNums(num1, num2);
+    long int lcm = getLCMofTwoNums(num1, num2, gcd);
+
+    printf("%d %ld\n", gcd, lcm);
+    return 0;
 }
