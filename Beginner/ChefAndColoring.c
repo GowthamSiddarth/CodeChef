@@ -77,5 +77,5 @@ int minNumOfRoomsToBePainted(char *rooms)
         idx++;
     }
 
-    return redCount == greenCount && redCount == blueCount ? 0 : getMinPairSum(redCount, greenCount, blueCount);
+    return idx == redCount || idx == greenCount || idx == blueCount ? 0 : getMinPairSum(redCount, greenCount, blueCount);
 }
