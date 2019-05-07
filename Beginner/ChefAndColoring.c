@@ -51,6 +51,10 @@ Test 3: One possible way of renovation is to paint room 1 with green color, room
 
 https://www.codechef.com/problems/COLOR
 */
+#define MAX_SIZE 100001
+
+#include <string.h>
+#include <stdio.h>
 
 int getMinPairSum(int x, int y, int z)
 {
@@ -78,4 +82,15 @@ int minNumOfRoomsToBePainted(char *rooms)
     }
 
     return idx == redCount || idx == greenCount || idx == blueCount ? 0 : getMinPairSum(redCount, greenCount, blueCount);
+}
+
+int main()
+{
+    char rooms[MAX_SIZE];
+    memcpy(rooms, "RGB", 4);
+
+    int res = minNumOfRoomsToBePainted(rooms);
+    printf("%d\n", res);
+
+    return 0;
 }
