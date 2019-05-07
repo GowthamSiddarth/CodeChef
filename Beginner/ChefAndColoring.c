@@ -51,3 +51,19 @@ Test 3: One possible way of renovation is to paint room 1 with green color, room
 
 https://www.codechef.com/problems/COLOR
 */
+
+int getMinPairSum(int x, int y, int z)
+{
+    if (x <= z && y <= z)
+    {
+        return x + y;
+    }
+    else if (y <= x && z <= x)
+    {
+        return y + z;
+    }
+    else if (x <= y && z <= y)
+    {
+        return x + z;
+    }
+}
