@@ -67,3 +67,15 @@ int getMinPairSum(int x, int y, int z)
         return x + z;
     }
 }
+
+int minNumOfRoomsToBePainted(char *rooms)
+{
+    int redCount = 0, greenCount = 0, blueCount = 0, idx = 0;
+    while ('\0' != rooms[idx])
+    {
+        'R' == rooms[idx] ? redCount++ : 'G' == rooms[idx] ? greenCount++ : blueCount++;
+        idx++;
+    }
+
+    return redCount == greenCount && redCount == blueCount ? 0 : getMinPairSum(redCount, greenCount, blueCount);
+}
