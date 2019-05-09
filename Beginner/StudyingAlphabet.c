@@ -41,3 +41,19 @@ The second word contains the letters d, o and g that aren't known by Jeff.
 
 https://www.codechef.com/problems/ALPHABET
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+void readLetters(char *letters, enum Boolean *lettersReadStatus)
+{
+    int idx = 0;
+    while ('\0' != letters[idx])
+    {
+        lettersReadStatus[letters[idx] - 'a'] = TRUE;
+        idx++;
+    }    
+}
