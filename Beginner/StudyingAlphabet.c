@@ -55,5 +55,16 @@ void readLetters(char *letters, enum Boolean *lettersReadStatus)
     {
         lettersReadStatus[letters[idx] - 'a'] = TRUE;
         idx++;
-    }    
+    }
+}
+
+enum Boolean canReadWord(char *word, enum Boolean *lettersReadStatus)
+{
+    int idx = 0;
+    while ('\0' != word[idx] && TRUE == lettersReadStatus[word[idx] - 'a'])
+    {
+        idx++;
+    }
+
+    return '\0' == word[idx] ? TRUE : FALSE;
 }
