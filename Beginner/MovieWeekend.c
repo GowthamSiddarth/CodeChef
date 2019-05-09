@@ -39,3 +39,16 @@ In the second example case, the second and the fourth movies are equally good, b
 
 https://www.codechef.com/problems/MOVIEWKN
 */
+
+struct Movie
+{
+    int runtime, rating;
+};
+
+struct Movie *compareMovies(struct Movie *movie1, struct Movie *movie2)
+{
+    int movie1Score = movie1->rating * movie1->runtime;
+    int movie2Score = movie2->rating * movie2->runtime;
+
+    return movie1Score > movie2Score ? movie1 : movie1Score < movie2Score ? movie2 : movie1->rating > movie2->rating ? movie1 : movie1->rating < movie2->rating ? movie2 : movie1;
+}
