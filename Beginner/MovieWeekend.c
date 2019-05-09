@@ -39,27 +39,41 @@ In the second example case, the second and the fourth movies are equally good, b
 
 https://www.codechef.com/problems/MOVIEWKN
 */
+#include <stdio.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
 
 struct Movie
 {
     int runtime, rating;
 };
 
-struct Movie *compareMovies(struct Movie *movie1, struct Movie *movie2)
+enum Boolean isBetterMovie(struct Movie *bestMovie, struct Movie *currMovie)
 {
-    int movie1Score = movie1->rating * movie1->runtime;
-    int movie2Score = movie2->rating * movie2->runtime;
+    int bestMovieScore = bestMovie->rating * bestMovie->runtime;
+    int currMovieScore = currMovie->rating * currMovie->runtime;
 
-    return movie1Score > movie2Score ? movie1 : movie1Score < movie2Score ? movie2 : movie1->rating > movie2->rating ? movie1 : movie1->rating < movie2->rating ? movie2 : movie1;
+    return bestMovieScore > currMovieScore ? FALSE : bestMovieScore < currMovieScore ? TRUE : bestMovie->rating > currMovie->rating ? FALSE : bestMovie->rating < currMovie->rating ? TRUE : FALSE;
 }
 
-struct Movie *getBestMovie(struct Movie *movies, int numOfMovies)
+int getIdxOfBestMovie(struct Movie *movies, int numOfMovies)
 {
     struct Movie *bestMovie = movies;
+    int bestMovieIdx = 0;
+
     for (int idx = 1; idx < numOfMovies; idx++)
     {
-        bestMovie = compareMovies(bestMovie, &movies[idx]);
+        enum Boolean res = isBetterMovie(bestMovie, &movies[idx]);
+        if (res)
+        {
+            bestMovie = &movies[idx];
+            bestMovieIdx = idx;
+        }
     }
 
-    return bestMovie;
+    return bestMovieIdx;
 }
