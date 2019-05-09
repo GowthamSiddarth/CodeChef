@@ -77,3 +77,14 @@ int getIdxOfBestMovie(struct Movie *movies, int numOfMovies)
 
     return bestMovieIdx;
 }
+
+int main()
+{
+    struct Movie movies[] = {{2, 2}, {1, 4}, {4, 1}, {1, 4}};
+    int numOfMovies = sizeof(movies) / sizeof(movies[0]);
+
+    int bestMovieIdx = getIdxOfBestMovie(movies, numOfMovies);
+    printf("%d\n", bestMovieIdx + 1);
+
+    return 0;
+}
