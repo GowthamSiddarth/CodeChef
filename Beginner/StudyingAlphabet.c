@@ -83,16 +83,11 @@ int main()
     enum Boolean lettersReadStatus[NUM_OF_ALPHABETS] = {FALSE};
     readLetters(letters, lettersReadStatus);
 
-    int numOfWords;
-    scanf("%d\n", &numOfWords);
-
     char word[MAX_WORD_SIZE + 1];
-    while (numOfWords--)
-    {
-        scanf("%s", word);
-        enum Boolean res = canReadWord(word, lettersReadStatus);
-        printf("%s\n", res ? "Yes" : "No");
-    }
+    memcpy(word, "dog", 4);
+    
+    enum Boolean res = canReadWord(word, lettersReadStatus);
+    printf("%s\n", res ? "Yes" : "No");
 
     return 0;
 }
