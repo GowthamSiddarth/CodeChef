@@ -52,3 +52,14 @@ struct Movie *compareMovies(struct Movie *movie1, struct Movie *movie2)
 
     return movie1Score > movie2Score ? movie1 : movie1Score < movie2Score ? movie2 : movie1->rating > movie2->rating ? movie1 : movie1->rating < movie2->rating ? movie2 : movie1;
 }
+
+struct Movie *getBestMovie(struct Movie *movies, int numOfMovies)
+{
+    struct Movie *bestMovie = movies;
+    for (int idx = 1; idx < numOfMovies; idx++)
+    {
+        bestMovie = compareMovies(bestMovie, &movies[idx]);
+    }
+
+    return bestMovie;
+}
