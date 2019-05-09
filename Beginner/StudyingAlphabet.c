@@ -41,6 +41,12 @@ The second word contains the letters d, o and g that aren't known by Jeff.
 
 https://www.codechef.com/problems/ALPHABET
 */
+#define MAX_NUM_OF_LETTERS 26
+#define MAX_WORD_SIZE 12
+#define NUM_OF_ALPHABETS 26
+
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -67,4 +73,26 @@ enum Boolean canReadWord(char *word, enum Boolean *lettersReadStatus)
     }
 
     return '\0' == word[idx] ? TRUE : FALSE;
+}
+
+int main()
+{
+    char letters[MAX_NUM_OF_LETTERS + 1];
+    memcpy(letters, "act", 4);
+
+    enum Boolean lettersReadStatus[NUM_OF_ALPHABETS] = {FALSE};
+    readLetters(letters, lettersReadStatus);
+
+    int numOfWords;
+    scanf("%d\n", &numOfWords);
+
+    char word[MAX_WORD_SIZE + 1];
+    while (numOfWords--)
+    {
+        scanf("%s", word);
+        enum Boolean res = canReadWord(word, lettersReadStatus);
+        printf("%s\n", res ? "Yes" : "No");
+    }
+
+    return 0;
 }
