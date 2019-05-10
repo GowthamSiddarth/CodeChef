@@ -53,3 +53,8 @@ long int max(long int x, long int y)
 {
     return x > y ? x : y;
 }
+
+long int min(long int x, long int y)
+{
+    return x < y ? x : y;
+}
