@@ -37,3 +37,8 @@ In the third testcase, the initial numbers are (A = 3, B = 7). There two turns. 
 
 https://www.codechef.com/problems/TWONMS
 */
+
+long int getNewAliceNumber(int aliceNumber, int numOfTurns)
+{
+    return (long)aliceNumber * (numOfTurns - numOfTurns / 2);
+}
