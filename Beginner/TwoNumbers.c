@@ -42,3 +42,8 @@ long int getNewAliceNumber(int aliceNumber, int numOfTurns)
 {
     return (long)aliceNumber * (numOfTurns - numOfTurns / 2);
 }
+
+long int getNewBobNumber(int bobNumber, int numOfTurns)
+{
+    return (long)bobNumber * numOfTurns;
+}
