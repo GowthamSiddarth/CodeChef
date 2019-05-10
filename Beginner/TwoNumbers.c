@@ -46,7 +46,7 @@ long int getNewAliceNumber(int aliceNumber, int numOfTurns)
 
 long int getNewBobNumber(int bobNumber, int numOfTurns)
 {
-    return (long)bobNumber * numOfTurns;
+    return (long)bobNumber * (numOfTurns / 2);
 }
 
 long int max(long int x, long int y)
