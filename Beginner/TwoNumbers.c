@@ -37,6 +37,7 @@ In the third testcase, the initial numbers are (A = 3, B = 7). There two turns. 
 
 https://www.codechef.com/problems/TWONMS
 */
+#include <stdio.h>
 
 long int getNewAliceNumber(int aliceNumber, int numOfTurns)
 {
@@ -46,4 +47,9 @@ long int getNewAliceNumber(int aliceNumber, int numOfTurns)
 long int getNewBobNumber(int bobNumber, int numOfTurns)
 {
     return (long)bobNumber * numOfTurns;
+}
+
+long int max(long int x, long int y)
+{
+    return x > y ? x : y;
 }
