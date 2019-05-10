@@ -39,22 +39,22 @@ https://www.codechef.com/problems/TWONMS
 */
 #include <stdio.h>
 
-long int getNewAliceNumber(int aliceNumber, int numOfTurns)
+int main()
 {
-    return (long)aliceNumber * (numOfTurns - numOfTurns / 2);
-}
+    int t;
+    scanf("%d", &t);
 
-long int getNewBobNumber(int bobNumber, int numOfTurns)
-{
-    return (long)bobNumber * (numOfTurns / 2);
-}
+    while (t--)
+    {
+        long long int aliceNumber, bobNumber, numOfTurns;
+        scanf("%lld %lld %lld", &aliceNumber, &bobNumber, &numOfTurns);
+        if (0 != numOfTurns % 2)
+        {
+            aliceNumber = aliceNumber * 2;
+        }
 
-long int max(long int x, long int y)
-{
-    return x > y ? x : y;
-}
+        printf("%lld\n", aliceNumber > bobNumber ? aliceNumber / bobNumber : bobNumber / aliceNumber);
+    }
 
-long int min(long int x, long int y)
-{
-    return x < y ? x : y;
+    return 0;
 }
