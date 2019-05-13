@@ -38,3 +38,8 @@ int area(int length, int width)
 {
     return length * width;
 }
+
+int perimeter(int length, int width)
+{
+    return 2 * (length + width);
+}
