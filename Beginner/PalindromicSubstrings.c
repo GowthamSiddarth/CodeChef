@@ -43,6 +43,10 @@ Test 3: You can figure it out yourself.
 https://www.codechef.com/problems/STRPALIN
 */
 #define NUM_OF_ALPHABETS 26
+#define MAX_LEN 1001
+
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -69,7 +73,7 @@ enum Boolean canFormPalindromicSubstrings(char *s1, char *s2)
     }
 
     idx = 0;
-    while (idx < NUM_OF_ALPHABETS && 2 != count[idx])
+    while (idx < NUM_OF_ALPHABETS && count[idx] < 2)
     {
         idx++;
     }
