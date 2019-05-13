@@ -27,6 +27,7 @@ Example Output
 
 https://www.codechef.com/problems/TWOVSTEN
 */
+#include <stdio.h>
 
 enum MinSteps
 {
@@ -38,4 +39,13 @@ enum MinSteps
 enum MinSteps getMinSteps(int num)
 {
     return 0 == num % 10 ? ZERO : 5 == num % 10 ? ONE : -1;
+}
+
+int main()
+{
+    int num = 3;
+    enum MinSteps minSteps = getMinSteps(num);
+    printf("%d\n", minSteps);
+
+    return 0;
 }
