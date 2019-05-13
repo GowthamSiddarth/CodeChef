@@ -56,24 +56,30 @@ enum Boolean
 
 enum Boolean canFormPalindromicSubstrings(char *s1, char *s2)
 {
-    int count[NUM_OF_ALPHABETS] = {0}, idx;
+    int occurrence[NUM_OF_ALPHABETS] = {0}, idx;
 
     idx = 0;
     while ('\0' != s1[idx])
     {
-        count[s1[idx] - 'a']++;
+        if (0 == occurrence[s1[idx] - 'a'])
+        {
+            occurrence[s1[idx] - 'a']++;
+        }
         idx++;
     }
 
     idx = 0;
     while ('\0' != s2[idx])
     {
-        count[s2[idx] - 'a']++;
+        if (1 == occurrence[s2[idx] - 'a'])
+        {
+            occurrence[s2[idx] - 'a']++;
+        }
         idx++;
     }
 
     idx = 0;
-    while (idx < NUM_OF_ALPHABETS && count[idx] < 2)
+    while (idx < NUM_OF_ALPHABETS && 2 != occurrence[idx])
     {
         idx++;
     }
