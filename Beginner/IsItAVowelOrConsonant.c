@@ -17,6 +17,7 @@ Consonant
 
 https://www.codechef.com/problems/VOWELTB
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -27,4 +28,14 @@ enum Boolean
 enum Boolean isVowel(char c)
 {
     return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c ? TRUE : FALSE;
+}
+
+int main()
+{
+    char c = 'Z';
+
+    enum Boolean isCharVowel = isVowel(c);
+    printf("%s", isCharVowel ? "Vowel" : "Consonant");
+
+    return 0;
 }
