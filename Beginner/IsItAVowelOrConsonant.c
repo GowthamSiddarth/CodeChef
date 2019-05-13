@@ -17,3 +17,14 @@ Consonant
 
 https://www.codechef.com/problems/VOWELTB
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isVowel(char c)
+{
+    return 'A' == c || 'E' == c || 'I' == c || 'O' == c || 'U' == c ? TRUE : FALSE;
+}
