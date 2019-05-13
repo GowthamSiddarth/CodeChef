@@ -48,6 +48,7 @@ Example case 3. This time, Chef is not provided any free data usage. He has to p
 
 https://www.codechef.com/problems/DWNLD
 */
+#include <stdio.h>
 
 struct InternetUsage
 {
@@ -72,4 +73,15 @@ int getInternetBill(struct InternetUsage *internetUsage, int numOfUsages, int fr
     }
 
     return totalCost;
+}
+
+int main()
+{
+    int numOfUsages = 3, freeTimeLimit = 0;
+    struct InternetUsage internetUsage[] = {{1, 2}, {2, 4}, {10, 10}};
+
+    int totalCost = getInternetBill(internetUsage, numOfUsages, freeTimeLimit);
+    printf("%d\n", totalCost);
+
+    return 0;
 }
