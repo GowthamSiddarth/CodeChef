@@ -80,3 +80,15 @@ enum Boolean canFormPalindromicSubstrings(char *s1, char *s2)
 
     return NUM_OF_ALPHABETS == idx ? FALSE : TRUE;
 }
+
+int main()
+{
+    char a[MAX_LEN], b[MAX_LEN];
+    memcpy(a, "abba", 5);
+    memcpy(b, "baab", 5);
+
+    enum Boolean res = canFormPalindromicSubstrings(a, b);
+    printf("%s\n", res ? "Yes" : "No");
+
+    return 0;
+}
