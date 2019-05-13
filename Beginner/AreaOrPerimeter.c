@@ -33,13 +33,36 @@ Peri
 
 https://www.codechef.com/problems/AREAPERI
 */
+#include <stdio.h>
 
-int area(int length, int width)
+int getAreaOfRectangle(int length, int width)
 {
     return length * width;
 }
 
-int perimeter(int length, int width)
+int getPerimeterOfRectangle(int length, int width)
 {
     return 2 * (length + width);
+}
+
+int main()
+{
+    int length = 1, width = 2;
+    int areaOfRectangle = getAreaOfRectangle(length, width);
+    int perimeterOfRectangle = getPerimeterOfRectangle(length, width);
+
+    if (areaOfRectangle > perimeterOfRectangle)
+    {
+        printf("Area\n%d", areaOfRectangle);
+    }
+    else if (areaOfRectangle < perimeterOfRectangle)
+    {
+        printf("Peri\n%d", perimeterOfRectangle);
+    }
+    else
+    {
+        printf("Eq\n%d", areaOfRectangle);
+    }
+
+    return 0;
 }
