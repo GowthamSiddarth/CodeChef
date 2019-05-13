@@ -48,3 +48,28 @@ Example case 3. This time, Chef is not provided any free data usage. He has to p
 
 https://www.codechef.com/problems/DWNLD
 */
+
+struct InternetUsage
+{
+    int time, data;
+};
+
+int getInternetBill(struct InternetUsage *internetUsage, int numOfUsages, int freeTimeLimit)
+{
+    int totalUsageTime = 0, totalCost = 0, prevTotal = freeTimeLimit;
+    for (int idx = 0; idx < numOfUsages; idx++)
+    {
+        totalUsageTime = totalUsageTime + internetUsage[idx].time;
+        if (totalUsageTime <= freeTimeLimit)
+        {
+            continue;
+        }
+        else
+        {
+            totalCost = totalCost + (totalUsageTime - prevTotal) * internetUsage[idx].data;
+            prevTotal = totalUsageTime;
+        }
+    }
+
+    return totalCost;
+}
