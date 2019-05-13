@@ -33,3 +33,8 @@ Peri
 
 https://www.codechef.com/problems/AREAPERI
 */
+
+int area(int length, int width)
+{
+    return length * width;
+}
