@@ -42,3 +42,37 @@ Test 3: You can figure it out yourself.
 
 https://www.codechef.com/problems/STRPALIN
 */
+#define NUM_OF_ALPHABETS 26
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean canFormPalindromicSubstrings(char *s1, char *s2)
+{
+    int count[NUM_OF_ALPHABETS] = {0}, idx;
+
+    idx = 0;
+    while ('\0' != s1[idx])
+    {
+        count[s1[idx] - 'a']++;
+        idx++;
+    }
+
+    idx = 0;
+    while ('\0' != s2[idx])
+    {
+        count[s2[idx] - 'a']++;
+        idx++;
+    }
+
+    idx = 0;
+    while (idx < NUM_OF_ALPHABETS && 2 != count[idx])
+    {
+        idx++;
+    }
+
+    return NUM_OF_ALPHABETS == idx ? FALSE : TRUE;
+}
