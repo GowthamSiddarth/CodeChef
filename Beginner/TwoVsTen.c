@@ -28,7 +28,14 @@ Example Output
 https://www.codechef.com/problems/TWOVSTEN
 */
 
-int getLastDigit(int num)
+enum MinSteps
 {
-    return num % 10;
+    NEGATIVE_ONE = -1,
+    ZERO,
+    ONE
+};
+
+enum MinSteps getMinSteps(int num)
+{
+    return 0 == num % 10 ? ZERO : 5 == num % 10 ? ONE : -1;
 }
