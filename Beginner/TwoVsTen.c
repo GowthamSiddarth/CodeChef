@@ -27,3 +27,8 @@ Example Output
 
 https://www.codechef.com/problems/TWOVSTEN
 */
+
+int getLastDigit(int num)
+{
+    return num % 10;
+}
