@@ -36,8 +36,52 @@ Example case 2. It's impossible to choose 4 sticks so that they form a rectangle
 
 https://www.codechef.com/problems/STICKS
 */
+#include <stdlib.h>
 
-int compareInts(void *x, void *y)
+int compareInts(const void *x, const void *y)
 {
     return *(int *)x - *(int *)y;
+}
+
+int getAreaOfLargestRectangle(int *sticksLengths, int numOfSticks)
+{
+    qsort(sticksLengths, numOfSticks, sizeof(sticksLengths[0]), compareInts);
+
+    int idx = numOfSticks - 2, numOfLargestSides = 1, largestSide = sticksLengths[numOfSticks - 1];
+    while (idx >= 0 && 2 != numOfLargestSides)
+    {
+        if (largestSide == sticksLengths[idx])
+        {
+            numOfLargestSides++;
+            break;
+        }
+        else
+        {
+            largestSide = sticksLengths[idx];
+            idx--;
+        }
+    }
+
+    if (idx < 0)
+    {
+        return -1;
+    }
+
+    int numOfSmallestSides = 1, smallestSide = sticksLengths[idx];
+    idx--;
+    while (idx >= 0 && 2 != numOfSmallestSides)
+    {
+        if (smallestSide == sticksLengths[idx])
+        {
+            numOfSmallestSides++;
+            break;
+        }
+        else
+        {
+            smallestSide = sticksLengths[idx];
+            idx--;
+        }
+    }
+
+    return idx < 0 ? -1 : largestSide * smallestSide;
 }
