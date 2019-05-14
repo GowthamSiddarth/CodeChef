@@ -47,12 +47,11 @@ int getAreaOfLargestRectangle(int *sticksLengths, int numOfSticks)
 {
     qsort(sticksLengths, numOfSticks, sizeof(sticksLengths[0]), compareInts);
 
-    int idx = numOfSticks - 2, numOfLargestSides = 1, largestSide = sticksLengths[numOfSticks - 1];
-    while (idx >= 0 && 2 != numOfLargestSides)
+    int idx = numOfSticks - 2, largestSide = sticksLengths[numOfSticks - 1];
+    while (idx >= 0)
     {
         if (largestSide == sticksLengths[idx])
         {
-            numOfLargestSides++;
             break;
         }
         else
@@ -67,13 +66,12 @@ int getAreaOfLargestRectangle(int *sticksLengths, int numOfSticks)
         return -1;
     }
 
-    int numOfSmallestSides = 1, smallestSide = sticksLengths[idx];
+    int smallestSide = sticksLengths[idx];
     idx--;
-    while (idx >= 0 && 2 != numOfSmallestSides)
+    while (idx >= 0)
     {
         if (smallestSide == sticksLengths[idx])
         {
-            numOfSmallestSides++;
             break;
         }
         else
