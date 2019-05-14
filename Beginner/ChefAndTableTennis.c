@@ -31,7 +31,7 @@ https://www.codechef.com/problems/TTENIS
 
 enum GameStatus
 {
-    LOOSE,
+    LOSE,
     WIN
 };
 
@@ -43,13 +43,13 @@ enum GameStatus getChefGameStatus(char *points)
         '1' == points[idx] ? chefPoints++ : opponetsPoints++;
         if (chefPoints >= 10 && opponetsPoints >= 10)
         {
-            if (chefPoints - opponetsPoints > 2)
+            if (2 == chefPoints - opponetsPoints)
             {
                 return WIN;
             }
-            else if (opponetsPoints - chefPoints > 2)
+            else if (2 == opponetsPoints - chefPoints)
             {
-                return LOOSE;
+                return LOSE;
             }
         }
         else if (11 == chefPoints)
@@ -58,7 +58,7 @@ enum GameStatus getChefGameStatus(char *points)
         }
         else if (11 == opponetsPoints)
         {
-            return LOOSE;
+            return LOSE;
         }
 
         idx++;
