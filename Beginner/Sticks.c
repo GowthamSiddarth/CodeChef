@@ -37,6 +37,7 @@ Example case 2. It's impossible to choose 4 sticks so that they form a rectangle
 https://www.codechef.com/problems/STICKS
 */
 #include <stdlib.h>
+#include <stdio.h>
 
 int compareInts(const void *x, const void *y)
 {
@@ -83,4 +84,15 @@ int getAreaOfLargestRectangle(int *sticksLengths, int numOfSticks)
     }
 
     return idx < 0 ? -1 : largestSide * smallestSide;
+}
+
+int main()
+{
+    int sticksLengths[] = {1, 2, 2, 3};
+    int numOfSticks = sizeof(sticksLengths) / sizeof(sticksLengths[0]);
+
+    int areaOfLargestRectangle = getAreaOfLargestRectangle(sticksLengths, numOfSticks);
+    printf("%d\n", areaOfLargestRectangle);
+
+    return 0;
 }
