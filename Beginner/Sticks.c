@@ -36,3 +36,8 @@ Example case 2. It's impossible to choose 4 sticks so that they form a rectangle
 
 https://www.codechef.com/problems/STICKS
 */
+
+int compareInts(void *x, void *y)
+{
+    return *(int *)x - *(int *)y;
+}
