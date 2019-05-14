@@ -28,3 +28,39 @@ Example case 2. Chef lost this match 11:3, however he started very well the matc
 
 https://www.codechef.com/problems/TTENIS
 */
+
+enum GameStatus
+{
+    LOOSE,
+    WIN
+};
+
+enum GameStatus getChefGameStatus(char *points)
+{
+    int idx = 0, chefPoints = 0, opponetsPoints = 0;
+    while ('\0' != points[idx])
+    {
+        '1' == points[idx] ? chefPoints++ : opponetsPoints++;
+        if (chefPoints >= 10 && opponetsPoints >= 10)
+        {
+            if (chefPoints - opponetsPoints > 2)
+            {
+                return WIN;
+            }
+            else if (opponetsPoints - chefPoints > 2)
+            {
+                return LOOSE;
+            }
+        }
+        else if (11 == chefPoints)
+        {
+            return WIN;
+        }
+        else if (11 == opponetsPoints)
+        {
+            return LOOSE;
+        }
+
+        idx++;
+    }
+}
