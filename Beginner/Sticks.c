@@ -52,6 +52,7 @@ int getAreaOfLargestRectangle(int *sticksLengths, int numOfSticks)
     {
         if (largestSide == sticksLengths[idx])
         {
+            idx--;
             break;
         }
         else
