@@ -28,6 +28,10 @@ Example case 2. Chef lost this match 11:3, however he started very well the matc
 
 https://www.codechef.com/problems/TTENIS
 */
+#define MAX_LEN 101
+
+#include <string.h>
+#include <stdio.h>
 
 enum GameStatus
 {
@@ -63,4 +67,15 @@ enum GameStatus getChefGameStatus(char *points)
 
         idx++;
     }
+}
+
+int main()
+{
+    char points[MAX_LEN];
+    memcpy(points, "11100000000000", 15);
+
+    enum GameStatus chefGameStatus = getChefGameStatus(points);
+    printf("%s\n", LOSE == chefGameStatus ? "LOSE" : "WIN");
+
+    return 0;
 }
