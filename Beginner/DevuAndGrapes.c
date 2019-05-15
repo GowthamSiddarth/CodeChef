@@ -40,3 +40,15 @@ For the second test case, remove three grapes in the first bucket, remove two gr
 
 https://www.codechef.com/problems/DEVUGRAP
 */
+
+int getMinStepsToMakeArrDivBy(int *arr, int len, int divisor)
+{
+    int steps = 0, rem;
+    for (int idx = 0; idx < len; idx++)
+    {
+        rem = arr[idx] % divisor;
+        steps = steps + rem <= divisor / 2 ? rem : divisor - rem;
+    }
+
+    return steps;
+}
