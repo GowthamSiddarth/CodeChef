@@ -29,6 +29,7 @@ NO
 
 https://www.codechef.com/problems/RECTANGL
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -39,4 +40,17 @@ enum Boolean
 enum Boolean isRectangle(int side1, int side2, int side3, int side4)
 {
     return (side1 == side2 && side3 == side4) || (side2 == side3 && side1 == side4) || (side1 == side3 && side2 == side4) ? TRUE : FALSE;
+}
+
+int main()
+{
+    int side1 = 3;
+    int side2 = 3;
+    int side3 = 21;
+    int side4 = 2;
+
+    enum Boolean res = isRectangle(side1, side2, side3, side4);
+    printf("%s\n", res ? "YES" : "NO");
+
+    return 0;
 }
