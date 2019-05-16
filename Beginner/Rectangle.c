@@ -38,11 +38,5 @@ enum Boolean
 
 enum Boolean isRectangle(int side1, int side2, int side3, int side4)
 {
-    float avg12 = (side1 + side2) / 2;
-    float avg23 = (side2 + side3) / 2;
-    float avg34 = (side3 + side4) / 2;
-    float avg41 = (side4 + side1) / 2;
-    float avg1234 = (side1 + side2 + side3 + side4) / 4;
-
-    return avg12 == avg1234 || avg23 == avg1234 || avg34 == avg1234 || avg41 == avg1234 ? TRUE : FALSE;
+    return (side1 == side2 && side3 == side4) || (side2 == side3 && side1 == side4) || (side1 == side3 && side2 == side4) ? TRUE : FALSE;
 }
