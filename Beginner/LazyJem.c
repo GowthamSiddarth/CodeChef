@@ -40,6 +40,7 @@ So, Jem will need time = 5 × 2 + 1 + 2 × 4 + 1 + 8 + 1 + 16 = 45
 
 https://www.codechef.com/problems/TALAZY
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -49,7 +50,7 @@ enum Boolean
 
 enum Boolean isEven(unsigned long long int num)
 {
-    return num & 1 ? TRUE : FALSE;
+    return 0 == num % 2 ? TRUE : FALSE;
 }
 
 unsigned long long int getTotalTimeNeeded(unsigned long long int numOfProblems, unsigned long long int breakInterval, unsigned long long int minutesPerProblem)
@@ -58,10 +59,22 @@ unsigned long long int getTotalTimeNeeded(unsigned long long int numOfProblems, 
     while (numOfProblems > 0)
     {
         unsigned long long int problemsSolved = isEven(numOfProblems) ? numOfProblems / 2 : (numOfProblems + 1) / 2;
-        timeTaken = problemsSolved * minutesPerProblem + breakInterval;
+        timeTaken = timeTaken + problemsSolved * minutesPerProblem + breakInterval;
         numOfProblems = numOfProblems - problemsSolved;
         minutesPerProblem = minutesPerProblem * 2; 
     }
 
-    return timeTaken;
+    return timeTaken - breakInterval;
+}
+
+int main()
+{
+    int numOfProblems = 123456;
+    int breakInterval = 123456;
+    int minutesPerProblem = 123456;
+
+    unsigned long long int totalTime = getTotalTimeNeeded(numOfProblems, breakInterval, minutesPerProblem);
+    printf("%llu\n", totalTime);
+
+    return 0;
 }
