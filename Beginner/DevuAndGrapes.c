@@ -40,6 +40,7 @@ For the second test case, remove three grapes in the first bucket, remove two gr
 
 https://www.codechef.com/problems/DEVUGRAP
 */
+#include <stdio.h>
 
 int getMinStepsToMakeArrDivBy(int *arr, int len, int divisor)
 {
@@ -51,4 +52,16 @@ int getMinStepsToMakeArrDivBy(int *arr, int len, int divisor)
     }
 
     return steps;
+}
+
+int main()
+{
+    int key = 7;
+    int buckets[] = {10, 16, 2};
+    int numOfBuckets = sizeof(buckets) / sizeof(buckets[0]);
+
+    int minSteps = getMinStepsToMakeArrDivBy(buckets, numOfBuckets, key);
+    printf("%d\n", minSteps);
+
+    return 0;
 }
