@@ -61,3 +61,24 @@ Output:
 
 https://www.codechef.com/problems/ANKTRAIN
 */
+
+int getPartnerSeatNumber(int seatNumber)
+{
+    int rem = seatNumber % 8;
+    if (rem >= 1 && rem <= 3)
+    {
+        return seatNumber + 3;
+    }
+    else if (rem >= 4 && rem <= 6)
+    {
+        return seatNumber - 3;
+    }
+    else if (7 == rem)
+    {
+        return 8;
+    }
+    else
+    {
+        return 7;
+    }
+}
