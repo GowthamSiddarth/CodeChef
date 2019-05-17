@@ -62,6 +62,15 @@ Output:
 https://www.codechef.com/problems/ANKTRAIN
 */
 
+enum SeatType
+{
+    LB,
+    MB,
+    UB,
+    SL,
+    SU
+};
+
 int getPartnerSeatNumber(int seatNumber)
 {
     int rem = seatNumber % 8;
@@ -80,5 +89,22 @@ int getPartnerSeatNumber(int seatNumber)
     else
     {
         return 7;
+    }
+}
+
+enum SeatType getSeatType(int seatNumber)
+{
+    int rem = seatNumber % 3;
+    if (0 == rem)
+    {
+        return UB;
+    }
+    else if (1 == rem)
+    {
+        return 7 == seatNumber ? SL : LB;
+    }
+    else if (2 == rem)
+    {
+        return 8 == seatNumber ? SU : MB;
     }
 }
