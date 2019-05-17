@@ -95,18 +95,23 @@ int getPartnerSeatNumber(int seatNumber)
 
 enum SeatType getSeatType(int seatNumber)
 {
-    int rem = seatNumber % 3;
-    if (0 == rem)
+    int baseSeat = 8 * (0 == seatNumber % 8 ? seatNumber / 8 - 1 : seatNumber / 8) + 1;
+    int diff = seatNumber - baseSeat;
+    switch (diff)
     {
+    case 0:
+    case 3:
+        return LB;
+    case 1:
+    case 4:
+        return MB;
+    case 2:
+    case 5:
         return UB;
-    }
-    else if (1 == rem)
-    {
-        return 7 == seatNumber ? SL : LB;
-    }
-    else if (2 == rem)
-    {
-        return 8 == seatNumber ? SU : MB;
+    case 6:
+        return SL;
+    case 7:
+        return SU;
     }
 }
 
