@@ -48,3 +48,22 @@ Example case 2 and 3. These examples are already explained in the problem statem
 
 https://www.codechef.com/problems/CHEFSTUD
 */
+
+enum StudentActivity
+{
+    STUDYING = '*',
+    TALKING_LEFT = '<',
+    TALKING_RIGHT = '>'
+};
+
+int getNumOfStudentPairsTalking(char *studentsActivities)
+{
+    int idx = 1, count = 0;
+    while ('\0' != studentsActivities[idx])
+    {
+        count = count + TALKING_RIGHT == studentsActivities[idx] && TALKING_LEFT == studentsActivities[idx - 1];
+        idx++;
+    }
+
+    return count;
+}
