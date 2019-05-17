@@ -61,6 +61,7 @@ Output:
 
 https://www.codechef.com/problems/ANKTRAIN
 */
+#include <stdio.h>
 
 enum SeatType
 {
@@ -107,4 +108,33 @@ enum SeatType getSeatType(int seatNumber)
     {
         return 8 == seatNumber ? SU : MB;
     }
+}
+
+int main()
+{
+    int seatNumber = 3;
+    int partnerSeatNumber = getPartnerSeatNumber(seatNumber);
+    enum SeatType partnerSeatType = getSeatType(partnerSeatNumber);
+
+    printf("%d", partnerSeatNumber);
+    switch (partnerSeatType)
+    {
+    case UB:
+        printf("%s\n", "UB");
+        break;
+    case LB:
+        printf("%s\n", "LB");
+        break;
+    case MB:
+        printf("%s\n", "MB");
+        break;
+    case SL:
+        printf("%s\n", "SL");
+        break;
+    case SU:
+        printf("%s\n", "SU");
+        break;
+    }
+
+    return 0;
 }
