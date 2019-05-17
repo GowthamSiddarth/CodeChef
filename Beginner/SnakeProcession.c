@@ -48,6 +48,10 @@ Explanation
 
 https://www.codechef.com/problems/SNAKPROC
 */
+#define MAX_LEN 501
+
+#include <stdio.h>
+#include <string.h>
 
 enum PartOfSnake
 {
@@ -89,4 +93,15 @@ enum Boolean isValidProcession(char *snakeProcession)
     }
 
     return HEAD == expectedPart ? TRUE : FALSE;
+}
+
+int main()
+{
+    char snakeProcession[MAX_LEN];
+    memcpy(snakeProcession, "H..T..H", 8);
+
+    enum Boolean validProcession = isValidProcession(snakeProcession);
+    printf("%s\n", validProcession ? "Valid" : "Invalid");
+    
+    return 0;
 }
