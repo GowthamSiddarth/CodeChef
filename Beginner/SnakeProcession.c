@@ -55,7 +55,38 @@ enum PartOfSnake
     TAIL = 'T'
 };
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 void toggleExpectedPart(char *expectedPart)
 {
     *expectedPart = HEAD == *expectedPart ? TAIL : HEAD;
+}
+
+enum Boolean isValidProcession(char *snakeProcession)
+{
+    int idx = 0;
+    char expectedPart = HEAD;
+    while ('\0' != snakeProcession[idx])
+    {
+        if ('.' == snakeProcession[idx])
+        {
+            idx++;
+            continue;
+        }
+        else if (expectedPart == snakeProcession[idx])
+        {
+            idx++;
+            toggleExpectedPart(&expectedPart);
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
 }
