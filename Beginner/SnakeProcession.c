@@ -48,3 +48,14 @@ Explanation
 
 https://www.codechef.com/problems/SNAKPROC
 */
+
+enum PartOfSnake
+{
+    HEAD = 'H',
+    TAIL = 'T'
+};
+
+void toggleExpectedPart(char *expectedPart)
+{
+    *expectedPart = HEAD == *expectedPart ? TAIL : HEAD;
+}
