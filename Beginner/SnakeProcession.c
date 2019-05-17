@@ -88,5 +88,5 @@ enum Boolean isValidProcession(char *snakeProcession)
         }
     }
 
-    return TRUE;
+    return HEAD == expectedPart ? TRUE : FALSE;
 }
