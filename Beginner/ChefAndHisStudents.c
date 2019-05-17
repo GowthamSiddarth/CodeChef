@@ -48,6 +48,10 @@ Example case 2 and 3. These examples are already explained in the problem statem
 
 https://www.codechef.com/problems/CHEFSTUD
 */
+#define MAX_LEN 100001
+
+#include <stdio.h>
+#include <string.h>
 
 enum StudentActivity
 {
@@ -61,9 +65,20 @@ int getNumOfStudentPairsTalking(char *studentsActivities)
     int idx = 1, count = 0;
     while ('\0' != studentsActivities[idx])
     {
-        count = count + TALKING_RIGHT == studentsActivities[idx] && TALKING_LEFT == studentsActivities[idx - 1];
+        count = count + (TALKING_RIGHT == studentsActivities[idx] && TALKING_LEFT == studentsActivities[idx - 1]);
         idx++;
     }
 
     return count;
+}
+
+int main()
+{
+    char studentActivities[MAX_LEN];
+    memcpy(studentActivities, "*><><><*", 9);
+
+    int numOfPairsOfStudentsTalking = getNumOfStudentPairsTalking(studentActivities);
+    printf("%d\n", numOfPairsOfStudentsTalking);
+
+    return 0;
 }
