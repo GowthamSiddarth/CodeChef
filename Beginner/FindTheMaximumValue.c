@@ -42,11 +42,17 @@ https://www.codechef.com/problems/LOSTMAX
 #include <math.h>
 #include <malloc.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 struct IntArray
 {
     int *arr, len;
 };
+
+int compare(const void *x, const void *y)
+{
+    return *((int *)x) - *((int *)y);
+}
 
 int binarySearch(struct IntArray *intArray, int key)
 {
@@ -132,4 +138,20 @@ struct IntArray *parseIntArr(char *lineInput)
     }
 
     return intArray;
+}
+
+int getMax(struct IntArray *intArray)
+{
+    qsort(intArray->arr, intArray->len, sizeof(int), compare);
+
+    int actualArrLength = intArray->len - 1;
+    int lengthItemIdx = binarySearch(intArray->arr, actualArrLength);
+
+    int idx = intArray->len - 1;
+    while (idx >= 0 && lengthItemIdx != idx)
+    {
+        idx--;
+    }
+
+    return intArray->arr[idx];
 }
