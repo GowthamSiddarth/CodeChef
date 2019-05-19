@@ -39,3 +39,15 @@ N = 5 and the numbers are {1, 1, 4, 3, 2}. The maximum among these 5 numbers is 
 
 https://www.codechef.com/problems/LOSTMAX
 */
+#include <math.h>
+
+int parseIntFromSubstr(char *str, int start, int end)
+{
+    int idx = end, num = 0;
+    while (idx >= start)
+    {
+        num = num + (str[idx] - '0') * pow(10, end - idx);
+    }
+
+    return num;
+}
