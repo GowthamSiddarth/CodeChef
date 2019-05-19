@@ -48,6 +48,30 @@ struct IntArray
     int *arr, len;
 };
 
+int binarySearch(struct IntArray *intArray, int key)
+{
+    int start = 0, end = intArray->len - 1;
+
+    while (start <= end)
+    {
+        int mid = start + (end - start) / 2;
+        if (key > intArray->arr[mid])
+        {
+            start = mid + 1;
+        }
+        else if (key < intArray->arr[mid])
+        {
+            end = mid - 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+
+    return -1;
+}
+
 int parseIntFromSubstr(char *str, int start, int end)
 {
     int idx = end, num = 0;
