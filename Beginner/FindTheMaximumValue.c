@@ -39,10 +39,13 @@ N = 5 and the numbers are {1, 1, 4, 3, 2}. The maximum among these 5 numbers is 
 
 https://www.codechef.com/problems/LOSTMAX
 */
+#define MAX_SIZE 999999
+
 #include <math.h>
 #include <malloc.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct IntArray
 {
@@ -145,10 +148,10 @@ int getMax(struct IntArray *intArray)
     qsort(intArray->arr, intArray->len, sizeof(int), compare);
 
     int actualArrLength = intArray->len - 1;
-    int lengthItemIdx = binarySearch(intArray->arr, actualArrLength);
+    int lengthItemIdx = binarySearch(intArray, actualArrLength);
 
     int idx = intArray->len - 1;
-    while (idx >= 0 && lengthItemIdx != idx)
+    while (idx >= 0 && lengthItemIdx == idx)
     {
         idx--;
     }
