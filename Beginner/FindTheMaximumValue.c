@@ -158,3 +158,16 @@ int getMax(struct IntArray *intArray)
 
     return intArray->arr[idx];
 }
+
+int main()
+{
+    char lineInput[MAX_SIZE];
+    memcpy(lineInput, "3 1 2 8", 8);
+
+    struct IntArray *intArray = parseIntArr(lineInput);
+    int max = getMax(intArray);
+
+    printf("%d", max);
+
+    return 0;
+}
