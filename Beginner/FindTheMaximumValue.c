@@ -47,6 +47,7 @@ int parseIntFromSubstr(char *str, int start, int end)
     while (idx >= start)
     {
         num = num + (str[idx] - '0') * pow(10, end - idx);
+        idx--;
     }
 
     return num;
