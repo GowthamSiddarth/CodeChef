@@ -79,3 +79,32 @@ struct IntArray *initIntArray(int length)
 
     return intArray;
 }
+
+struct IntArray *parseIntArr(char *lineInput)
+{
+    int numOfInts = getNumOfWhitespaces(lineInput) + 1;
+    struct IntArray *intArray = initIntArray(numOfInts + 1);
+
+    int start = 0, end, arrIdx = 0;
+    while ('\0' != lineInput[end])
+    {
+        end = start + 1;
+        while ('\0' != lineInput[end] && ' ' != lineInput[end])
+        {
+            end++;
+        }
+        
+        int numAtCurrIdx = parseIntFromSubstr(lineInput, start, end - 1);
+        intArray->arr[arrIdx] = numAtCurrIdx;
+        arrIdx++;
+
+        while ('\0' != lineInput[end] && ' ' == lineInput[end])
+        {
+            end++;
+        }
+        
+        start = end;
+    }
+    
+    return intArray;
+}
