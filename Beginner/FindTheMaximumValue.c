@@ -41,6 +41,7 @@ https://www.codechef.com/problems/LOSTMAX
 */
 #include <math.h>
 #include <malloc.h>
+#include <stdio.h>
 
 struct IntArray
 {
@@ -83,9 +84,9 @@ struct IntArray *initIntArray(int length)
 struct IntArray *parseIntArr(char *lineInput)
 {
     int numOfInts = getNumOfWhitespaces(lineInput) + 1;
-    struct IntArray *intArray = initIntArray(numOfInts + 1);
+    struct IntArray *intArray = initIntArray(numOfInts);
 
-    int start = 0, end, arrIdx = 0;
+    int start = 0, end = 0, arrIdx = 0;
     while ('\0' != lineInput[end])
     {
         end = start + 1;
@@ -93,7 +94,7 @@ struct IntArray *parseIntArr(char *lineInput)
         {
             end++;
         }
-        
+
         int numAtCurrIdx = parseIntFromSubstr(lineInput, start, end - 1);
         intArray->arr[arrIdx] = numAtCurrIdx;
         arrIdx++;
@@ -102,9 +103,9 @@ struct IntArray *parseIntArr(char *lineInput)
         {
             end++;
         }
-        
+
         start = end;
     }
-    
+
     return intArray;
 }
