@@ -40,10 +40,11 @@ N = 5 and the numbers are {1, 1, 4, 3, 2}. The maximum among these 5 numbers is 
 https://www.codechef.com/problems/LOSTMAX
 */
 #include <math.h>
+#include <malloc.h>
 
 struct IntArray
 {
-    int *arr,  len;
+    int *arr, len;
 };
 
 int parseIntFromSubstr(char *str, int start, int end)
@@ -66,6 +67,15 @@ int getNumOfWhitespaces(char *line)
         count = count + (' ' == line[idx]);
         idx++;
     }
-    
+
     return count;
+}
+
+struct IntArray *initIntArray(int length)
+{
+    struct IntArray *intArray = (struct IntArray *)malloc(sizeof(struct IntArray));
+    intArray->len = length;
+    intArray->arr = (int *)malloc(sizeof(int) * intArray->len);
+
+    return intArray;
 }
