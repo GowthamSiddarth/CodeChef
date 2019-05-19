@@ -41,6 +41,11 @@ https://www.codechef.com/problems/LOSTMAX
 */
 #include <math.h>
 
+struct IntArray
+{
+    int *arr,  len;
+};
+
 int parseIntFromSubstr(char *str, int start, int end)
 {
     int idx = end, num = 0;
@@ -51,4 +56,16 @@ int parseIntFromSubstr(char *str, int start, int end)
     }
 
     return num;
+}
+
+int getNumOfWhitespaces(char *line)
+{
+    int count = 0, idx = 0;
+    while ('\0' != line[idx])
+    {
+        count = count + (' ' == line[idx]);
+        idx++;
+    }
+    
+    return count;
 }
