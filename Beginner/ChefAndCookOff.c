@@ -44,3 +44,15 @@ The first contestant has no solved problems, therefore he is a beginner. The sec
 
 https://www.codechef.com/problems/CCOOK
 */
+
+int getNumOfSolvedProblems(char *solutions)
+{
+    int count = 0, idx = 0;
+    while ('\0' != solutions[idx])
+    {
+        count = count + '1' == solutions[idx];
+        idx++;
+    }
+    
+    return count;
+}
