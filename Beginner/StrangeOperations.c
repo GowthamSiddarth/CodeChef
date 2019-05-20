@@ -33,7 +33,23 @@ enum IntType
     EVEN
 };
 
-enum IntType getIntType(int num)
+enum IntType getIntType(long int num)
 {
     return 0 == num % 2 ? EVEN : ODD;
+}
+
+long int arraySum(int *arr, int len)
+{
+    int idx = 0, sum = 0;
+    while (idx < len)
+    {
+        sum = sum + arr[idx];
+    }
+
+    return sum;
+}
+
+enum IntType getIntTypeOfLastSmallestInserted(int *arr, int len, int numOfOperations)
+{
+    return numOfOperations > 1 ? EVEN : getIntType(arraySum(arr, len) + 1);
 }
