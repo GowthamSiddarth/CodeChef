@@ -44,6 +44,10 @@ The first contestant has no solved problems, therefore he is a beginner. The sec
 
 https://www.codechef.com/problems/CCOOK
 */
+#define MAX_SIZE 5001
+
+#include <stdio.h>
+#include <string.h>
 
 int getNumOfSolvedProblems(char *solutions)
 {
@@ -53,6 +57,37 @@ int getNumOfSolvedProblems(char *solutions)
         count = count + ('1' == solutions[idx]);
         idx++;
     }
-    
+
     return count;
+}
+
+int main()
+{
+    char solutions[MAX_SIZE];
+    memcpy(solutions, "0 0 0 0 0", 10);
+
+    int numOfPrblmsSolved = getNumOfSolvedProblems(solutions);
+    switch (numOfPrblmsSolved)
+    {
+    case 0:
+        printf("Beginner\n");
+        break;
+    case 1:
+        printf("Junior Developer\n");
+        break;
+    case 2:
+        printf("Middle Developer\n");
+        break;
+    case 3:
+        printf("Senior Developer\n");
+        break;
+    case 4:
+        printf("Hacker\n");
+        break;
+    case 5:
+        printf("Jeff Dean\n");
+        break;
+    }
+
+    return 0;
 }
