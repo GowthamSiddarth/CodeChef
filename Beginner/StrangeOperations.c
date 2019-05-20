@@ -26,6 +26,7 @@ even
 
 https://www.codechef.com/problems/UTMOPR
 */
+#include <stdio.h>
 
 enum IntType
 {
@@ -44,6 +45,7 @@ long int arraySum(int *arr, int len)
     while (idx < len)
     {
         sum = sum + arr[idx];
+        idx++;
     }
 
     return sum;
@@ -52,4 +54,16 @@ long int arraySum(int *arr, int len)
 enum IntType getIntTypeOfLastSmallestInserted(int *arr, int len, int numOfOperations)
 {
     return numOfOperations > 1 ? EVEN : getIntType(arraySum(arr, len) + 1);
+}
+
+int main()
+{
+    int arr[] = {5, 7};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int numOfOperations = 1;
+    enum IntType lastSmallestIntInsertedType = getIntTypeOfLastSmallestInserted(arr, len, numOfOperations);
+
+    printf("%s\n", EVEN == lastSmallestIntInsertedType ? "even" : "odd");
+    return 0;
 }
