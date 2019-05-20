@@ -39,7 +39,7 @@ https://www.codechef.com/problems/BUGCAL
 int buggySum(int a, int b)
 {
     int sum = 0, placeValue = 0;
-    while (a && b)
+    while (a || b)
     {
         sum = sum + pow(10, placeValue) * (((a % 10) + (b % 10)) % 10);
         a /= 10;
