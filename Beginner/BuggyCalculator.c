@@ -35,6 +35,7 @@ Output:
 https://www.codechef.com/problems/BUGCAL
 */
 #include <math.h>
+#include <stdio.h>
 
 int buggySum(int a, int b)
 {
@@ -48,4 +49,13 @@ int buggySum(int a, int b)
     }
     
     return sum;
+}
+
+int main()
+{
+    int a = 1000000000, b = 1000000000;
+    int res = buggySum(a, b);
+
+    printf("%d", res);
+    return 0;
 }
