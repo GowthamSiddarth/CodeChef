@@ -34,3 +34,18 @@ Output:
 
 https://www.codechef.com/problems/BUGCAL
 */
+#include <math.h>
+
+int buggySum(int a, int b)
+{
+    int sum = 0, placeValue = 0;
+    while (a && b)
+    {
+        sum = sum + pow(10, placeValue) * (((a % 10) + (b % 10)) % 10);
+        a /= 10;
+        b /= 10;
+        placeValue++;
+    }
+    
+    return sum;
+}
