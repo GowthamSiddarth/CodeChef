@@ -26,3 +26,14 @@ even
 
 https://www.codechef.com/problems/UTMOPR
 */
+
+enum IntType
+{
+    ODD,
+    EVEN
+};
+
+enum IntType getIntType(int num)
+{
+    return 0 == num % 2 ? EVEN : ODD;
+}
