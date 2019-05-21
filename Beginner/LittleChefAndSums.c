@@ -52,3 +52,17 @@ The minimum value of the function is 8, which is achieved for indices 2 and 4. T
 
 https://www.codechef.com/problems/CHEFSUM
 */
+#include <malloc.h>
+
+long int *getCumulativeSums(int *arr, int len)
+{
+    long int cumulativeSum = 0;
+    long int *cumulativeSums = (long int *)malloc(sizeof(long int) * len);
+    for (int idx = 0; idx < len; idx++)
+    {
+        cumulativeSum = cumulativeSum + arr[idx];
+        cumulativeSums[idx] = cumulativeSum;
+    }
+
+    return cumulativeSums;
+}
