@@ -35,3 +35,31 @@ Sample Output:
 
 https://www.codechef.com/problems/URCALC
 */
+#include <stdio.h>
+
+int main()
+{
+    double operator1, operator2;
+    scanf("%lf\n%lf\n", &operator1, &operator2);
+    
+    char operator;
+    scanf("%c", &operator);
+
+    switch (operator)
+    {
+    case '+':
+        printf("%lf", operator1 + operator2);
+        break;
+    case '-':
+        printf("%lf", operator1 - operator2);
+        break;
+    case '*':
+        printf("%lf", operator1 * operator2);
+        break;
+    case '/':
+        printf("%lf", operator1 / operator2);
+        break;
+    }
+
+    return 0;
+}
