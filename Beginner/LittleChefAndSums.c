@@ -52,6 +52,7 @@ The minimum value of the function is 8, which is achieved for indices 2 and 4. T
 
 https://www.codechef.com/problems/CHEFSUM
 */
+#include <stdio.h>
 #include <malloc.h>
 #include <limits.h>
 
@@ -64,9 +65,12 @@ long int *getReverseCumulativeSums(int *arr, int len)
 {
     long int reverseCumulativeSum = arraySum(arr, len);
     long int *reverseCumulativeSums = (long int *)malloc(sizeof(long int) * len);
+    long int cumulativeSum = 0;
+
     for (int idx = 0; idx < len; idx++)
     {
-        reverseCumulativeSums[idx] = reverseCumulativeSum - (idx > 0 ? arr[idx - 1] : 0);
+        reverseCumulativeSums[idx] = reverseCumulativeSum - cumulativeSum;
+        cumulativeSum = cumulativeSum + arr[idx];
     }
 
     return reverseCumulativeSums;
@@ -75,7 +79,7 @@ long int *getReverseCumulativeSums(int *arr, int len)
 int findMinIdxForPrefixAndSuffixSum(int *arr, int len)
 {
     long int *reverseCumulativeSums = getReverseCumulativeSums(arr, len);
-    long int minSum = INT_MAX, minIdx, prefixSum = 0, suffixSum;
+    long int minSum = LONG_MAX, minIdx, prefixSum = 0, suffixSum;
 
     for (int idx = 0; idx < len; idx++)
     {
@@ -89,4 +93,15 @@ int findMinIdxForPrefixAndSuffixSum(int *arr, int len)
     }
 
     return minIdx;
+}
+
+int main()
+{
+    int arr[] = {2, 1, 3, 1};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int minIdx = findMinIdxForPrefixAndSuffixSum(arr, len);
+    printf("%d\n", minIdx + 1);
+
+    return 0;
 }
