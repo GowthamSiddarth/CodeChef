@@ -54,15 +54,7 @@ https://www.codechef.com/problems/CHEFSUM
 */
 #include <malloc.h>
 
-long int *getCumulativeSums(int *arr, int len)
+long int arraySum(int *arr, int len)
 {
-    long int cumulativeSum = 0;
-    long int *cumulativeSums = (long int *)malloc(sizeof(long int) * len);
-    for (int idx = 0; idx < len; idx++)
-    {
-        cumulativeSum = cumulativeSum + arr[idx];
-        cumulativeSums[idx] = cumulativeSum;
-    }
-
-    return cumulativeSums;
+    return 0 == len ? 0 : arr[len - 1] + arraySum(arr, len - 1);
 }
