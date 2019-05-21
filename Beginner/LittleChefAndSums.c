@@ -58,3 +58,15 @@ long int arraySum(int *arr, int len)
 {
     return 0 == len ? 0 : arr[len - 1] + arraySum(arr, len - 1);
 }
+
+long int *getReverseCumulativeSums(int *arr, int len)
+{
+    long int reverseCumulativeSum = arraySum(arr, len);
+    long int *reverseCumulativeSums = (long int *)malloc(sizeof(long int) * len);
+    for (int idx = 0; idx < len; idx++)
+    {
+        reverseCumulativeSums[idx] = reverseCumulativeSum - (idx > 0 ? arr[idx - 1] : 0);
+    }
+
+    return reverseCumulativeSums;
+}
