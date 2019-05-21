@@ -53,6 +53,7 @@ The minimum value of the function is 8, which is achieved for indices 2 and 4. T
 https://www.codechef.com/problems/CHEFSUM
 */
 #include <malloc.h>
+#include <limits.h>
 
 long int arraySum(int *arr, int len)
 {
@@ -69,4 +70,23 @@ long int *getReverseCumulativeSums(int *arr, int len)
     }
 
     return reverseCumulativeSums;
+}
+
+int findMinIdxForPrefixAndSuffixSum(int *arr, int len)
+{
+    long int *reverseCumulativeSums = getReverseCumulativeSums(arr, len);
+    long int minSum = INT_MAX, minIdx, prefixSum = 0, suffixSum;
+
+    for (int idx = 0; idx < len; idx++)
+    {
+        prefixSum = prefixSum + arr[idx];
+        suffixSum = reverseCumulativeSums[idx];
+        if (prefixSum + suffixSum < minSum)
+        {
+            minSum = prefixSum + suffixSum;
+            minIdx = idx;
+        }
+    }
+
+    return minIdx;
 }
