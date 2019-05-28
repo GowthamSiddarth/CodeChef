@@ -46,7 +46,7 @@ https://www.codechef.com/problems/NOTINCOM
 
 #include <stdlib.h>
 
-int compareInts(const int *x, const int *y)
+int compareInts(const void *x, const void *y)
 {
     return *(int *)x - *(int *)y;
 }
@@ -86,4 +86,9 @@ int intersection(int *arr1, int len1, int *arr2, int len2)
     }
 
     return count;
+}
+
+int getNumOfCommonItems(int *arr1, int len1, int *arr2, int len2)
+{
+    return len1 <= len2 ? intersection(arr2, len2, arr1, len1) : intersection(arr1, len1, arr2, len2);
 }
