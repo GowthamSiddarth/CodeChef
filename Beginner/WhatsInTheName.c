@@ -56,3 +56,7 @@ enum Boolean isFirstCharInName(char *fullName, int charPos)
 {
     return 0 == charPos || ' ' == fullName[charPos - 1] ? TRUE : FALSE;
 }
+
+char toUpperCase(char lowerCaseChar) {
+    return lowerCaseChar >= 'a' && lowerCaseChar <= 'z' ? lowerCaseChar - ('a' - 'A') : lowerCaseChar;
+}
