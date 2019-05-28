@@ -46,17 +46,11 @@ The examples are already explained in the problem statement.
 https://www.codechef.com/problems/NITIKA
 */
 #define MAX_ABBR_NAME_SIZE 17
+#define MAX_FULL_NAME_SIZE 31
 
-enum Boolean
-{
-    FALSE,
-    TRUE
-};
-
-enum Boolean isFirstCharInName(char *fullName, int charPos)
-{
-    return 0 == charPos || ' ' == fullName[charPos - 1] ? TRUE : FALSE;
-}
+#include <malloc.h>
+#include <string.h>
+#include <stdio.h>
 
 char toUpperCase(char lowerCaseChar)
 {
@@ -97,4 +91,15 @@ char *abbreviateFullName(char *fullName)
 
     abbrFullName[abbrFullNameIdx] = '\0';
     return abbrFullName;
+}
+
+int main()
+{
+    char fullName[MAX_FULL_NAME_SIZE];
+    memcpy(fullName, "Goutam", 7);
+
+    char *abbrFullName = abbreviateFullName(fullName);
+    printf("%s\n", abbrFullName);
+
+    return 0;
 }
