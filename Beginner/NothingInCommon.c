@@ -43,3 +43,47 @@ Example case 2. Girls don't have any number in common initially. So there is no 
 
 https://www.codechef.com/problems/NOTINCOM
 */
+
+#include <stdlib.h>
+
+int compareInts(const int *x, const int *y)
+{
+    return *(int *)x - *(int *)y;
+}
+
+int binarySearch(int *arr, int len, int key)
+{
+    int low = 0, high = len - 1;
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+        if (key > arr[mid])
+        {
+            low = mid + 1;
+        }
+        else if (key < arr[mid])
+        {
+            high = mid - 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+
+    return -1;
+}
+
+int intersection(int *arr1, int len1, int *arr2, int len2)
+{
+    qsort(arr1, len1, sizeof(int), compareInts);
+    qsort(arr2, len2, sizeof(int), compareInts);
+
+    int count = 0;
+    for (int idx = 0; idx < len1; idx++)
+    {
+        count = count + (binarySearch(arr2, len2, arr1[idx]) >= 0 ? 1 : 0);
+    }
+
+    return count;
+}
