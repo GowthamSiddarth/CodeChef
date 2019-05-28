@@ -45,3 +45,14 @@ The examples are already explained in the problem statement.
 
 https://www.codechef.com/problems/NITIKA
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isFirstCharInName(char *fullName, int charPos)
+{
+    return 0 == charPos || ' ' == fullName[charPos - 1] ? TRUE : FALSE;
+}
