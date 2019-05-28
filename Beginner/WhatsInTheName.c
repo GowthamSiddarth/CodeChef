@@ -45,9 +45,7 @@ The examples are already explained in the problem statement.
 
 https://www.codechef.com/problems/NITIKA
 */
-#define MAX_ABBR_SIZE 17
-
-#include <malloc.h>
+#define MAX_ABBR_NAME_SIZE 17
 
 enum Boolean
 {
@@ -65,20 +63,25 @@ char toUpperCase(char lowerCaseChar)
     return lowerCaseChar >= 'a' && lowerCaseChar <= 'z' ? lowerCaseChar - ('a' - 'A') : lowerCaseChar;
 }
 
+char toLowerCase(char upperCaseChar)
+{
+    return upperCaseChar >= 'A' && upperCaseChar <= 'Z' ? upperCaseChar + ('a' - 'A') : upperCaseChar;
+}
+
 char *abbreviateFullName(char *fullName)
 {
-    char *abbrFullName = (char *)malloc(sizeof(char) * MAX_ABBR_SIZE);
+    char *abbrFullName = (char *)malloc(sizeof(char) * MAX_ABBR_NAME_SIZE);
     int fullNameIdx = 0, abbrFullNameIdx = 0;
     while ('\0' != fullName[fullNameIdx])
     {
-        int firstCharPos = fullNameIdx;
+        int firstCharPos = abbrFullNameIdx;
         abbrFullName[abbrFullNameIdx] = toUpperCase(fullName[fullNameIdx]);
         fullNameIdx++;
         abbrFullNameIdx++;
 
         while ('\0' != fullName[fullNameIdx] && ' ' != fullName[fullNameIdx])
         {
-            abbrFullName[abbrFullNameIdx] = fullName[fullNameIdx];
+            abbrFullName[abbrFullNameIdx] = toLowerCase(fullName[fullNameIdx]);
             fullNameIdx++;
             abbrFullNameIdx++;
         }
