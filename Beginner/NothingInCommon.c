@@ -45,6 +45,7 @@ https://www.codechef.com/problems/NOTINCOM
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 int compareInts(const void *x, const void *y)
 {
@@ -91,4 +92,17 @@ int intersection(int *arr1, int len1, int *arr2, int len2)
 int getNumOfCommonItems(int *arr1, int len1, int *arr2, int len2)
 {
     return len1 <= len2 ? intersection(arr2, len2, arr1, len1) : intersection(arr1, len1, arr2, len2);
+}
+
+int main()
+{
+    int arr1[] = {1, 2, 3};
+    int arr2[] = {4, 5, 6, 2, 1, 0};
+    int len1 = sizeof(arr1) / sizeof(arr1[0]);
+    int len2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    int res = getNumOfCommonItems(arr1, len1, arr2, len2);
+    printf("%d\n", res);
+
+    return 0;
 }
