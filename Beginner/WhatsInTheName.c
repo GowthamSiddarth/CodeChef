@@ -45,6 +45,9 @@ The examples are already explained in the problem statement.
 
 https://www.codechef.com/problems/NITIKA
 */
+#define MAX_ABBR_SIZE 17
+
+#include <malloc.h>
 
 enum Boolean
 {
@@ -57,6 +60,38 @@ enum Boolean isFirstCharInName(char *fullName, int charPos)
     return 0 == charPos || ' ' == fullName[charPos - 1] ? TRUE : FALSE;
 }
 
-char toUpperCase(char lowerCaseChar) {
+char toUpperCase(char lowerCaseChar)
+{
     return lowerCaseChar >= 'a' && lowerCaseChar <= 'z' ? lowerCaseChar - ('a' - 'A') : lowerCaseChar;
+}
+
+char *abbreviateFullName(char *fullName)
+{
+    char *abbrFullName = (char *)malloc(sizeof(char) * MAX_ABBR_SIZE);
+    int fullNameIdx = 0, abbrFullNameIdx = 0;
+    while ('\0' != fullName[fullNameIdx])
+    {
+        int firstCharPos = fullNameIdx;
+        abbrFullName[abbrFullNameIdx] = toUpperCase(fullName[fullNameIdx]);
+        fullNameIdx++;
+        abbrFullNameIdx++;
+
+        while ('\0' != fullName[fullNameIdx] && ' ' != fullName[fullNameIdx])
+        {
+            abbrFullName[abbrFullNameIdx] = fullName[fullNameIdx];
+            fullNameIdx++;
+            abbrFullNameIdx++;
+        }
+
+        if (' ' == fullName[fullNameIdx])
+        {
+            abbrFullName[firstCharPos + 1] = '.';
+            abbrFullName[firstCharPos + 2] = ' ';
+            fullNameIdx++;
+            abbrFullNameIdx = firstCharPos + 3;
+        }
+    }
+
+    abbrFullName[abbrFullNameIdx] = '\0';
+    return abbrFullName;
 }
