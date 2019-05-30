@@ -60,3 +60,21 @@ Example case 6.: All the problems are hard. The contest is not balanced.
 
 https://www.codechef.com/problems/PERFCONT
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isBalancedContest(int *questions, int numOfQuestions, int numOfStudents)
+{
+    int atLeastHalf = 0, atMaxOneTenth = 0;
+    for (int idx = 0; idx < numOfQuestions; idx++)
+    {
+        atLeastHalf = atLeastHalf + (questions[idx] >= numOfStudents / 2);
+        atMaxOneTenth = atMaxOneTenth + (questions[idx] <= numOfStudents / 10);
+    }
+
+    return 1 == atLeastHalf && 2 == atMaxOneTenth ? TRUE : FALSE;
+}
