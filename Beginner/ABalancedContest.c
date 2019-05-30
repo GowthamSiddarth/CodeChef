@@ -60,6 +60,7 @@ Example case 6.: All the problems are hard. The contest is not balanced.
 
 https://www.codechef.com/problems/PERFCONT
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -77,4 +78,15 @@ enum Boolean isBalancedContest(int *questions, int numOfQuestions, int numOfStud
     }
 
     return 1 == atLeastHalf && 2 == atMaxOneTenth ? TRUE : FALSE;
+}
+
+int main()
+{
+    int questions[] = {10, 1, 100};
+    int numOfQuestions = sizeof(questions) / sizeof(questions[0]), numOfStudents = 100;
+
+    enum Boolean res = isBalancedContest(questions, numOfQuestions, numOfStudents);
+    printf("%s\n", res ? "yes" : "no");
+
+    return 0;
 }
