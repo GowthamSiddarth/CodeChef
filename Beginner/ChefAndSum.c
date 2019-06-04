@@ -84,13 +84,15 @@ enum Boolean sumPairExists(int *arr, int len, int key)
     {
         int item = arr[idx];
         int compliment = key - arr[idx];
+        int complimentIdx = binarySearch(arr, len, compliment);
 
-        if (binarySearch(arr, len, compliment) > 0) {
+        if (complimentIdx > 0 && complimentIdx != idx)
+        {
             return TRUE;
         }
 
         idx++;
     }
 
-    return FALSE;    
+    return FALSE;
 }
