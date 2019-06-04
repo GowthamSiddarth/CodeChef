@@ -35,6 +35,7 @@ Example case 2: All values are pairwise distinct.
 https://www.codechef.com/problems/CEQUAL
 */
 #include <stdlib.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -58,4 +59,15 @@ enum Boolean duplicateItemExists(int *arr, int len)
     }
     
     return len == idx ? FALSE : TRUE;
+}
+
+int main()
+{
+    int arr[] = {5, 4, 1, 2, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    enum Boolean doesDuplicateItemsExist = duplicateItemExists(arr, len);
+    printf("%s\n", doesDuplicateItemsExist ? "Yes" : "No");
+
+    return 0;
 }
