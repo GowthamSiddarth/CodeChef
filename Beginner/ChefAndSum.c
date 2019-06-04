@@ -39,3 +39,58 @@ Example case 3: Pair having Ai+Aj=1 doesn't exist.
 
 https://www.codechef.com/problems/CSUM
 */
+#include <stdlib.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int binarySearch(int *arr, int len, int key)
+{
+    int low = 0, high = len - 1;
+    while (low <= high)
+    {
+        int mid = low + (high - low) / 2;
+
+        if (key > arr[mid])
+        {
+            low = mid + 1;
+        }
+        else if (key < arr[mid])
+        {
+            high = mid - 1;
+        }
+        else
+        {
+            return mid;
+        }
+    }
+
+    return -1;
+}
+
+int compareInts(const void *x, const void *y)
+{
+    return *(int *)x - *(int *)y;
+}
+
+enum Boolean sumPairExists(int *arr, int len, int key)
+{
+    qsort(arr, len, sizeof(arr[0]), compareInts);
+    int idx = 0;
+    while (idx < len)
+    {
+        int item = arr[idx];
+        int compliment = key - arr[idx];
+
+        if (binarySearch(arr, len, compliment) > 0) {
+            return TRUE;
+        }
+
+        idx++;
+    }
+
+    return FALSE;    
+}
