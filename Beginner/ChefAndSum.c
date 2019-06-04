@@ -40,6 +40,7 @@ Example case 3: Pair having Ai+Aj=1 doesn't exist.
 https://www.codechef.com/problems/CSUM
 */
 #include <stdlib.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -95,4 +96,16 @@ enum Boolean sumPairExists(int *arr, int len, int key)
     }
 
     return FALSE;
+}
+
+int main()
+{
+    int arr[] = {5, 4, 1, 2, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+    int key = 1;    
+
+    enum Boolean doesSumPairExist = sumPairExists(arr, len, key);
+    printf("%s\n", doesSumPairExist ? "Yes" : "No");
+
+    return 0;
 }
