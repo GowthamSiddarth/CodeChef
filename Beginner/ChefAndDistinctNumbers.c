@@ -34,3 +34,28 @@ Example case 2: All values are pairwise distinct.
 
 https://www.codechef.com/problems/CEQUAL
 */
+#include <stdlib.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int compareInts(const void *x, const void *y)
+{
+    return *(int *)x - *(int *)y;
+}
+
+enum Boolean duplicateItemExists(int *arr, int len)
+{
+    qsort(arr, len, sizeof(arr[0]), compareInts);
+    int offset = 0, idx = 1;
+    while (idx < len && arr[idx] != arr[offset])
+    {
+        offset = idx;
+        idx++;
+    }
+    
+    return len == idx ? FALSE : TRUE;
+}
