@@ -34,3 +34,26 @@ Example case 2: (A2,A3) , (A2,A5) and  (A4,A5)  .
 
 https://www.codechef.com/problems/CPAIRS
 */
+#include <malloc.h>
+
+enum NumType
+{
+    ODD,
+    EVEN
+};
+
+enum NumType getNumType(int num)
+{
+    return 0 == (num & 1) ? EVEN : ODD;
+}
+
+int *getCumulativeOddsCount(int *arr, int len)
+{
+    int *cumulativeOddsCount = (int *)malloc(sizeof(int) * len);
+    for (int idx = 0; idx < len; idx++)
+    {
+        cumulativeOddsCount[idx] = (idx > 0 ? cumulativeOddsCount[idx - 1] : 0) + ODD == getNumType(arr[idx]) ? 1 : 0;
+    }
+
+    return cumulativeOddsCount;
+}
