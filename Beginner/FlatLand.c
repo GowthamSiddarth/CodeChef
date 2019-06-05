@@ -26,3 +26,17 @@ Test case 1 : Mr Sphere forms a square of side 9 using 81 Circles and then forms
 
 https://www.codechef.com/problems/ICL1902
 */
+#include <math.h>
+
+int getNumOfSquaresFormed(int numOfCircles)
+{
+    int count = 0;
+    while (numOfCircles > 0)
+    {
+        int integralSqrRoot = sqrt(numOfCircles);
+        numOfCircles = numOfCircles - (integralSqrRoot * integralSqrRoot);
+        count++;
+    }
+
+    return count;
+}
