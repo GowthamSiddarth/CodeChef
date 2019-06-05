@@ -28,6 +28,7 @@ https://www.codechef.com/problems/MEDIC
 */
 #include <malloc.h>
 #include <math.h>
+#include <stdio.h>
 
 struct Date
 {
@@ -146,4 +147,15 @@ struct Date *parseDate(char *date)
     }
 
     return parsedDate;
+}
+
+int main()
+{
+    char *date = "2017:06:06";
+    struct Date *parsedDate = parseDate(date);
+
+    int numOfPillsTakenCorrectly = getNumOfPillsTakenCorrectly(parsedDate);
+    printf("%d\n", numOfPillsTakenCorrectly);
+
+    return 0;
 }
