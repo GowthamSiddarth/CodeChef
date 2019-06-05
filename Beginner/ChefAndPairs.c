@@ -52,7 +52,7 @@ int *getCumulativeOddsCount(int *arr, int len)
     int *cumulativeOddsCount = (int *)malloc(sizeof(int) * len);
     for (int idx = 0; idx < len; idx++)
     {
-        cumulativeOddsCount[idx] = (idx > 0 ? cumulativeOddsCount[idx - 1] : 0) + ODD == getNumType(arr[idx]) ? 1 : 0;
+        cumulativeOddsCount[idx] = (idx > 0 ? cumulativeOddsCount[idx - 1] : 0) + (ODD == getNumType(arr[idx]) ? 1 : 0);
     }
 
     return cumulativeOddsCount;
