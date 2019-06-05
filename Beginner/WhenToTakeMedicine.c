@@ -26,3 +26,20 @@ You can take pill on the right day only on 31st March. Next you will take it on 
 
 https://www.codechef.com/problems/MEDIC
 */
+
+enum NumType
+{
+    ODD,
+    EVEN
+};
+
+enum NumType getNumType(int num)
+{
+    return 0 == num % 2 ? EVEN : ODD;
+}
+
+int numOfOddDaysInRange(int startDate, int endDate)
+{
+    int numOfDaysInRange = endDate - startDate + 1;
+    return EVEN == getNumType(numOfDaysInRange) ? numOfDaysInRange / 2 : (EVEN == getNumType(startDate) ? numOfDaysInRange / 2 : numOfDaysInRange / 2 + 1);
+}
