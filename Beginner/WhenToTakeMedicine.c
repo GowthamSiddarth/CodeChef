@@ -45,6 +45,17 @@ enum NumType getNumType(int num)
     return 0 == num % 2 ? EVEN : ODD;
 }
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isLeapYear(int year)
+{
+    return 0 == year % 400 || (0 == year % 4 && 0 != year % 100) ? TRUE : FALSE;
+}
+
 enum MonthType
 {
     FEB = 28,
@@ -79,33 +90,23 @@ int getNumOfDaysInMonth(enum MonthType monthType, int year)
     return FEB == monthType ? isLeapYear(year) ? monthType + 1 : monthType : monthType;
 }
 
-enum Boolean
-{
-    FALSE,
-    TRUE
-};
-
-enum Boolean isLeapYear(int year)
-{
-    return 0 == year % 400 || (0 == year % 4 && 0 != year % 100) ? TRUE : FALSE;
-}
-
 int numOfOddDaysInRange(int startDate, int endDate)
 {
     int numOfDaysInRange = endDate - startDate + 1;
     return EVEN == getNumType(numOfDaysInRange) ? numOfDaysInRange / 2 : (EVEN == getNumType(startDate) ? numOfDaysInRange / 2 : numOfDaysInRange / 2 + 1);
 }
 
-int numOfPillsTakenCorrectly(int date, int month, int year)
+int getNumOfPillsTakenCorrectly(struct Date *date)
 {
-    enum MonthType monthType = getMonthType(month);
+    enum MonthType monthType = getMonthType(date->month);
+    int numOfDaysInMonth = getNumOfDaysInMonth(monthType, date->year);
     switch (monthType)
     {
     case _31Days:
-        return numOfOddDaysInRange(date, getNumOfDaysInMonth(monthType, year));
+        return numOfOddDaysInRange(date->date, numOfDaysInMonth);
     case _30Days:
     case FEB:
-        return numOfOddDaysInRange(date, getNumOfDaysInMonth(monthType, year)) + numOfOddDaysInRange(1, getNumOfDaysInMonth(_31Days, year));
+        return numOfOddDaysInRange(date->date, numOfDaysInMonth) + (28 == numOfDaysInMonth ? numOfOddDaysInRange(1, getNumOfDaysInMonth(_31Days, date->year)) : 0);
     }
 }
 
