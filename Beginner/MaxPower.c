@@ -19,14 +19,18 @@ Sample Output:
 https://www.codechef.com/problems/MAX2
 */
 
-int getMaxPowOf2DividingNum(int num)
+int getMaxPowOf2DividingNum(char *binNum)
 {
-    int count = 0;
-    while (1 != (num & 1))
+    int lastOccOfSetBit = -1, idx = 0;
+    while ('\0' != binNum[idx])
     {
-        count++;
-        num = num >> 1;
+        if ('1' == binNum[idx])
+        {
+            lastOccOfSetBit = idx;
+        }
+
+        idx++;
     }
-    
-    return count;
+
+    return idx - lastOccOfSetBit - 1;
 }
