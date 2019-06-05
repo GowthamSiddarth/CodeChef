@@ -27,6 +27,7 @@ Test case 1 : Mr Sphere forms a square of side 9 using 81 Circles and then forms
 https://www.codechef.com/problems/ICL1902
 */
 #include <math.h>
+#include <stdio.h>
 
 int getNumOfSquaresFormed(int numOfCircles)
 {
@@ -39,4 +40,14 @@ int getNumOfSquaresFormed(int numOfCircles)
     }
 
     return count;
+}
+
+int main()
+{
+    int numOfCircles = 114;
+    int numOfSquaresFormed = getNumOfSquaresFormed(numOfCircles);
+
+    printf("%d\n", numOfSquaresFormed);
+
+    return 0;
 }
