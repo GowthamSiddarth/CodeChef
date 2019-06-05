@@ -18,3 +18,15 @@ Sample Output:
 
 https://www.codechef.com/problems/MAX2
 */
+
+int getMaxPowOf2DividingNum(int num)
+{
+    int count = 0;
+    while (1 != (num & 1))
+    {
+        count++;
+        num = num >> 1;
+    }
+    
+    return count;
+}
