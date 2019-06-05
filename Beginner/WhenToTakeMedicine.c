@@ -90,10 +90,10 @@ int getNumOfDaysInMonth(enum MonthType monthType, int year)
     return FEB == monthType ? isLeapYear(year) ? monthType + 1 : monthType : monthType;
 }
 
-int numOfOddDaysInRange(int startDate, int endDate)
+int getNumOfDaysInRange(int startDate, int endDate)
 {
     int numOfDaysInRange = endDate - startDate + 1;
-    return EVEN == getNumType(numOfDaysInRange) ? numOfDaysInRange / 2 : (EVEN == getNumType(startDate) ? numOfDaysInRange / 2 : numOfDaysInRange / 2 + 1);
+    return EVEN == getNumType(numOfDaysInRange) ? numOfDaysInRange / 2 : numOfDaysInRange / 2 + 1;
 }
 
 int getNumOfPillsTakenCorrectly(struct Date *date)
@@ -103,10 +103,11 @@ int getNumOfPillsTakenCorrectly(struct Date *date)
     switch (monthType)
     {
     case _31Days:
-        return numOfOddDaysInRange(date->date, numOfDaysInMonth);
+        return getNumOfDaysInRange(date->date, numOfDaysInMonth);
     case _30Days:
+        return getNumOfDaysInRange(date->date, numOfDaysInMonth) + getNumOfDaysInRange(EVEN == getNumType(date->date) ? 2 : 1, getNumOfDaysInMonth(_31Days, date->year));
     case FEB:
-        return numOfOddDaysInRange(date->date, numOfDaysInMonth) + (28 == numOfDaysInMonth ? numOfOddDaysInRange(1, getNumOfDaysInMonth(_31Days, date->year)) : 0);
+        return getNumOfDaysInRange(date->date, numOfDaysInMonth) + (28 == numOfDaysInMonth ? getNumOfDaysInRange(EVEN == getNumType(date->date) ? 2 : 1, getNumOfDaysInMonth(_31Days, date->year)) : 0);
     }
 }
 
