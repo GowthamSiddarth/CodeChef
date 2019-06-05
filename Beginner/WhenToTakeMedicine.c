@@ -67,6 +67,11 @@ enum MonthType getMonthType(int monthIdx)
     }
 }
 
+int getNumOfDaysInMonth(enum MonthType monthType, int year)
+{
+    return FEB == monthType ? isLeapYear(year) ? monthType + 1 : monthType : monthType;
+}
+
 enum Boolean
 {
     FALSE,
@@ -82,4 +87,17 @@ int numOfOddDaysInRange(int startDate, int endDate)
 {
     int numOfDaysInRange = endDate - startDate + 1;
     return EVEN == getNumType(numOfDaysInRange) ? numOfDaysInRange / 2 : (EVEN == getNumType(startDate) ? numOfDaysInRange / 2 : numOfDaysInRange / 2 + 1);
+}
+
+int numOfPillsTakenCorrectly(int date, int month, int year)
+{
+    enum MonthType monthType = getMonthType(month);
+    switch (monthType)
+    {
+    case _31Days:
+        return numOfOddDaysInRange(date, getNumOfDaysInMonth(monthType, year));
+    case _30Days:
+    case FEB:
+        return numOfOddDaysInRange(date, getNumOfDaysInMonth(monthType, year)) + numOfOddDaysInRange(1, getNumOfDaysInMonth(_31Days, year));
+    }
 }
