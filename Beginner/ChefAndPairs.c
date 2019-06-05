@@ -35,6 +35,7 @@ Example case 2: (A2,A3) , (A2,A5) and  (A4,A5)  .
 https://www.codechef.com/problems/CPAIRS
 */
 #include <malloc.h>
+#include <stdio.h>
 
 enum NumType
 {
@@ -71,4 +72,15 @@ int getNumOfEvenOddPairs(int *arr, int len)
     }
 
     return numOfEvenOddPairs;
+}
+
+int main()
+{
+    int arr[] = {5, 4, 1, 2, 3};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int numOfEvenOddPairs = getNumOfEvenOddPairs(arr, len);
+    printf("%d\n", numOfEvenOddPairs);
+
+    return 0;
 }
