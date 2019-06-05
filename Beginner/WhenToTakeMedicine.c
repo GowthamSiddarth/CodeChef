@@ -40,9 +40,9 @@ enum NumType getNumType(int num)
 
 enum MonthType
 {
-    _31Days,
-    _30Days,
-    FEB
+    FEB = 28,
+    _30Days = 30,
+    _31Days = 31,
 };
 
 enum MonthType getMonthType(int monthIdx)
@@ -65,6 +65,17 @@ enum MonthType getMonthType(int monthIdx)
     case 2:
         return FEB;
     }
+}
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isLeapYear(int year)
+{
+    return 0 == year % 400 || (0 == year % 4 && 0 != year % 100) ? TRUE : FALSE;
 }
 
 int numOfOddDaysInRange(int startDate, int endDate)
