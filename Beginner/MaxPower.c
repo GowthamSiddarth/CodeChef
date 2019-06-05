@@ -18,6 +18,10 @@ Sample Output:
 
 https://www.codechef.com/problems/MAX2
 */
+#define MAX_SIZE 100001
+
+#include <string.h>
+#include <stdio.h>
 
 int getMaxPowOf2DividingNum(char *binNum)
 {
@@ -33,4 +37,16 @@ int getMaxPowOf2DividingNum(char *binNum)
     }
 
     return idx - lastOccOfSetBit - 1;
+}
+
+int main()
+{
+    char binNum[MAX_SIZE];
+    int numOfBits = 3;
+    memcpy(binNum, "100", numOfBits + 1);
+
+    int maxPowOf2DividingNum = getMaxPowOf2DividingNum(binNum);
+    printf("%d", maxPowOf2DividingNum);
+
+    return 0;
 }
