@@ -26,6 +26,13 @@ You can take pill on the right day only on 31st March. Next you will take it on 
 
 https://www.codechef.com/problems/MEDIC
 */
+#include <malloc.h>
+#include <math.h>
+
+struct Date
+{
+    int date, month, year;
+};
 
 enum NumType
 {
@@ -100,4 +107,41 @@ int numOfPillsTakenCorrectly(int date, int month, int year)
     case FEB:
         return numOfOddDaysInRange(date, getNumOfDaysInMonth(monthType, year)) + numOfOddDaysInRange(1, getNumOfDaysInMonth(_31Days, year));
     }
+}
+
+struct Date *parseDate(char *date)
+{
+    struct Date *parsedDate = (struct Date *)malloc(sizeof(struct Date));
+    int idx = 0, numOfColons = 0;
+
+    while ('\0' != date[idx])
+    {
+        int placeValue = 0 == numOfColons ? 3 : 1;
+        int value = 0;
+        while ('\0' != date[idx] && ':' != date[idx])
+        {
+            value = value + (date[idx] - '0') * pow(10, placeValue);
+            idx++;
+            placeValue--;
+        }
+
+        switch (numOfColons)
+        {
+        case 0:
+            parsedDate->year = value;
+            break;
+        case 1:
+            parsedDate->month = value;
+        case 2:
+            parsedDate->date = value;
+        }
+
+        if (':' == date[idx])
+        {
+            numOfColons++;
+            idx++;
+        }
+    }
+
+    return parsedDate;
 }
