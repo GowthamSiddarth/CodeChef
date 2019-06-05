@@ -38,6 +38,35 @@ enum NumType getNumType(int num)
     return 0 == num % 2 ? EVEN : ODD;
 }
 
+enum MonthType
+{
+    _31Days,
+    _30Days,
+    FEB
+};
+
+enum MonthType getMonthType(int monthIdx)
+{
+    switch (monthIdx)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        return _31Days;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        return _30Days;
+    case 2:
+        return FEB;
+    }
+}
+
 int numOfOddDaysInRange(int startDate, int endDate)
 {
     int numOfDaysInRange = endDate - startDate + 1;
