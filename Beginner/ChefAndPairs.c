@@ -57,3 +57,18 @@ int *getCumulativeOddsCount(int *arr, int len)
 
     return cumulativeOddsCount;
 }
+
+int getNumOfEvenOddPairs(int *arr, int len)
+{
+    int *cumulativeOddsCount = getCumulativeOddsCount(arr, len);
+    int totalOddsCount = cumulativeOddsCount[len - 1], numOfEvenOddPairs = 0;
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (EVEN == getNumType(arr[idx]))
+        {
+            numOfEvenOddPairs = numOfEvenOddPairs + totalOddsCount - cumulativeOddsCount[idx];
+        }
+    }
+
+    return numOfEvenOddPairs;
+}
