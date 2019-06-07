@@ -36,6 +36,10 @@ Example case 2: The only vowel 'u' follows after 'b', so the answer is 1.
 
 https://www.codechef.com/problems/CV
 */
+#define MAX_LEN 101
+
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -58,4 +62,15 @@ int getNumOfConsecutiveVowelAndConsonants(char *string)
     }
     
     return count;
+}
+
+int main()
+{
+    char string[MAX_LEN];
+    memcpy(string, "o", 2);
+
+    int numOfConsecutiveVowelAndCons = getNumOfConsecutiveVowelAndConsonants(string);
+    printf("%d\n", numOfConsecutiveVowelAndCons);
+
+    return 0;
 }
