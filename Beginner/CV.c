@@ -36,3 +36,14 @@ Example case 2: The only vowel 'u' follows after 'b', so the answer is 1.
 
 https://www.codechef.com/problems/CV
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isLowerCaseVowel(char c)
+{
+    return 'a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c;
+}
