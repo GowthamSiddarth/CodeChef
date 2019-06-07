@@ -47,3 +47,15 @@ enum Boolean isLowerCaseVowel(char c)
 {
     return 'a' == c || 'e' == c || 'i' == c || 'o' == c || 'u' == c;
 }
+
+int getNumOfConsecutiveVowelAndConsonants(char *string)
+{
+    int count = 0, idx = 1;
+    while ('\0' != string[idx])
+    {
+        count = count + (isLowerCaseVowel(string[idx]) && !isLowerCaseVowel(string[idx - 1]) ? 1 : 0);
+        idx++;
+    }
+    
+    return count;
+}
