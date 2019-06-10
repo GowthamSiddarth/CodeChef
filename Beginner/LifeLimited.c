@@ -39,6 +39,7 @@ aaa
 
 https://www.codechef.com/problems/LIFELTD
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -54,4 +55,13 @@ enum Boolean isLShapeFound(char logo[3][3], int startXIdx, int startYIdx)
 enum Boolean isLogoGood(char logo[3][3])
 {
     return isLShapeFound(logo, 0, 0) || isLShapeFound(logo, 0, 1) || isLShapeFound(logo, 1, 0) || isLShapeFound(logo, 1, 1) ? TRUE : FALSE;
+}
+
+int main()
+{
+    char logo[3][3] = {{'l', 'l', 'l'}, {'l', 'l', 'l'}, {'l', 'l', 'l'}};
+    enum Boolean logoGood = isLogoGood(logo);
+
+    printf("%s\n", TRUE == logoGood ? "yes" : "no");
+    return 0;
 }
