@@ -39,3 +39,19 @@ aaa
 
 https://www.codechef.com/problems/LIFELTD
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isLShapeFound(char logo[3][3], int startXIdx, int startYIdx)
+{
+    return 'l' == logo[startXIdx][startYIdx] && 'l' == logo[startXIdx + 1][startYIdx] && 'l' == logo[startXIdx + 1][startYIdx + 1] ? TRUE : FALSE;
+}
+
+enum Boolean isLogoGood(char logo[3][3])
+{
+    return isLShapeFound(logo, 0, 0) || isLShapeFound(logo, 0, 1) || isLShapeFound(logo, 1, 0) || isLShapeFound(logo, 1, 1) ? TRUE : FALSE;
+}
