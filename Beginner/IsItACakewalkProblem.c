@@ -47,3 +47,23 @@ Testcase 1: 59 people solved it under 30 minutes. We should have at least 60 peo
 
 https://www.codechef.com/problems/ISITCAKE
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isCakewalkProblem(int timeTaken[10][10])
+{
+    int count = 0;
+    for (int rowIdx = 0; rowIdx < 10; rowIdx++)
+    {
+        for (int colIdx = 0; colIdx < 10; colIdx++)
+        {
+            count = count + (timeTaken[rowIdx][colIdx] <= 30);
+        }
+    }
+    
+    return count;
+}
