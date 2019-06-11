@@ -34,6 +34,8 @@ https://www.codechef.com/problems/SURVIVE
 */
 #define NUM_OF_DAYS_IN_WEEK 7
 
+#include <stdio.h>
+
 int getNumOfDaysToBuyChocolate(int numOfChocolatesInBox, int numOfChocolatesToEat, int numOfDaysToSurvive)
 {
     int numOfChocolatesReq = numOfChocolatesToEat * numOfDaysToSurvive;
@@ -41,4 +43,12 @@ int getNumOfDaysToBuyChocolate(int numOfChocolatesInBox, int numOfChocolatesToEa
 
     int numOfBoxesReq = 0 == numOfChocolatesReq % numOfChocolatesInBox ? numOfChocolatesReq / numOfChocolatesInBox : numOfChocolatesReq / numOfChocolatesInBox + 1;
     return numOfBoxesReq > numOfDaysToSurviveExclSunday ? -1 : numOfBoxesReq;
+}
+
+int main() {
+    int numOfChocolatesInBox = 16, numOfChocolatesToEat = 2, numOfDaysToSurvive = 10;
+    int numOfDaysToBuyChocolate = getNumOfDaysToBuyChocolate(numOfChocolatesInBox, numOfChocolatesToEat, numOfDaysToSurvive);
+
+    printf("%d\n", numOfDaysToBuyChocolate);
+    return 0;
 }
