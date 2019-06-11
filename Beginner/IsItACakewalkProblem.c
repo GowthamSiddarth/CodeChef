@@ -47,6 +47,7 @@ Testcase 1: 59 people solved it under 30 minutes. We should have at least 60 peo
 
 https://www.codechef.com/problems/ISITCAKE
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -64,6 +65,29 @@ enum Boolean isCakewalkProblem(int timeTaken[10][10])
             count = count + (timeTaken[rowIdx][colIdx] <= 30);
         }
     }
-    
+
     return count;
+}
+
+int main()
+{
+    int t;
+    scanf("%d", &t);
+
+    int timeTaken[10][10];
+    while (t--)
+    {
+        for (int rowIdx = 0; rowIdx < 10; rowIdx++)
+        {
+            for (int colIdx = 0; colIdx < 10; colIdx++)
+            {
+                scanf("%d", &timeTaken[rowIdx][colIdx]);
+            }
+        }
+    }
+
+    enum Boolean cakeWalkProblem = isCakewalkProblem(timeTaken);
+    printf("%s\n", cakeWalkProblem ? "yes" : "no");
+
+    return 0;
 }
