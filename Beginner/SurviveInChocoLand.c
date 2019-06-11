@@ -32,3 +32,28 @@ Example case 2: You will not be able to survive even if you buy from the shop ev
 
 https://www.codechef.com/problems/SURVIVE
 */
+
+int getNumOfDaysToBuyChocolate(int numOfChocolatesInBox, int numOfChocolatesToEat, int numOfDaysToSurvive)
+{
+    int numOfDaysToBuyChocolate = 0, numOfChocolatesAvailable = 0, numOfDaysSurvived = 0;
+    if (numOfDaysToSurvive > 7) {
+        numOfDaysToSurvive = 7;
+    }
+
+    while (numOfDaysSurvived < numOfDaysToSurvive)
+    {
+        if (numOfChocolatesAvailable < numOfChocolatesToEat) {
+            numOfChocolatesAvailable = numOfChocolatesAvailable + numOfChocolatesInBox;
+
+            if (numOfChocolatesAvailable < numOfChocolatesToEat)
+            {
+                return -1;
+            }
+            numOfDaysToBuyChocolate++;
+        }
+        numOfDaysSurvived = numOfDaysSurvived + numOfChocolatesAvailable / numOfChocolatesToEat;
+        numOfChocolatesAvailable = numOfChocolatesAvailable % numOfChocolatesToEat;
+    }
+    
+    return numOfDaysToBuyChocolate;
+}
