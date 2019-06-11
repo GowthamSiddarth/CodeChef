@@ -32,28 +32,13 @@ Example case 2: You will not be able to survive even if you buy from the shop ev
 
 https://www.codechef.com/problems/SURVIVE
 */
+#define NUM_OF_DAYS_IN_WEEK 7
 
 int getNumOfDaysToBuyChocolate(int numOfChocolatesInBox, int numOfChocolatesToEat, int numOfDaysToSurvive)
 {
-    int numOfDaysToBuyChocolate = 0, numOfChocolatesAvailable = 0, numOfDaysSurvived = 0;
-    if (numOfDaysToSurvive > 7) {
-        numOfDaysToSurvive = 7;
-    }
+    int numOfChocolatesReq = numOfChocolatesToEat * numOfDaysToSurvive;
+    int numOfDaysToSurviveExclSunday = numOfDaysToSurvive - numOfDaysToSurvive / NUM_OF_DAYS_IN_WEEK;
 
-    while (numOfDaysSurvived < numOfDaysToSurvive)
-    {
-        if (numOfChocolatesAvailable < numOfChocolatesToEat) {
-            numOfChocolatesAvailable = numOfChocolatesAvailable + numOfChocolatesInBox;
-
-            if (numOfChocolatesAvailable < numOfChocolatesToEat)
-            {
-                return -1;
-            }
-            numOfDaysToBuyChocolate++;
-        }
-        numOfDaysSurvived = numOfDaysSurvived + numOfChocolatesAvailable / numOfChocolatesToEat;
-        numOfChocolatesAvailable = numOfChocolatesAvailable % numOfChocolatesToEat;
-    }
-    
-    return numOfDaysToBuyChocolate;
+    int numOfBoxesReq = 0 == numOfChocolatesReq % numOfChocolatesInBox ? numOfChocolatesReq / numOfChocolatesInBox : numOfChocolatesReq / numOfChocolatesInBox + 1;
+    return numOfBoxesReq > numOfDaysToSurviveExclSunday ? -1 : numOfBoxesReq;
 }
