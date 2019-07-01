@@ -45,9 +45,20 @@ https://www.codechef.com/problems/CAMPON
 */
 #define MAX_DEADLINE 31
 
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
 struct JaffarSchedule
 {
     int day, numOfProblemsSovled;
+};
+
+struct JaffarScenario
+{
+    int deadline, required;
 };
 
 void setNumOfProblemsSolvedEachDay(struct JaffarSchedule *jaffarSchedule, int numOfDaysScheduled, int problemsSolvedByDays[MAX_DEADLINE])
@@ -60,4 +71,9 @@ void setNumOfProblemsSolvedEachDay(struct JaffarSchedule *jaffarSchedule, int nu
 
         problemsSolvedByDays[dayInJaffarSchedule.day - 1] = totalProblemsSolved;
     }
+}
+
+enum Boolean isJaffarEligible(struct JaffarScenario jaffarScenario, int problemsSolvedByDays[MAX_DEADLINE])
+{
+    return problemsSolvedByDays[jaffarScenario.deadline - 1] >= jaffarScenario.required ? TRUE : FALSE;
 }
