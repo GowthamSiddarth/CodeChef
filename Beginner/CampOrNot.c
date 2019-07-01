@@ -43,3 +43,21 @@ By the end of day 15, Jafar will have 9 problems solved, which is enough to go t
 
 https://www.codechef.com/problems/CAMPON
 */
+#define MAX_DEADLINE 31
+
+struct JaffarSchedule
+{
+    int day, numOfProblemsSovled;
+};
+
+void setNumOfProblemsSolvedEachDay(struct JaffarSchedule *jaffarSchedule, int numOfDaysScheduled, int problemsSolvedByDays[MAX_DEADLINE])
+{
+    int totalProblemsSolved = 0;
+    for (int idx = 0; idx < numOfDaysScheduled; idx++)
+    {
+        struct JaffarSchedule dayInJaffarSchedule = jaffarSchedule[idx];
+        totalProblemsSolved = totalProblemsSolved + dayInJaffarSchedule.numOfProblemsSovled;
+
+        problemsSolvedByDays[dayInJaffarSchedule.day - 1] = totalProblemsSolved;
+    }
+}
