@@ -84,9 +84,32 @@ enum Boolean isJaffarEligible(struct JaffarScenario jaffarScenario, int problems
         {
             return TRUE;
         }
+        else if (0 != problemsSolvedByDays[idx] && problemsSolvedByDays[idx] < jaffarScenario.required)
+        {
+            break;
+        }
 
         idx--;
     }
 
     return FALSE;
+}
+
+int main()
+{
+    int problemsSolvedByDays[MAX_DEADLINE] = {0};
+    struct JaffarSchedule jaffarSchedule[] = {{10, 5}, {14, 4}, {31, 1}};
+    int numOfDaysScheduled = sizeof(jaffarSchedule) / sizeof(jaffarSchedule[0]);
+    setNumOfProblemsSolvedEachDay(jaffarSchedule, numOfDaysScheduled, problemsSolvedByDays);
+
+    struct JaffarScenario jaffarScenario[] = {{9, 2}, {15, 7}};
+    int numOfScenarios = sizeof(jaffarScenario) / sizeof(jaffarScenario[0]);
+
+    for (int i = 0; i < numOfScenarios; i++)
+    {
+        enum Boolean jaffarEligible = isJaffarEligible(jaffarScenario[i], problemsSolvedByDays);
+        printf("%s\n", jaffarEligible ? "Go Camp" : "Go Sleep");
+    }
+
+    return 0;
 }
