@@ -40,6 +40,11 @@ int sumOfDigits(int num)
         sum = sum + num % 10;
         num = num / 10;
     }
-    
+
     return sum;
+}
+
+int getNthSmallestRoundInteger(int n)
+{
+    return n * 10 + 10 - sumOfDigits(n);
 }
