@@ -31,3 +31,15 @@ Example case 1: The smallest round integer is 19 and the second smallest is 28.
 
 https://www.codechef.com/problems/KS2
 */
+
+int sumOfDigits(int num)
+{
+    int sum = 0;
+    while (num)
+    {
+        sum = sum + num % 10;
+        num = num / 10;
+    }
+    
+    return sum;
+}
