@@ -39,18 +39,27 @@ Example Case 2. For each girl there is only one boy who likes her, so there are 
 https://www.codechef.com/problems/LCOLLIS
 */
 
-int getBinomialCoefficient(int n, int r)
+int getBinomialCoefficientWithBase2(int num)
 {
-    if (r > (n - r)) {
-        r = n - r;
-    }
+    return (num * (num - 1)) / 2;
+}
 
-    int binomialCoefficient = 0;
-    for (int i = 0; i < r; i++)
+int getNumOfCollisions(int **likeMatrix, int numOfBoys, int numOfGirls)
+{
+    int numOfCollisions = 0;
+    for (int girlIndex = 0; girlIndex < numOfGirls; girlIndex++)
     {
-        binomialCoefficient = binomialCoefficient * (n - i);
-        binomialCoefficient = binomialCoefficient / (i + 1);
+        int numOfBoysLikingCurrGirl = 0;
+        for (int boyIndex = 0; boyIndex < numOfBoys; boyIndex++)
+        {
+            if (1 == likeMatrix[boyIndex][girlIndex])
+            {
+                numOfBoysLikingCurrGirl++;
+            }
+        }
+        
+        numOfCollisions = numOfCollisions + getBinomialCoefficientWithBase2(numOfBoysLikingCurrGirl);
     }
     
-    return binomialCoefficient;
+    return numOfCollisions;
 }
