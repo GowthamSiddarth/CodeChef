@@ -26,6 +26,10 @@ Example case 1. In one step we can flip all the crayons pointing downwards
 
 https://www.codechef.com/problems/ADACRA
 */
+#define MAX_LEN 51
+
+#include <stdio.h>
+#include <string.h>
 
 struct AdaAndCrayons
 {
@@ -45,12 +49,28 @@ struct AdaAndCrayons getCountOfConsecutiveUpsAndDowns(char *crayons)
             idx++;
         }
 
+        'U' == currDirection ? adaAndCrayons.numOfConsecutiveUps++ : adaAndCrayons.numOfConsecutiveDowns++;
         if ('\0' != crayons[idx])
         {
-            'U' == currDirection ? adaAndCrayons.numOfConsecutiveUps++ : adaAndCrayons.numOfConsecutiveDowns++;
             currDirection = crayons[idx];
         }
     }
 
     return adaAndCrayons;
+}
+
+int min(int x, int y)
+{
+    return x <= y ? x : y;
+}
+
+int main()
+{
+    char crayons[MAX_LEN];
+    memcpy(crayons, "UDUDUDDDDDUUUDD", 16);
+
+    struct AdaAndCrayons adaAndCrayons = getCountOfConsecutiveUpsAndDowns(crayons);
+    printf("%d\n", min(adaAndCrayons.numOfConsecutiveDowns, adaAndCrayons.numOfConsecutiveUps));
+
+    return 0;
 }
