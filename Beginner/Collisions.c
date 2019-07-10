@@ -38,3 +38,19 @@ Example Case 2. For each girl there is only one boy who likes her, so there are 
 
 https://www.codechef.com/problems/LCOLLIS
 */
+
+int getBinomialCoefficient(int n, int r)
+{
+    if (r > (n - r)) {
+        r = n - r;
+    }
+
+    int binomialCoefficient = 0;
+    for (int i = 0; i < r; i++)
+    {
+        binomialCoefficient = binomialCoefficient * (n - i);
+        binomialCoefficient = binomialCoefficient / (i + 1);
+    }
+    
+    return binomialCoefficient;
+}
