@@ -38,13 +38,17 @@ Example Case 2. For each girl there is only one boy who likes her, so there are 
 
 https://www.codechef.com/problems/LCOLLIS
 */
+#define NUM_OF_BOYS 2
+#define NUM_OF_GIRLS 2
+
+#include <stdio.h>
 
 int getBinomialCoefficientWithBase2(int num)
 {
     return (num * (num - 1)) / 2;
 }
 
-int getNumOfCollisions(int **likeMatrix, int numOfBoys, int numOfGirls)
+int getNumOfCollisions(int likeMatrix[NUM_OF_BOYS][NUM_OF_GIRLS], int numOfBoys, int numOfGirls)
 {
     int numOfCollisions = 0;
     for (int girlIndex = 0; girlIndex < numOfGirls; girlIndex++)
@@ -57,9 +61,18 @@ int getNumOfCollisions(int **likeMatrix, int numOfBoys, int numOfGirls)
                 numOfBoysLikingCurrGirl++;
             }
         }
-        
+
         numOfCollisions = numOfCollisions + getBinomialCoefficientWithBase2(numOfBoysLikingCurrGirl);
     }
-    
+
     return numOfCollisions;
+}
+
+int main()
+{
+    int likeMatrix[NUM_OF_BOYS][NUM_OF_GIRLS] = {{1, 0}, {0, 1}};
+    int numOfCollisions = getNumOfCollisions(likeMatrix, NUM_OF_BOYS, NUM_OF_GIRLS);
+
+    printf("%d\n", numOfCollisions);
+    return 0;
 }
