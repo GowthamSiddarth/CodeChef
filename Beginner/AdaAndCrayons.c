@@ -26,3 +26,31 @@ Example case 1. In one step we can flip all the crayons pointing downwards
 
 https://www.codechef.com/problems/ADACRA
 */
+
+struct AdaAndCrayons
+{
+    int numOfConsecutiveUps, numOfConsecutiveDowns;
+};
+
+struct AdaAndCrayons getCountOfConsecutiveUpsAndDowns(char *crayons)
+{
+    struct AdaAndCrayons adaAndCrayons = {0, 0};
+    char currDirection = crayons[0];
+
+    int idx = 0;
+    while ('\0' != crayons[idx])
+    {
+        while ('\0' != crayons[idx] && currDirection == crayons[idx])
+        {
+            idx++;
+        }
+
+        if ('\0' != crayons[idx])
+        {
+            'U' == currDirection ? adaAndCrayons.numOfConsecutiveUps++ : adaAndCrayons.numOfConsecutiveDowns++;
+            currDirection = crayons[idx];
+        }
+    }
+
+    return adaAndCrayons;
+}
