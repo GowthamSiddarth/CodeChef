@@ -43,3 +43,25 @@ The answer is "NO" for 000 because the segment formed by the '1' digits must be 
 
 https://www.codechef.com/problems/SEGM01
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean does1sFormSegment(char *string)
+{
+    int idx = 0;
+    while ('\0' != string[idx] && '0' == string[idx])
+    {
+        idx++;
+    }
+
+    while ('\0' != string[idx] && '1' == string[idx])
+    {
+        idx++;
+    }
+
+    return '\0' == string[idx] && '1' == string[idx - 1] ? TRUE : FALSE;
+}
