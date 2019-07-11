@@ -50,16 +50,34 @@ https://www.codechef.com/problems/CO92JUDG
 */
 #include <limits.h>
 
-int getMaxItemFromArray(int *arr, int len)
+enum Winner
 {
-    int max = INT_MIN;
-    for (int idx = 0; idx < len; idx++)
+    ALICE,
+    BOB,
+    DRAW
+};
+
+enum Winner getWinner(int *aliceFinishTimes, int *bobFinishTimes, int numOfRaces)
+{
+    int aliceMaxFinishTime = INT_MIN, bobMaxFinishTime = INT_MIN, aliceTotalFinishTime = 0, bobTotalFinishTime = 0;
+    for (int idx = 0; idx < numOfRaces; idx++)
     {
-        if (arr[idx] > max)
+        aliceTotalFinishTime = aliceTotalFinishTime + aliceFinishTimes[idx];
+        bobTotalFinishTime = bobTotalFinishTime + bobFinishTimes[idx];
+
+        if (aliceFinishTimes[idx] > aliceMaxFinishTime)
         {
-            max = arr[idx];
+            aliceMaxFinishTime = aliceFinishTimes[idx];
+        }
+
+        if (bobFinishTimes[idx] > bobMaxFinishTime)
+        {
+            bobMaxFinishTime = bobFinishTimes[idx];
         }
     }
 
-    return max;
+    aliceTotalFinishTime = aliceTotalFinishTime - aliceMaxFinishTime;
+    bobTotalFinishTime = bobTotalFinishTime - bobMaxFinishTime;
+
+    return aliceTotalFinishTime > bobTotalFinishTime ? BOB : aliceTotalFinishTime < bobTotalFinishTime ? ALICE : DRAW;
 }
