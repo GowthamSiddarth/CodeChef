@@ -43,6 +43,10 @@ The answer is "NO" for 000 because the segment formed by the '1' digits must be 
 
 https://www.codechef.com/problems/SEGM01
 */
+#define MAX_LEN 100001
+
+#include <stdio.h>
+#include <string.h>
 
 enum Boolean
 {
@@ -58,10 +62,31 @@ enum Boolean does1sFormSegment(char *string)
         idx++;
     }
 
+    if ('\0' == string[idx])
+    {
+        return FALSE;
+    }
+
     while ('\0' != string[idx] && '1' == string[idx])
     {
         idx++;
     }
 
-    return '\0' == string[idx] && '1' == string[idx - 1] ? TRUE : FALSE;
+    while ('\0' != string[idx] && '0' == string[idx])
+    {
+        idx++;
+    }
+
+    return '\0' == string[idx] ? TRUE : FALSE;
+}
+
+int main()
+{
+    char string[MAX_LEN];
+    memcpy(string, "0000", 5);
+
+    enum Boolean _1sSegmentExist = does1sFormSegment(string);
+    printf("%s\n", _1sSegmentExist ? "YES" : "NO");
+
+    return 0;
 }
