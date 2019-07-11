@@ -47,6 +47,8 @@ Hence, the minimum total time taken would be 5 seconds.
 https://www.codechef.com/problems/XENTASK
 */
 
+#include <stdio.h>
+
 enum Boolean
 {
     FALSE,
@@ -69,4 +71,16 @@ int getMinTimeToCompleteTasks(int *xennyDurations, int *yanaDurations, int numOf
     }
 
     return timeTakenWithXennyStart < timeTakenWithYanaStart ? timeTakenWithXennyStart : timeTakenWithYanaStart;
+}
+
+int main()
+{
+    int xennyDurations[] = {2, 1, 2};
+    int yanaDurations[] = {3, 2, 1};
+    int numOfTasks = sizeof(xennyDurations) / sizeof(xennyDurations[0]);
+
+    int minTimeToCompleteTasks = getMinTimeToCompleteTasks(xennyDurations, yanaDurations, numOfTasks);
+    printf("%d\n", minTimeToCompleteTasks);
+
+    return 0;
 }
