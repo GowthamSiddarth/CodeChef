@@ -36,6 +36,10 @@ You can try any other value for string Z, it will never exceed 6.
 
 https://www.codechef.com/problems/ACBALL
 */
+#define MAX_LEN 100001
+
+#include <string.h>
+#include <stdio.h>
 
 char getComplimentChar(char c)
 {
@@ -50,4 +54,18 @@ void findLexSmallestStringWithMaxHammingDist(char *str1, char *str2, char *resSt
         resStr[idx] = str1[idx] == str2[idx] ? getComplimentChar(str1[idx]) : 'B';
         idx++;
     }
+
+    resStr[idx] = '\0';
+}
+
+int main()
+{
+    char str1[MAX_LEN], str2[MAX_LEN],  resStr[MAX_LEN];
+    memcpy(str1, "WBWBBWBWBW", 11);
+    memcpy(str2, "WBBBBBWBWB", 11);
+
+    findLexSmallestStringWithMaxHammingDist(str1, str2, resStr);
+    printf("%s\n", resStr);
+
+    return 0;
 }
