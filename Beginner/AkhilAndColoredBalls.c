@@ -36,3 +36,18 @@ You can try any other value for string Z, it will never exceed 6.
 
 https://www.codechef.com/problems/ACBALL
 */
+
+char getComplimentChar(char c)
+{
+    return 'W' == c ? 'B' : 'W';
+}
+
+void findLexSmallestStringWithMaxHammingDist(char *str1, char *str2, char *resStr)
+{
+    int idx = 0;
+    while ('\0' != str1[idx])
+    {
+        resStr[idx] = str1[idx] == str2[idx] ? getComplimentChar(str1[idx]) : 'B';
+        idx++;
+    }
+}
