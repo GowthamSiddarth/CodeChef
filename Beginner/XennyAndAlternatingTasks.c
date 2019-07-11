@@ -46,3 +46,27 @@ Hence, the minimum total time taken would be 5 seconds.
 
 https://www.codechef.com/problems/XENTASK
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2;
+}
+
+int getMinTimeToCompleteTasks(int *xennyDurations, int *yanaDurations, int numOfTasks)
+{
+    int timeTakenWithXennyStart = 0, timeTakenWithYanaStart = 0;
+
+    for (int idx = 0; idx < numOfTasks; idx++)
+    {
+        timeTakenWithXennyStart = timeTakenWithXennyStart + (isEven(idx) ? xennyDurations[idx] : yanaDurations[idx]);
+        timeTakenWithYanaStart = timeTakenWithYanaStart + (isEven(idx) ? yanaDurations[idx] : xennyDurations[idx]);
+    }
+
+    return timeTakenWithXennyStart < timeTakenWithYanaStart ? timeTakenWithXennyStart : timeTakenWithYanaStart;
+}
