@@ -48,3 +48,18 @@ Example case 3: Alice will choose the finish time of the first race to be consid
 
 https://www.codechef.com/problems/CO92JUDG
 */
+#include <limits.h>
+
+int getMaxItemFromArray(int *arr, int len)
+{
+    int max = INT_MIN;
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (arr[idx] > max)
+        {
+            max = arr[idx];
+        }
+    }
+
+    return max;
+}
