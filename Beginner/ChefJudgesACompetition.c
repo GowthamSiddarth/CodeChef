@@ -49,6 +49,7 @@ Example case 3: Alice will choose the finish time of the first race to be consid
 https://www.codechef.com/problems/CO92JUDG
 */
 #include <limits.h>
+#include <stdio.h>
 
 enum Winner
 {
@@ -80,4 +81,16 @@ enum Winner getWinner(int *aliceFinishTimes, int *bobFinishTimes, int numOfRaces
     bobTotalFinishTime = bobTotalFinishTime - bobMaxFinishTime;
 
     return aliceTotalFinishTime > bobTotalFinishTime ? BOB : aliceTotalFinishTime < bobTotalFinishTime ? ALICE : DRAW;
+}
+
+int main()
+{
+    int aliceFinishTimes[] = {4, 1, 3};
+    int bobFinishTimes[] = {2, 2, 7};
+    int numOfRaces = sizeof(aliceFinishTimes) / sizeof(aliceFinishTimes[0]);
+
+    enum Winner winner = getWinner(aliceFinishTimes, bobFinishTimes, numOfRaces);
+    printf("%s\n", ALICE == winner ? "Alice" : BOB == winner ? "Bob" : "Draw");
+
+    return 0;
 }
