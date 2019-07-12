@@ -45,3 +45,22 @@ No letter is missing so there is no point in buying something. The answer is 0.
 
 https://www.codechef.com/problems/MATPAN
 */
+#define NUM_OF_ALPHAS 26
+
+int getCostToConvertToPangram(char *string, int costOfAlphabets[NUM_OF_ALPHAS])
+{
+    int idx = 0;
+    while ('\0' != string[idx])
+    {
+        costOfAlphabets[string[idx] - 'a'] = 0;
+        idx++;
+    }
+
+    int cost = 0, idx = 0;
+    while (idx < NUM_OF_ALPHAS)
+    {
+        cost = cost + costOfAlphabets[idx];
+    }
+
+    return cost;        
+}
