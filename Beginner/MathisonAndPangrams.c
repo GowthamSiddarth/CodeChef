@@ -46,6 +46,10 @@ No letter is missing so there is no point in buying something. The answer is 0.
 https://www.codechef.com/problems/MATPAN
 */
 #define NUM_OF_ALPHAS 26
+#define MAX_LEN 50001
+
+#include <stdio.h>
+#include <string.h>
 
 int getCostToConvertToPangram(char *string, int costOfAlphabets[NUM_OF_ALPHAS])
 {
@@ -56,11 +60,25 @@ int getCostToConvertToPangram(char *string, int costOfAlphabets[NUM_OF_ALPHAS])
         idx++;
     }
 
-    int cost = 0, idx = 0;
+    int cost = 0;
+    idx = 0;
     while (idx < NUM_OF_ALPHAS)
     {
         cost = cost + costOfAlphabets[idx];
+        idx++;
     }
 
-    return cost;        
+    return cost;
+}
+
+int main()
+{
+    int costOfAlphabets[NUM_OF_ALPHAS] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
+    char string[MAX_LEN];
+
+    memcpy(string, "thequickbrownfoxjumpsoverthelazydog", 36);
+    int costToConvertToPangram = getCostToConvertToPangram(string, costOfAlphabets);
+
+    printf("%d\n", costToConvertToPangram);
+    return 0;
 }
