@@ -41,3 +41,55 @@ Example case 4. "SC" can not correspond to Chef's activities. Here it means that
 
 https://www.codechef.com/problems/CHEFROUT
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Activity
+{
+    EAT = 'E',
+    COOK = 'C',
+    SLEEP = 'S',
+    NONE = '\0'
+};
+
+enum Activity getNextActivity(enum Activity currActivity)
+{
+    switch (currActivity)
+    {
+    case COOK:
+        return EAT;
+    case EAT:
+        return SLEEP;
+    case SLEEP:
+        return NONE;
+    }
+}
+
+enum Boolean isDailyRoutineOrdered(char *activities)
+{
+    int idx = 0;
+    char currActivity = COOK, nextActivity = EAT;
+    while ('\0' != activities[idx])
+    {
+        while ('\0' != activities[idx] && currActivity == activities[idx])
+        {
+            idx++;
+        }
+
+        if (nextActivity != activities[idx])
+        {
+            return FALSE;
+        }
+        else if (NONE != nextActivity)
+        {
+            currActivity = nextActivity;
+            nextActivity = getNextActivity(currActivity);
+        }
+    }
+
+    return TRUE;
+}
