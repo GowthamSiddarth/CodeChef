@@ -41,6 +41,7 @@ Example case 4. "SC" can not correspond to Chef's activities. Here it means that
 
 https://www.codechef.com/problems/CHEFROUT
 */
+#define MAX_LEN 100001
 
 enum Boolean
 {
@@ -71,21 +72,24 @@ enum Activity getNextActivity(enum Activity currActivity)
 
 enum Boolean isDailyRoutineOrdered(char *activities)
 {
-    int idx = 0;
     char currActivity = COOK, nextActivity = EAT;
+    enum Boolean activitiesFinished[26] = {FALSE};
+
+    int idx = 0;
     while ('\0' != activities[idx])
     {
         while ('\0' != activities[idx] && currActivity == activities[idx])
         {
             idx++;
         }
-
-        if (nextActivity != activities[idx])
+        
+        if (NONE != activities[idx] && nextActivity != activities[idx] && activitiesFinished[activities[idx] - 'A'])
         {
             return FALSE;
         }
         else if (NONE != nextActivity)
         {
+            activitiesFinished[currActivity - 'A'] = TRUE;
             currActivity = nextActivity;
             nextActivity = getNextActivity(currActivity);
         }
