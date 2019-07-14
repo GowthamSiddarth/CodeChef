@@ -43,6 +43,9 @@ https://www.codechef.com/problems/CHEFROUT
 */
 #define MAX_LEN 100001
 
+#include <stdio.h>
+#include <string.h>
+
 enum Boolean
 {
     FALSE,
@@ -96,4 +99,15 @@ enum Boolean isDailyRoutineOrdered(char *activities)
     }
 
     return TRUE;
+}
+
+int main()
+{
+    char activities[MAX_LEN];
+    memcpy(activities, "CCCC", 5);
+
+    enum Boolean dailyRoutineOrdered = isDailyRoutineOrdered(activities);
+    printf("%s\n", dailyRoutineOrdered ? "yes" : "no");
+
+    return 0;
 }
