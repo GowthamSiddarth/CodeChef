@@ -40,3 +40,40 @@ Example 4. The mongooses can eat at max two snakes. For example, s*mmm*sss, wher
 
 https://www.codechef.com/problems/SNELECT
 */
+
+enum Winner
+{
+    SNAKES = 's',
+    MONGOOSES = 'm',
+    TIE = 't'
+};
+
+enum Winner getWinner(char *population)
+{
+    int lastSnakeEatenAt = -1, idx = 0, snakePopulation = 0, mongoosePopulation = 0;
+    while ('\0' != population[idx])
+    {
+        if (MONGOOSES == population[idx])
+        {
+            mongoosePopulation++;
+            if (idx > 0 && lastSnakeEatenAt != (idx - 1) && SNAKES == population[idx - 1])
+            {
+                snakePopulation--;
+                lastSnakeEatenAt = idx - 1;
+            }
+            else if ('\0' != population[idx + 1] && lastSnakeEatenAt != (idx + 1) && SNAKES == population[idx + 1])
+            {
+                snakePopulation--;
+                lastSnakeEatenAt = idx + 1;
+            }
+        }
+        else
+        {
+            snakePopulation++;
+        }
+
+        idx++;
+    }
+
+    return snakePopulation > mongoosePopulation ? SNAKES : snakePopulation < mongoosePopulation ? MONGOOSES : TIE;
+}
