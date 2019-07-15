@@ -32,6 +32,8 @@ Output:
 
 https://www.codechef.com/problems/CHEFDETE
 */
+#include <stdio.h>
+#include <malloc.h>
 
 enum Boolean
 {
@@ -39,7 +41,7 @@ enum Boolean
     TRUE
 };
 
-void setIfMembersAreReported(int *reportingTo, int len, enum Boolean *isReported)
+void setMembersWhoAreReported(int *reportingTo, int len, enum Boolean *isReported)
 {
     for (int idx = 0; idx < len; idx++)
     {
@@ -48,4 +50,23 @@ void setIfMembersAreReported(int *reportingTo, int len, enum Boolean *isReported
             isReported[reportingTo[idx] - 1] = TRUE;
         }
     }
+}
+
+int main()
+{
+    int reportingTo[] = {3, 3, 0, 3, 3, 3};
+    int numOfMembers = sizeof(reportingTo) / sizeof(reportingTo[0]);
+
+    enum Boolean *isReported = (enum Boolean *)calloc(numOfMembers, sizeof(enum Boolean));
+    setMembersWhoAreReported(reportingTo, numOfMembers, isReported);
+
+    for (int idx = 0; idx < numOfMembers; idx++)
+    {
+        if (!isReported[idx])
+        {
+            printf("%d ", idx + 1);
+        }
+    }
+
+    return 0;
 }
