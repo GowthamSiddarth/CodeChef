@@ -32,3 +32,34 @@ The number of transitions are 0, 8, 2 and 4 for the respective cases. So, the fi
 
 https://www.codechef.com/problems/STRLBP
 */
+#define STRING_LENGTH 8
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isStateChanged(char prevChar, char currChar)
+{
+    return 0 != currChar - prevChar ? TRUE : FALSE;
+}
+
+enum Boolean isUniformString(char *binaryString)
+{
+    int numOfComparisions = 0, currIdx = 1, prevIdx = currIdx - 1, numOfStateChanges = 0;
+    while (numOfComparisions < STRING_LENGTH)
+    {
+        if (isStateChanged(prevIdx, currIdx))
+        {
+            numOfStateChanges++;
+        }
+
+        prevIdx = currIdx;
+        currIdx = (currIdx + 1) % STRING_LENGTH;
+
+        numOfComparisions++;
+    }
+
+    return numOfStateChanges <= 2 ? TRUE : FALSE;
+}
