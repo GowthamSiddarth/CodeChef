@@ -34,6 +34,9 @@ https://www.codechef.com/problems/STRLBP
 */
 #define STRING_LENGTH 8
 
+#include <string.h>
+#include <stdio.h>
+
 enum Boolean
 {
     FALSE,
@@ -50,7 +53,7 @@ enum Boolean isUniformString(char *binaryString)
     int numOfComparisions = 0, currIdx = 1, prevIdx = currIdx - 1, numOfStateChanges = 0;
     while (numOfComparisions < STRING_LENGTH)
     {
-        if (isStateChanged(prevIdx, currIdx))
+        if (isStateChanged(binaryString[prevIdx], binaryString[currIdx]))
         {
             numOfStateChanges++;
         }
@@ -62,4 +65,15 @@ enum Boolean isUniformString(char *binaryString)
     }
 
     return numOfStateChanges <= 2 ? TRUE : FALSE;
+}
+
+int main()
+{
+    char binaryString[STRING_LENGTH];
+    memcpy(binaryString, "10010011", STRING_LENGTH + 1);
+
+    enum Boolean uniformString = isUniformString(binaryString);
+    printf("%s\n", uniformString ? "uniform" : "non-uniform");
+
+    return 0;
 }
