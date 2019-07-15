@@ -63,11 +63,10 @@ enum Winner getWinner(char *population)
             }
             else if ('\0' != population[idx + 1] && lastSnakeEatenAt != (idx + 1) && SNAKES == population[idx + 1])
             {
-                snakePopulation--;
                 lastSnakeEatenAt = idx + 1;
             }
         }
-        else
+        else if (lastSnakeEatenAt != idx)
         {
             snakePopulation++;
         }
