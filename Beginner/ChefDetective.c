@@ -32,3 +32,20 @@ Output:
 
 https://www.codechef.com/problems/CHEFDETE
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+void setIfMembersAreReported(int *reportingTo, int len, enum Boolean *isReported)
+{
+    for (int idx = 0; idx < len; idx++)
+    {
+        if (reportingTo[idx] > 0)
+        {
+            isReported[reportingTo[idx] - 1] = TRUE;
+        }
+    }
+}
