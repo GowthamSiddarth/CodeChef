@@ -40,6 +40,10 @@ Example 4. The mongooses can eat at max two snakes. For example, s*mmm*sss, wher
 
 https://www.codechef.com/problems/SNELECT
 */
+#define MAX_LEN 101
+
+#include <stdio.h>
+#include <string.h>
 
 enum Winner
 {
@@ -75,4 +79,15 @@ enum Winner getWinner(char *population)
     }
 
     return snakePopulation > mongoosePopulation ? SNAKES : snakePopulation < mongoosePopulation ? MONGOOSES : TIE;
+}
+
+int main()
+{
+    char population[MAX_LEN];
+    memcpy(population, "sss", 4);
+
+    enum Winner winner = getWinner(population);
+    printf("%s\n", SNAKES == winner ? "snakes" : MONGOOSES == winner ? "mongooses" : "tie");
+
+    return 0;
 }
