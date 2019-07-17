@@ -36,6 +36,7 @@ The other possible way is to choose the subsequence 1, 2, and remove it. The Bit
 
 https://www.codechef.com/problems/CHNGOR
 */
+#include <stdio.h>
 
 int getBitwiseORforArr(int *arr, int len)
 {
@@ -46,4 +47,15 @@ int getBitwiseORforArr(int *arr, int len)
     }
 
     return bitwiseOr;    
+}
+
+int main()
+{
+    int arr[] = {1, 7, 9};
+    int len = sizeof(arr) / sizeof(arr[0]);
+
+    int bitwiseORforArr = getBitwiseORforArr(arr, len);
+    printf("%d\n", bitwiseORforArr);
+
+    return 0;
 }
