@@ -74,3 +74,43 @@ Example case 2: There are neither problems of "medium-hard" level nor "hard" lev
 
 https://www.codechef.com/problems/C00K0FF
 */
+
+enum DifficultyLevel
+{
+    CAKEWALK,
+    SIMPLE,
+    EASY,
+    EASY_MEDIUM,
+    MEDIUM,
+    MEDIUM_HARD,
+    HARD
+};
+
+enum DifficultyLevel getDifficultyLevel(char *difficulty)
+{
+    switch (difficulty[0])
+    {
+    case 'c':
+        return CAKEWALK;
+    case 's':
+        return SIMPLE;
+    case 'e':
+        int idx = 0;
+        while ('\0' != difficulty[idx] && '-' != difficulty[0])
+        {
+            idx++;
+        }
+
+        return '\0' == difficulty[idx] ? EASY : EASY_MEDIUM;
+    case 'm':
+        int idx = 0;
+        while ('\0' != difficulty[idx] && '-' != difficulty[0])
+        {
+            idx++;
+        }
+
+        return '\0' == difficulty[idx] ? MEDIUM : MEDIUM_HARD;
+    case 'H':
+        return HARD;
+    }
+}
