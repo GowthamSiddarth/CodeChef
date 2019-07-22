@@ -115,8 +115,29 @@ enum DifficultyLevel getDifficultyLevel(char *difficulty)
     }
 }
 
-void updateCount(int *counts, char *difficultyLevelStr)
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean areCountsValid(int *counts, char *difficultyLevelStr)
 {
     enum DifficultyLevel difficultyLevel = getDifficultyLevel(difficultyLevelStr);
     counts[difficultyLevel] = counts[difficultyLevel] + 1;
+    switch (difficultyLevel)
+    {
+    case CAKEWALK:
+        return 1 == counts[CAKEWALK] ? TRUE : FALSE;
+    case SIMPLE:
+        return 1 == counts[SIMPLE] ? TRUE : FALSE;
+    case EASY:
+        return 1 == counts[EASY] ? TRUE : FALSE;
+    case EASY_MEDIUM:
+    case MEDIUM:
+        return (1 == counts[EASY_MEDIUM]) ^ (1 == counts[MEDIUM]) ? TRUE : FALSE;
+    case MEDIUM_HARD:
+    case HARD:
+        return (1 == counts[MEDIUM_HARD]) ^ (1 == counts[HARD]) ? TRUE : FALSE;
+    }
 }
