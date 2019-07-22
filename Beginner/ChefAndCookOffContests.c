@@ -114,3 +114,9 @@ enum DifficultyLevel getDifficultyLevel(char *difficulty)
         return HARD;
     }
 }
+
+void updateCount(int *counts, char *difficultyLevelStr)
+{
+    enum DifficultyLevel difficultyLevel = getDifficultyLevel(difficultyLevelStr);
+    counts[difficultyLevel] = counts[difficultyLevel] + 1;
+}
