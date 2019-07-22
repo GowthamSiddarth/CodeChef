@@ -121,10 +121,13 @@ enum Boolean
     TRUE
 };
 
-enum Boolean areCountsValid(int *counts, char *difficultyLevelStr)
+void updateCounts(int *counts, enum DifficultyLevel difficultyLevel)
 {
-    enum DifficultyLevel difficultyLevel = getDifficultyLevel(difficultyLevelStr);
     counts[difficultyLevel] = counts[difficultyLevel] + 1;
+}
+
+enum Boolean isCountValid(int *counts, enum DifficultyLevel difficultyLevel)
+{
     switch (difficultyLevel)
     {
     case CAKEWALK:
