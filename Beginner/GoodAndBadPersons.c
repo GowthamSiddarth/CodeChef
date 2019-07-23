@@ -47,17 +47,21 @@ Example case 4: Four flips are allowed. It is not possible that Chef sent "straw
 
 https://www.codechef.com/problems/GOODBAD
 */
+#define MAX_LEN 101
+
+#include <stdio.h>
+#include <string.h>
 
 enum CharCase
 {
     LOWER,
     UPPER,
-    NONE
+    OTHER
 };
 
 enum CharCase getCharCase(char c)
 {
-    return c >= 'a' && c <= 'z' ? LOWER : c >= 'A' && c <= 'Z' ? UPPER : NONE;
+    return c >= 'a' && c <= 'z' ? LOWER : c >= 'A' && c <= 'Z' ? UPPER : OTHER;
 }
 
 enum Sender
@@ -107,4 +111,33 @@ enum Sender getSender(char *message, int maxFlips)
     {
         return NONE;
     }
+}
+
+int main()
+{
+    char message[MAX_LEN];
+    memcpy(message, "sTRAWBerry", 11);
+    int maxFlips = 9;
+
+    enum Sender sender = getSender(message, maxFlips);
+    switch (sender)
+    {
+    case CHEF:
+        printf("chef\n");
+        break;
+
+    case BROTHER:
+        printf("brother\n");
+        break;
+
+    case BOTH:
+        printf("both\n");
+        break;
+
+    case NONE:
+        printf("none\n");
+        break;
+    }
+
+    return 0;
 }
