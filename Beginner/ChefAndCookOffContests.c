@@ -74,45 +74,56 @@ Example case 2: There are neither problems of "medium-hard" level nor "hard" lev
 
 https://www.codechef.com/problems/C00K0FF
 */
+#define MAX_LEN 12
+#define NUM_OF_LEVELS 5
+
+#include <stdio.h>
 
 enum DifficultyLevel
 {
-    CAKEWALK,
-    SIMPLE,
-    EASY,
-    EASY_MEDIUM,
-    MEDIUM,
-    MEDIUM_HARD,
-    HARD
+    CAKEWALK = 0,
+    SIMPLE = 1,
+    EASY = 2,
+    EASY_MEDIUM = 3,
+    MEDIUM = 3,
+    MEDIUM_HARD = 4,
+    HARD = 4
 };
 
 enum DifficultyLevel getDifficultyLevel(char *difficulty)
 {
+    int idx = 0;
+    enum DifficultyLevel difficultyLevel;
     switch (difficulty[0])
     {
     case 'c':
-        return CAKEWALK;
+        difficultyLevel = CAKEWALK;
+        break;
     case 's':
-        return SIMPLE;
+        difficultyLevel = SIMPLE;
+        break;
     case 'e':
-        int idx = 0;
-        while ('\0' != difficulty[idx] && '-' != difficulty[0])
+        while ('\0' != difficulty[idx] && '-' != difficulty[idx])
         {
             idx++;
         }
 
-        return '\0' == difficulty[idx] ? EASY : EASY_MEDIUM;
+        difficultyLevel = '\0' == difficulty[idx] ? EASY : EASY_MEDIUM;
+        break;
     case 'm':
-        int idx = 0;
-        while ('\0' != difficulty[idx] && '-' != difficulty[0])
+        while ('\0' != difficulty[idx] && '-' != difficulty[idx])
         {
             idx++;
         }
 
-        return '\0' == difficulty[idx] ? MEDIUM : MEDIUM_HARD;
-    case 'H':
-        return HARD;
+        difficultyLevel = '\0' == difficulty[idx] ? MEDIUM : MEDIUM_HARD;
+        break;
+    case 'h':
+        difficultyLevel = HARD;
+        break;
     }
+
+    return difficultyLevel;
 }
 
 enum Boolean
@@ -126,21 +137,48 @@ void updateCounts(int *counts, enum DifficultyLevel difficultyLevel)
     counts[difficultyLevel] = counts[difficultyLevel] + 1;
 }
 
-enum Boolean isCountValid(int *counts, enum DifficultyLevel difficultyLevel)
+enum Boolean allDifficultyLevelsExist(int *counts)
 {
-    switch (difficultyLevel)
+    int idx = 0;
+    while (idx < NUM_OF_LEVELS && counts[idx] > 0)
     {
-    case CAKEWALK:
-        return 1 == counts[CAKEWALK] ? TRUE : FALSE;
-    case SIMPLE:
-        return 1 == counts[SIMPLE] ? TRUE : FALSE;
-    case EASY:
-        return 1 == counts[EASY] ? TRUE : FALSE;
-    case EASY_MEDIUM:
-    case MEDIUM:
-        return (1 == counts[EASY_MEDIUM]) ^ (1 == counts[MEDIUM]) ? TRUE : FALSE;
-    case MEDIUM_HARD:
-    case HARD:
-        return (1 == counts[MEDIUM_HARD]) ^ (1 == counts[HARD]) ? TRUE : FALSE;
+        idx++;
     }
+
+    return NUM_OF_LEVELS == idx ? TRUE : FALSE;
+}
+
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    
+    while (t--)
+    {
+        int numOfQuestions;
+        scanf("%d\n", &numOfQuestions);
+        
+        char difficultyLevelStr[MAX_LEN];
+        
+        int itr = 0;
+        int counts[NUM_OF_LEVELS] = {0};
+        enum Boolean allDiffLevelsExists = FALSE;
+        while (!allDiffLevelsExists && itr < numOfQuestions)
+        {
+            scanf("%s", difficultyLevelStr);
+            enum DifficultyLevel difficultyLevel = getDifficultyLevel(difficultyLevelStr);
+            updateCounts(counts, difficultyLevel);
+            allDiffLevelsExists = allDifficultyLevelsExist(counts);
+            itr++;
+        }
+    
+        printf("%s\n", allDiffLevelsExists ? "Yes" : "No");
+        while (itr < numOfQuestions)
+        {
+            scanf("%s", difficultyLevelStr);
+            itr++;
+        }
+    }
+    
+    return 0;
 }
