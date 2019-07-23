@@ -47,3 +47,64 @@ Example case 4: Four flips are allowed. It is not possible that Chef sent "straw
 
 https://www.codechef.com/problems/GOODBAD
 */
+
+enum CharCase
+{
+    LOWER,
+    UPPER,
+    NONE
+};
+
+enum CharCase getCharCase(char c)
+{
+    return c >= 'a' && c <= 'z' ? LOWER : c >= 'A' && c <= 'Z' ? UPPER : NONE;
+}
+
+enum Sender
+{
+    CHEF,
+    BROTHER,
+    BOTH,
+    NONE
+};
+
+enum Sender getSender(char *message, int maxFlips)
+{
+    int lowerCaseCount = 0, upperCaseCount = 0, idx = 0;
+    while ('\0' != message[idx])
+    {
+        enum CharCase charCase = getCharCase(message[idx]);
+        switch (charCase)
+        {
+        case LOWER:
+            lowerCaseCount++;
+            break;
+
+        case UPPER:
+            upperCaseCount++;
+            break;
+
+        default:
+            break;
+        }
+
+        idx++;
+    }
+
+    if (lowerCaseCount > maxFlips && upperCaseCount <= maxFlips)
+    {
+        return CHEF;
+    }
+    else if (upperCaseCount > maxFlips && lowerCaseCount <= maxFlips)
+    {
+        return BROTHER;
+    }
+    else if (upperCaseCount <= maxFlips && lowerCaseCount <= maxFlips)
+    {
+        return BOTH;
+    }
+    else
+    {
+        return NONE;
+    }
+}
