@@ -33,6 +33,7 @@ Example case 1. Chef and Kefa are on the same distance from the bottle, but Kefa
 
 https://www.codechef.com/problems/CHEFRUN
 */
+#include <stdio.h>
 
 enum Winner
 {
@@ -47,4 +48,31 @@ enum Winner getWinner(int chefLoc, int kefaLoc, int bottleLoc, int chefSpeed, in
     float timeTakenByKefa = (kefaLoc - bottleLoc) / (float)kefaSpeed;
 
     return timeTakenByChef < timeTakenByKefa ? CHEF : timeTakenByChef > timeTakenByKefa ? KEFA : DRAW;
+}
+
+int main()
+{
+    int chefLoc = 1;
+    int kefaLoc = 5;
+    int bottleLoc = 3;
+    int chefSpeed = 2;
+    int kefaSpeed = 2;
+
+    enum Winner winner = getWinner(chefLoc, kefaLoc, bottleLoc, chefSpeed, kefaSpeed);
+    switch (winner)
+    {
+    case CHEF:
+        printf("Chef\n");
+        break;
+
+    case KEFA:
+        printf("Kefa\n");
+        break;
+
+    default:
+        printf("Draw\n");
+        break;
+    }
+
+    return 0;
 }
