@@ -57,21 +57,27 @@ enum Boolean areAllChaptersPresent(enum Boolean *chapterOccurred, int numOfChapt
         idx++;
     }
 
+    free(chapterOccurred);
     return numOfChapters == idx ? TRUE : FALSE;
 }
 
 enum Boolean isDirectedByQuentinTarantino(int *chapters, int numOfChapters)
 {
     enum Boolean *chapterOccurred = (enum Boolean *)calloc(numOfChapters, sizeof(enum Boolean));
-    enum Boolean isStrictlyIncr = TRUE;
+    enum Boolean isLinear = TRUE;
     for (int idx = 0; idx < numOfChapters; idx++)
     {
-        chapterOccurred[chapters[idx] - 1] = TRUE;
-        if (isStrictlyIncr && idx > 0 && chapters[idx] < chapters[idx - 1])
+        int chapterIdx = chapters[idx] - 1;
+        if (chapterIdx >= 0 && chapterIdx < numOfChapters)
         {
-            isStrictlyIncr = FALSE;
+            chapterOccurred[chapterIdx] = TRUE;
+        }
+
+        if (isLinear && idx > 0 && chapters[idx] < chapters[idx - 1])
+        {
+            isLinear = FALSE;
         }
     }
 
-    return isStrictlyIncr && areAllChaptersPresent(chapterOccurred, numOfChapters);
+    return !isLinear && areAllChaptersPresent(chapterOccurred, numOfChapters);
 }
