@@ -68,3 +68,32 @@ void setNumOfOccOfEachDayInWeek(int numOfDaysInMonth, enum DayInWeek firstDay, i
         currDay = getNextDayInWeek(currDay);
     }
 }
+
+enum DayInWeek getDayInWeekFromStr(char *dayInWeekStr)
+{
+    enum DayInWeek dayInWeek;
+    switch (dayInWeekStr[0])
+    {
+    case 'm':
+        dayInWeek = MON;
+        break;
+
+    case 't':
+        dayInWeek = 'u' == dayInWeekStr[1] ? TUE : THU;
+        break;
+
+    case 'w':
+        dayInWeek = WED;
+        break;
+
+    case 'f':
+        dayInWeek = FRI;
+        break;
+
+    case 's':
+        dayInWeek = 'u' == dayInWeekStr[1] ? SUN : SAT;
+        break;
+    }
+
+    return dayInWeek;
+}
