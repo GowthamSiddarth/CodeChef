@@ -37,3 +37,34 @@ Example case 2: There are 4 Mondays, 4 Tuesdays, 5 Wednesdays, 5 Thursdays, 5 Fr
 
 https://www.codechef.com/problems/NW1
 */
+#define NUM_OF_DAYS_IN_WEEK 7
+#define MIN_DAYS_IN_MONTH 28
+
+enum DayInWeek
+{
+    MON,
+    TUE,
+    WED,
+    THU,
+    FRI,
+    SAT,
+    SUN
+};
+
+enum DayInWeek getNextDayInWeek(enum DayInWeek currDay)
+{
+    return (currDay + 1) % NUM_OF_DAYS_IN_WEEK;
+}
+
+void setNumOfOccOfEachDayInWeek(int numOfDaysInMonth, enum DayInWeek firstDay, int *numOfOccOfEachDayInWeek)
+{
+    enum DayInWeek currDay = firstDay;
+    int count = 0, extraDays = numOfDaysInMonth - MIN_DAYS_IN_MONTH;
+    while (count < NUM_OF_DAYS_IN_WEEK)
+    {
+        numOfOccOfEachDayInWeek[currDay] = extraDays > 0 ? 5 : 4;
+        extraDays--;
+        count++;
+        currDay = getNextDayInWeek(currDay);
+    }
+}
