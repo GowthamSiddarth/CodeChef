@@ -55,3 +55,17 @@ Example case 4. In the first month, Chef did not pay his maintenance fees. He pa
 
 https://www.codechef.com/problems/CHEFAPAR
 */
+#define MAINTANANCE 1000
+#define PENALTY 100
+#define NO_DUE 0
+
+int getTotalDue(int *hasPaidForMonth, int numOfMonths)
+{
+    int totalDue = 0;
+    for (int idx = 0; idx < numOfMonths; idx++)
+    {
+        totalDue = totalDue + (!hasPaidForMonth[idx] ? MAINTANANCE + PENALTY : idx > 0 && !hasPaidForMonth[idx - 1] ? PENALTY : NO_DUE);
+    }
+
+    return totalDue;
+}
