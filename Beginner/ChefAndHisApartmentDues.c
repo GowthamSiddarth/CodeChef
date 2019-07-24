@@ -57,14 +57,28 @@ https://www.codechef.com/problems/CHEFAPAR
 */
 #define MAINTANANCE 1000
 #define PENALTY 100
-#define NO_DUE 0
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
 
 int getTotalDue(int *hasPaidForMonth, int numOfMonths)
 {
     int totalDue = 0;
+    enum Boolean hasMissedPayingBefore = FALSE;
     for (int idx = 0; idx < numOfMonths; idx++)
     {
-        totalDue = totalDue + (!hasPaidForMonth[idx] ? MAINTANANCE + PENALTY : idx > 0 && !hasPaidForMonth[idx - 1] ? PENALTY : NO_DUE);
+        if (!hasPaidForMonth[idx])
+        {
+            totalDue = totalDue + MAINTANANCE + PENALTY;
+            hasMissedPayingBefore = TRUE;
+        }
+        else if (hasMissedPayingBefore)
+        {
+            totalDue = totalDue + PENALTY;
+        }
     }
 
     return totalDue;
