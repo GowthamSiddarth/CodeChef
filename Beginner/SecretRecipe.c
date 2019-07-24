@@ -33,3 +33,18 @@ Example case 1. Chef and Kefa are on the same distance from the bottle, but Kefa
 
 https://www.codechef.com/problems/CHEFRUN
 */
+
+enum Winner
+{
+    CHEF,
+    KEFA,
+    DRAW
+};
+
+enum Winner getWinner(int chefLoc, int kefaLoc, int bottleLoc, int chefSpeed, int kefaSpeed)
+{
+    float timeTakenByChef = (bottleLoc - chefLoc) / (float)chefSpeed;
+    float timeTakenByKefa = (kefaLoc - bottleLoc) / (float)kefaSpeed;
+
+    return timeTakenByChef < timeTakenByKefa ? CHEF : timeTakenByChef > timeTakenByKefa ? KEFA : DRAW;
+}
