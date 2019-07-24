@@ -57,6 +57,9 @@ https://www.codechef.com/problems/CHEFAPAR
 */
 #define MAINTANANCE 1000
 #define PENALTY 100
+#define NO_DUE 0
+
+#include <stdio.h>
 
 enum Boolean
 {
@@ -82,4 +85,15 @@ int getTotalDue(int *hasPaidForMonth, int numOfMonths)
     }
 
     return totalDue;
+}
+
+int main()
+{
+    int hasPaidForMonth[] = {0, 1, 0, 1, 1, 0, 0, 1};
+    int numOfMonths = sizeof(hasPaidForMonth) / sizeof(hasPaidForMonth[0]);
+
+    int totalDue = getTotalDue(hasPaidForMonth, numOfMonths);
+    printf("%d\n", totalDue);
+
+    return 0;
 }
