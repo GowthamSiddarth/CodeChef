@@ -24,3 +24,20 @@ Sample Output:
 
 https://www.codechef.com/problems/QUADROOT
 */
+
+#include <math.h>
+
+struct QuadRoot
+{
+    float x1, x2;
+};
+
+struct QuadRoot getRootsOfEqu(int a, int b, int c)
+{
+    struct QuadRoot quadRoot;
+    float x = sqrt(b * b - 4 * a * c);
+    quadRoot.x1 = (-b + x) / (2 * a);
+    quadRoot.x2 = (-b - x) / (2 * a);
+
+    return quadRoot;
+}
