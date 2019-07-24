@@ -42,6 +42,7 @@ All the examples are explained in the problem statement.
 https://www.codechef.com/problems/KOL16J
 */
 #include <malloc.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -80,4 +81,15 @@ enum Boolean isDirectedByQuentinTarantino(int *chapters, int numOfChapters)
     }
 
     return !isLinear && areAllChaptersPresent(chapterOccurred, numOfChapters);
+}
+
+int main()
+{
+    int chapters[] = {2, 3, 1};
+    int numOfChapters = sizeof(chapters) / sizeof(chapters[0]);
+
+    enum Boolean directedByQuentinTarantino = isDirectedByQuentinTarantino(chapters, numOfChapters);
+    printf("%s\n", directedByQuentinTarantino ? "yes" : "no");
+
+    return 0;
 }
