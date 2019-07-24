@@ -24,8 +24,8 @@ Sample Output:
 
 https://www.codechef.com/problems/QUADROOT
 */
-
 #include <math.h>
+#include <stdio.h>
 
 struct QuadRoot
 {
@@ -40,4 +40,13 @@ struct QuadRoot getRootsOfEqu(int a, int b, int c)
     quadRoot.x2 = (-b - x) / (2 * a);
 
     return quadRoot;
+}
+
+int main()
+{
+    int a = 1, b = -8, c = 15;
+    struct QuadRoot quadRoot = getRootsOfEqu(a, b , c);
+
+    printf("%f %f", quadRoot.x1, quadRoot.x2);
+    return 0;
 }
