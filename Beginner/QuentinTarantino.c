@@ -41,3 +41,37 @@ All the examples are explained in the problem statement.
 
 https://www.codechef.com/problems/KOL16J
 */
+#include <malloc.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean areAllChaptersPresent(enum Boolean *chapterOccurred, int numOfChapters)
+{
+    int idx = 0;
+    while (idx < numOfChapters && chapterOccurred[idx])
+    {
+        idx++;
+    }
+
+    return numOfChapters == idx ? TRUE : FALSE;
+}
+
+enum Boolean isDirectedByQuentinTarantino(int *chapters, int numOfChapters)
+{
+    enum Boolean *chapterOccurred = (enum Boolean *)calloc(numOfChapters, sizeof(enum Boolean));
+    enum Boolean isStrictlyIncr = TRUE;
+    for (int idx = 0; idx < numOfChapters; idx++)
+    {
+        chapterOccurred[chapters[idx] - 1] = TRUE;
+        if (isStrictlyIncr && idx > 0 && chapters[idx] < chapters[idx - 1])
+        {
+            isStrictlyIncr = FALSE;
+        }
+    }
+
+    return isStrictlyIncr && areAllChaptersPresent(chapterOccurred, numOfChapters);
+}
