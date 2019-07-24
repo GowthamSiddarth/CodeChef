@@ -39,6 +39,10 @@ https://www.codechef.com/problems/NW1
 */
 #define NUM_OF_DAYS_IN_WEEK 7
 #define MIN_DAYS_IN_MONTH 28
+#define MAX_LEN 6
+
+#include <stdio.h>
+#include <string.h>
 
 enum DayInWeek
 {
@@ -54,19 +58,6 @@ enum DayInWeek
 enum DayInWeek getNextDayInWeek(enum DayInWeek currDay)
 {
     return (currDay + 1) % NUM_OF_DAYS_IN_WEEK;
-}
-
-void setNumOfOccOfEachDayInWeek(int numOfDaysInMonth, enum DayInWeek firstDay, int *numOfOccOfEachDayInWeek)
-{
-    enum DayInWeek currDay = firstDay;
-    int count = 0, extraDays = numOfDaysInMonth - MIN_DAYS_IN_MONTH;
-    while (count < NUM_OF_DAYS_IN_WEEK)
-    {
-        numOfOccOfEachDayInWeek[currDay] = extraDays > 0 ? 5 : 4;
-        extraDays--;
-        count++;
-        currDay = getNextDayInWeek(currDay);
-    }
 }
 
 enum DayInWeek getDayInWeekFromStr(char *dayInWeekStr)
@@ -96,4 +87,33 @@ enum DayInWeek getDayInWeekFromStr(char *dayInWeekStr)
     }
 
     return dayInWeek;
+}
+
+void setNumOfOccOfEachDayInWeek(int numOfDaysInMonth, char firstDay[MAX_LEN], int *numOfOccOfEachDayInWeek)
+{
+    enum DayInWeek currDay = getDayInWeekFromStr(firstDay);
+    int count = 0, extraDays = numOfDaysInMonth - MIN_DAYS_IN_MONTH;
+    while (count < NUM_OF_DAYS_IN_WEEK)
+    {
+        numOfOccOfEachDayInWeek[currDay] = extraDays > 0 ? 5 : 4;
+        extraDays--;
+        count++;
+        currDay = getNextDayInWeek(currDay);
+    }
+}
+
+int main()
+{
+    char firstDay[MAX_LEN];
+    memcpy(firstDay, "mon", 4);
+    int numOfDaysInMonth = 29;
+    int numOfOccOfEachDayInWeek[NUM_OF_DAYS_IN_WEEK] = {0};
+
+    setNumOfOccOfEachDayInWeek(numOfDaysInMonth, firstDay, numOfOccOfEachDayInWeek);
+    for (int idx = 0; idx < NUM_OF_DAYS_IN_WEEK; idx++)
+    {
+        printf("%d ", numOfOccOfEachDayInWeek[idx]);
+    }
+
+    return 0;
 }
