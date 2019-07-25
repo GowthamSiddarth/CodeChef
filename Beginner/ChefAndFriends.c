@@ -79,3 +79,39 @@ int *getMaxPrefixSubstrArr(char *str)
 
     return maxPrefixSubstrArr;
 }
+
+int indexOf(char *text, char *pattern)
+{
+    int textLen = strlen(text);
+    int patternLen = strlen(pattern);
+    int concatenatedLen = textLen + patternLen + 2;
+    char *concatenatedStr = (char *)calloc(concatenatedLen, sizeof(char));
+
+    int destIdx = 0, srcIdx = 0;
+    while ('\0' != pattern[srcIdx])
+    {
+        concatenatedStr[destIdx] = pattern[srcIdx];
+        srcIdx++;
+        destIdx++;
+    }
+
+    concatenatedStr[destIdx] = '$';
+    srcIdx = 0;
+    while ('\0' != text[srcIdx])
+    {
+        concatenatedStr[destIdx] = text[srcIdx];
+        srcIdx++;
+        destIdx++;
+    }
+
+    int *maxPrefixSubstrArr = getMaxPrefixSubstrArr(concatenatedStr);
+    for (int idx = 0; idx < concatenatedLen; idx++)
+    {
+        if (maxPrefixSubstrArr[idx] == patternLen)
+        {
+            return idx - patternLen - 1;
+        }
+    }
+
+    return -1;
+}
