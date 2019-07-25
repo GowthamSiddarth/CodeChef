@@ -35,3 +35,47 @@ the common substring with kefaa is "ef" and the common substring with chemthan i
 
 https://www.codechef.com/problems/FRK
 */
+#include <malloc.h>
+#include <string.h>
+
+int *getMaxPrefixSubstrArr(char *str)
+{
+    int left = 0, right = 0, idx = 0, len = strlen(str);
+    int *maxPrefixSubstrArr = (int *)malloc(sizeof(int) * len);
+    while ('\0' != str[idx])
+    {
+        if (idx > right)
+        {
+            left = right = idx;
+
+            while ('\0' != str[right] && str[right - left] == str[right])
+            {
+                right++;
+            }
+
+            maxPrefixSubstrArr[idx] = right - left;
+            right--;
+        }
+        else
+        {
+            int k = idx - left;
+            if (maxPrefixSubstrArr[k] < right - idx + 1)
+            {
+                maxPrefixSubstrArr[idx] = maxPrefixSubstrArr[k];
+            }
+            else
+            {
+                left = idx;
+                while ('\0' != str[right] && str[right - left] == str[right])
+                {
+                    right++;
+                }
+
+                maxPrefixSubstrArr[idx] = right - left;
+                right--;
+            }
+        }
+    }
+
+    return maxPrefixSubstrArr;
+}
