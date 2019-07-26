@@ -53,5 +53,5 @@ enum Boolean isCoderLifeBoring(enum Boolean *didCoding, int numOfActivities)
         idx++;
     }
 
-    return numOfActivities != idx ? TRUE : FALSE;
+    return numOfActivities != idx || consecutiveCoding > 5 ? TRUE : FALSE;
 }
