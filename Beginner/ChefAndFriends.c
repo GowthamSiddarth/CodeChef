@@ -36,8 +36,8 @@ the common substring with kefaa is "ef" and the common substring with chemthan i
 https://www.codechef.com/problems/FRK
 */
 #define MAX_LEN_TEXT 20
-#define NUM_OF_SUBSTR 5
-#define MAX_LEN_SUBSTR 4
+#define NUM_OF_SUBSTR 3
+#define MAX_LEN_SUBSTR 3
 
 #include <malloc.h>
 #include <string.h>
@@ -150,7 +150,7 @@ enum Boolean isFriendToChef(char *nickName, char substrings[NUM_OF_SUBSTR][MAX_L
 
 int main()
 {
-    char substrings[NUM_OF_SUBSTR][MAX_LEN_SUBSTR] = {"ch", "he", "ef", "che", "hef"};
+    char substrings[NUM_OF_SUBSTR][MAX_LEN_SUBSTR] = {"ch", "he", "ef"};
     char nickName[MAX_LEN_TEXT];
     memcpy(nickName, "chamthanhef", 12);
 
