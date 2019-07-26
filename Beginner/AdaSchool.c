@@ -28,3 +28,19 @@ https://codechef_shared.s3.amazonaws.com/download/Images/CK102TST/ADASCOOL/ADASC
 
 https://www.codechef.com/problems/ADASCOOL
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2 ? TRUE : FALSE;
+}
+
+enum Boolean isShufflingPossible(int rows, int cols)
+{
+    return isEven(rows) || isEven(cols);
+}
