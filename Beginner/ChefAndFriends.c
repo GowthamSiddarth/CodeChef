@@ -37,10 +37,11 @@ https://www.codechef.com/problems/FRK
 */
 #include <malloc.h>
 #include <string.h>
+#include <stdio.h>
 
 int *getMaxPrefixSubstrArr(char *str)
 {
-    int left = 0, right = 0, idx = 0, len = strlen(str);
+    int left = 0, right = 0, idx = 1, len = strlen(str);
     int *maxPrefixSubstrArr = (int *)malloc(sizeof(int) * len);
     while ('\0' != str[idx])
     {
@@ -75,6 +76,8 @@ int *getMaxPrefixSubstrArr(char *str)
                 right--;
             }
         }
+
+        idx++;
     }
 
     return maxPrefixSubstrArr;
@@ -84,8 +87,8 @@ int indexOf(char *text, char *pattern)
 {
     int textLen = strlen(text);
     int patternLen = strlen(pattern);
-    int concatenatedLen = textLen + patternLen + 2;
-    char *concatenatedStr = (char *)calloc(concatenatedLen, sizeof(char));
+    int concatenatedLen = textLen + patternLen + 1;
+    char *concatenatedStr = (char *)calloc(concatenatedLen + 1, sizeof(char));
 
     int destIdx = 0, srcIdx = 0;
     while ('\0' != pattern[srcIdx])
@@ -96,6 +99,7 @@ int indexOf(char *text, char *pattern)
     }
 
     concatenatedStr[destIdx] = '$';
+    destIdx++;
     srcIdx = 0;
     while ('\0' != text[srcIdx])
     {
@@ -109,9 +113,33 @@ int indexOf(char *text, char *pattern)
     {
         if (maxPrefixSubstrArr[idx] == patternLen)
         {
+            free(maxPrefixSubstrArr);
+            free(concatenatedStr);
             return idx - patternLen - 1;
         }
     }
 
+    free(maxPrefixSubstrArr);
+    free(concatenatedStr);
     return -1;
+}
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isFriendToChef(char *nickName, char substrings[NUM_OF_SUBSTR][MAX_LEN_SUBSTR])
+{
+    for (int idx = 0; idx < NUM_OF_SUBSTR; idx++)
+    {
+        int f = indexOf(nickName, substrings[idx]);
+        if (indexOf(nickName, substrings[idx]) >= 0)
+        {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
 }
