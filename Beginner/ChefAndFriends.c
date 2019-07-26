@@ -35,6 +35,10 @@ the common substring with kefaa is "ef" and the common substring with chemthan i
 
 https://www.codechef.com/problems/FRK
 */
+#define MAX_LEN_TEXT 20
+#define NUM_OF_SUBSTR 5
+#define MAX_LEN_SUBSTR 4
+
 #include <malloc.h>
 #include <string.h>
 #include <stdio.h>
@@ -142,4 +146,16 @@ enum Boolean isFriendToChef(char *nickName, char substrings[NUM_OF_SUBSTR][MAX_L
     }
 
     return FALSE;
+}
+
+int main()
+{
+    char substrings[NUM_OF_SUBSTR][MAX_LEN_SUBSTR] = {"ch", "he", "ef", "che", "hef"};
+    char nickName[MAX_LEN_TEXT];
+    memcpy(nickName, "chamthanhef", 12);
+
+    enum Boolean friendToChef = isFriendToChef(nickName, substrings);
+    printf("%s\n", friendToChef ? "yes" : "no");
+
+    return 0;
 }
