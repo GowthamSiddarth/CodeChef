@@ -37,6 +37,7 @@ Testcase 4: This seems like a curious case of a programmer, she works 7 days and
 
 https://www.codechef.com/problems/CODERLIF
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -54,4 +55,15 @@ enum Boolean isCoderLifeBoring(enum Boolean *didCoding, int numOfActivities)
     }
 
     return numOfActivities != idx || consecutiveCoding > 5 ? TRUE : FALSE;
+}
+
+int main()
+{
+    enum Boolean didCoding[] = {FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE};
+    int numOfActivites = sizeof(didCoding) / sizeof(didCoding[0]);
+
+    enum Boolean coderLifeBoring = isCoderLifeBoring(didCoding, numOfActivites);
+    printf("%s\n", coderLifeBoring ? "#coderlifematters" : "#allcodersarefun");
+
+    return 0;
 }
