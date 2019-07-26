@@ -37,3 +37,21 @@ Testcase 4: This seems like a curious case of a programmer, she works 7 days and
 
 https://www.codechef.com/problems/CODERLIF
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isCoderLifeBoring(enum Boolean *didCoding, int numOfActivities)
+{
+    int consecutiveCoding = 0, idx = 0;
+    while (consecutiveCoding <= 5 && idx < numOfActivities)
+    {
+        consecutiveCoding = didCoding[idx] ? consecutiveCoding + 1 : 0;
+        idx++;
+    }
+
+    return numOfActivities != idx ? TRUE : FALSE;
+}
