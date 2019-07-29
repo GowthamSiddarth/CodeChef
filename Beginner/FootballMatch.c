@@ -41,6 +41,7 @@ https://www.codechef.com/problems/FBMT
 #define MAX_SIZE 20
 #define DRAW "Draw"
 
+#include <stdio.h>
 #include <string.h>
 #include <malloc.h>
 
@@ -67,4 +68,46 @@ void setTeamName(struct FootballTeam *footballTeam, char teamName[MAX_SIZE])
 char *getWinnerName(struct FootballTeam *team1, struct FootballTeam *team2)
 {
     return team1->score > team2->score ? team1->teamName : team1->score < team2->score ? team2->teamName : DRAW;
+}
+
+int main()
+{
+    int t;
+    scanf("%d", &t);
+
+    struct FootballTeam *firstScoringTeam = initFootballTeam("", 0);
+    struct FootballTeam *lastScoringTeam = initFootballTeam("", 0);
+    char currScoringTeamName[MAX_SIZE] = {'\0'};
+
+    int numOfPoints;
+    while (t--)
+    {
+        scanf("%d\n", &numOfPoints);
+        while (numOfPoints--)
+        {
+            scanf("%s", currScoringTeamName);
+            if (0 == strlen(firstScoringTeam->teamName))
+            {
+                setTeamName(firstScoringTeam, currScoringTeamName);
+                firstScoringTeam->score++;
+            }
+            else if (0 == strcmp(firstScoringTeam->teamName, currScoringTeamName))
+            {
+                firstScoringTeam->score++;
+            }
+            else if (0 == strlen(lastScoringTeam->teamName))
+            {
+                setTeamName(lastScoringTeam, currScoringTeamName);
+                lastScoringTeam->score++;
+            }
+            else if (0 == strcmp(lastScoringTeam->teamName, currScoringTeamName))
+            {
+                lastScoringTeam->score++;
+            }
+        }
+
+        printf("%s\n", getWinnerName(firstScoringTeam, lastScoringTeam));
+    }
+
+    return 0;
 }
