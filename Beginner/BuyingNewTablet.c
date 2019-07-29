@@ -42,6 +42,7 @@ Example case 3: The price of the only tablet is exactly equal to Chef's budget, 
 
 https://www.codechef.com/problems/TABLET
 */
+#include <stdio.h>
 
 struct Tablet
 {
@@ -61,4 +62,15 @@ int getAreaOfLargestTablet(struct Tablet *tablets, int numOfTablets, int budget)
     }
 
     return maxArea;
+}
+
+int main()
+{
+    int numOfTablets = 1, budget = 10;
+    struct Tablet tablets[] = {{5, 5, 10}};
+
+    int areaOfLargestTablet = getAreaOfLargestTablet(tablets, numOfTablets, budget);
+    -1 == areaOfLargestTablet ? printf("no tablet\n") : printf("%d\n", areaOfLargestTablet);
+
+    return 0;
 }
