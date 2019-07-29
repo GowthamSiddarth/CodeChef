@@ -28,6 +28,7 @@ https://codechef_shared.s3.amazonaws.com/download/Images/CK102TST/ADASCOOL/ADASC
 
 https://www.codechef.com/problems/ADASCOOL
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -43,4 +44,15 @@ enum Boolean isEven(int num)
 enum Boolean isShufflingPossible(int rows, int cols)
 {
     return isEven(rows) || isEven(cols);
+}
+
+int main()
+{
+    int numOfRows = 4;
+    int numOfCols = 4;
+
+    enum Boolean shufflingPossible = isShufflingPossible(numOfRows, numOfCols);
+    printf("%s\n", shufflingPossible ? "YES" : "NO");
+
+    return 0;
 }
