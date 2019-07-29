@@ -39,6 +39,7 @@ yyy
 https://www.codechef.com/problems/FBMT
 */
 #define MAX_SIZE 20
+#define DRAW "Draw"
 
 #include <string.h>
 #include <malloc.h>
@@ -61,4 +62,9 @@ struct FootballTeam *initFootballTeam(char teamName[MAX_SIZE], int score)
 void setTeamName(struct FootballTeam *footballTeam, char teamName[MAX_SIZE])
 {
     strcpy(footballTeam->teamName, teamName);
+}
+
+char *getWinnerName(struct FootballTeam *team1, struct FootballTeam *team2)
+{
+    return team1->score > team2->score ? team1->teamName : team1->score < team2->score ? team2->teamName : DRAW;
 }
