@@ -42,3 +42,23 @@ Example case 3: The price of the only tablet is exactly equal to Chef's budget, 
 
 https://www.codechef.com/problems/TABLET
 */
+
+struct Tablet
+{
+    int width, height, price;
+};
+
+int getAreaOfLargestTablet(struct Tablet *tablets, int numOfTablets, int budget)
+{
+    int maxArea = -1;
+    for (int idx = 0; idx < numOfTablets; idx++)
+    {
+        int currTabletArea;
+        if (tablets[idx].price <= budget && (currTabletArea = tablets[idx].height * tablets[idx].width) > maxArea)
+        {
+            maxArea = currTabletArea;
+        }
+    }
+
+    return maxArea;
+}
