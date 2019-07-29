@@ -38,3 +38,27 @@ yyy
 
 https://www.codechef.com/problems/FBMT
 */
+#define MAX_SIZE 20
+
+#include <string.h>
+#include <malloc.h>
+
+struct FootballTeam
+{
+    char teamName[MAX_SIZE];
+    int score;
+};
+
+struct FootballTeam *initFootballTeam(char teamName[MAX_SIZE], int score)
+{
+    struct FootballTeam *footballTeam = (struct FootballTeam *)malloc(sizeof(struct FootballTeam));
+    footballTeam->score = score;
+    strcpy(footballTeam->teamName, teamName);
+
+    return footballTeam;
+}
+
+void setTeamName(struct FootballTeam *footballTeam, char teamName[MAX_SIZE])
+{
+    strcpy(footballTeam->teamName, teamName);
+}
