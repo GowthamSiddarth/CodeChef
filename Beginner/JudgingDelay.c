@@ -32,6 +32,9 @@ Example case 1: The delays of the respective submissions are 2 minutes, 0 minute
 
 https://www.codechef.com/problems/JDELAY
 */
+#define DELAY 5
+
+#include <stdio.h>
 
 int getNumOfSubmissionsWithDelayOfNMinutes(int *submissionTimes, int *judgementTimes, int numOfSubmissions, int time)
 {
@@ -44,5 +47,17 @@ int getNumOfSubmissionsWithDelayOfNMinutes(int *submissionTimes, int *judgementT
         }
     }
 
-    return time;
+    return count;
+}
+
+int main()
+{
+    int submissionTimes[] = {1, 4, 4, 1, 2};
+    int jugdementTimes[] = {3, 4, 10, 11, 7};
+    int numOfSubmissions = sizeof(submissionTimes) / sizeof(submissionTimes[0]);
+
+    int numOfSubmissionsWithJudgementDelay = getNumOfSubmissionsWithDelayOfNMinutes(submissionTimes, jugdementTimes, numOfSubmissions, DELAY);
+    printf("%d\n", numOfSubmissionsWithJudgementDelay);
+
+    return 0;
 }
