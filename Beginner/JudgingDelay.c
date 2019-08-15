@@ -32,3 +32,17 @@ Example case 1: The delays of the respective submissions are 2 minutes, 0 minute
 
 https://www.codechef.com/problems/JDELAY
 */
+
+int getNumOfSubmissionsWithDelayOfNMinutes(int *submissionTimes, int *judgementTimes, int numOfSubmissions, int time)
+{
+    int count = 0;
+    for (int idx = 0; idx < numOfSubmissions; idx++)
+    {
+        if (judgementTimes[idx] - submissionTimes[idx] > time)
+        {
+            count++;
+        }
+    }
+
+    return time;
+}
