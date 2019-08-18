@@ -38,3 +38,16 @@ char getComplimentChar(char lowercaseChar)
 {
     return lowercaseChar < 109 ? 'z' - (lowercaseChar - 'a') : 'z' - lowercaseChar + 'a';
 }
+
+void swapAlternateChars(char *message)
+{
+    int idx = 0;
+    while ('\0' != message[idx] && '\0' != message[idx + 1])
+    {
+        char tempChar = message[idx];
+        message[idx] = message[idx + 1];
+        message[idx + 1] = tempChar;
+
+        idx++;
+    }
+}
