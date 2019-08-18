@@ -31,3 +31,25 @@ So in total, Sammy has 4, and Simmy has 3. Since Sammy has strictly more candies
 
 https://www.codechef.com/problems/CNDLOVE
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isOdd(int num)
+{
+    return 0 != num % 2 ? TRUE : FALSE;
+}
+
+enum Boolean canDivideSatisfactorily(int *candyPacks, int numOfCandyPacks)
+{
+    int totalCandies = 0;
+    for (int idx = 0; idx < numOfCandyPacks; idx++)
+    {
+        totalCandies = totalCandies + candyPacks[idx];
+    }
+    
+    return isOdd(totalCandies);
+}
