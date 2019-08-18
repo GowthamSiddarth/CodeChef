@@ -51,3 +51,14 @@ void swapAlternateChars(char *message)
         idx++;
     }
 }
+
+void encryptMessage(char *message)
+{
+    swapAlternateChars(message);
+    int idx = 0;
+    while ('\0' != message[idx])
+    {
+        message[idx] = getComplimentChar(message[idx]);
+        idx++;
+    }
+}
