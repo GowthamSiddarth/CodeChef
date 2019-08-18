@@ -33,3 +33,8 @@ Example case 1: The original message is "sharechat". In the first step, we swap 
 
 https://www.codechef.com/problems/ENCMSG
 */
+
+char getComplimentChar(char lowercaseChar)
+{
+    return lowercaseChar < 12 ? 'z' - lowercaseChar - 'a' : 'z' - lowercaseChar;
+}
