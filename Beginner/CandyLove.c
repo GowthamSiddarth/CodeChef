@@ -31,6 +31,7 @@ So in total, Sammy has 4, and Simmy has 3. Since Sammy has strictly more candies
 
 https://www.codechef.com/problems/CNDLOVE
 */
+#include <stdio.h>
 
 enum Boolean
 {
@@ -52,4 +53,15 @@ enum Boolean canDivideSatisfactorily(int *candyPacks, int numOfCandyPacks)
     }
     
     return isOdd(totalCandies);
+}
+
+int main()
+{
+    int candyPacks[] = {5, 3};
+    int numOfCandyPacks = sizeof(candyPacks) / sizeof(candyPacks[0]);
+
+    enum Boolean divideSatisfactorily = canDivideSatisfactorily(candyPacks, numOfCandyPacks);
+    printf("%s\n", divideSatisfactorily ? "YES" : "NO");
+
+    return 0;
 }
