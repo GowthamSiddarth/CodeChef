@@ -36,5 +36,5 @@ https://www.codechef.com/problems/ENCMSG
 
 char getComplimentChar(char lowercaseChar)
 {
-    return lowercaseChar < 12 ? 'z' - lowercaseChar - 'a' : 'z' - lowercaseChar;
+    return lowercaseChar < 109 ? 'z' - (lowercaseChar - 'a') : 'z' - lowercaseChar + 'a';
 }
