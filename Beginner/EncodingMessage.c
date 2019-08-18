@@ -33,6 +33,10 @@ Example case 1: The original message is "sharechat". In the first step, we swap 
 
 https://www.codechef.com/problems/ENCMSG
 */
+#define MAX_LEN 100
+
+#include <string.h>
+#include <stdio.h>
 
 char getComplimentChar(char lowercaseChar)
 {
@@ -48,7 +52,7 @@ void swapAlternateChars(char *message)
         message[idx] = message[idx + 1];
         message[idx + 1] = tempChar;
 
-        idx++;
+        idx = idx + 2;
     }
 }
 
@@ -61,4 +65,15 @@ void encryptMessage(char *message)
         message[idx] = getComplimentChar(message[idx]);
         idx++;
     }
+}
+
+int main()
+{
+    char message[MAX_LEN];
+    memcpy(message, "chef", 5);
+
+    encryptMessage(message);
+    printf("%s\n", message);
+
+    return 0;
 }
