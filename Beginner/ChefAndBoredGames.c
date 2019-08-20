@@ -24,6 +24,7 @@ Sample Output:
 
 https://www.codechef.com/problems/PCJ18B
 */
+#include <stdio.h>
 
 int getNumOfSquaresFittingInChessBoardWithSize(int chessBoardSize, int squareSize)
 {
@@ -34,10 +35,19 @@ int getNumOfSquaresFittingInChessBoardWithSize(int chessBoardSize, int squareSiz
 int getNumOfSquaresWithOddSizeFittingInChessBoard(int chessBoardSize)
 {
     int count = 0;
-    for (int squareSize = 1; squareSize < chessBoardSize; squareSize = squareSize + 2)
+    for (int squareSize = 1; squareSize <= chessBoardSize; squareSize = squareSize + 2)
     {
         count = count + getNumOfSquaresFittingInChessBoardWithSize(chessBoardSize, squareSize);
     }
-    
-    return count + 1 // 1 is for squareSize = chessBoardSize
+
+    return count;
+}
+
+int main()
+{
+    int chessBoardSize = 6;
+    int numOfSquaresWithOddSizeFittingInChessBoard = getNumOfSquaresWithOddSizeFittingInChessBoard(chessBoardSize);
+
+    printf("%d\n", numOfSquaresWithOddSizeFittingInChessBoard);
+    return 0;
 }
