@@ -49,6 +49,7 @@ Output:
 https://www.codechef.com/problems/RNDPAIR
 */
 #include <limits.h>
+#include <stdio.h>
 
 double getProbabilityForChefuSol(int *array, int length)
 {
@@ -79,4 +80,15 @@ double getProbabilityForChefuSol(int *array, int length)
     }
 
     return max1Count > 1 ? ((max1Count * (max1Count - 1)) / 2.0) / ((length * (length - 1)) / 2.0) : max2Count / ((length * (length - 1)) / 2.0);
+}
+
+int main()
+{
+    int array[] = {1, 2, 2, 3};
+    int length = sizeof(array) / sizeof(array[0]);
+
+    double probabilityOfChefuSol = getProbabilityForChefuSol(array, length);
+    printf("%.8lf\n", probabilityOfChefuSol);
+
+    return 0;
 }
