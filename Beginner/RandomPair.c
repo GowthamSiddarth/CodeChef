@@ -57,6 +57,9 @@ double getProbabilityForChefuSol(int *array, int length)
     {
         if (array[idx] > max1)
         {
+            max2 = max1;
+            max2Count = max1Count;
+
             max1 = array[idx];
             max1Count = 1;
         }
@@ -75,5 +78,5 @@ double getProbabilityForChefuSol(int *array, int length)
         }
     }
 
-    return max1Count > 1 ? ((max1Count * (max1Count - 1)) / 2) / ((length * (length - 1)) / 2) : max2Count / ((length * (length - 1)) / 2);
+    return max1Count > 1 ? ((max1Count * (max1Count - 1)) / 2.0) / ((length * (length - 1)) / 2.0) : max2Count / ((length * (length - 1)) / 2.0);
 }
