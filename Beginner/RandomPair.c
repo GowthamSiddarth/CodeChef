@@ -48,3 +48,32 @@ Output:
 
 https://www.codechef.com/problems/RNDPAIR
 */
+#include <limits.h>
+
+double getProbabilityForChefuSol(int *array, int length)
+{
+    int max1 = INT_MIN + 1, max2 = INT_MIN, max1Count = 0, max2Count = 0;
+    for (int idx = 0; idx < length; idx++)
+    {
+        if (array[idx] > max1)
+        {
+            max1 = array[idx];
+            max1Count = 1;
+        }
+        else if (array[idx] == max1)
+        {
+            max1Count++;
+        }
+        else if (max1 < array[idx] && array[idx] > max2)
+        {
+            max2 = array[idx];
+            max2Count = 1;
+        }
+        else if (max2 == array[idx])
+        {
+            max2Count++;
+        }
+    }
+
+    return max1Count > 1 ? ((max1Count * (max1Count - 1)) / 2) / ((length * (length - 1)) / 2) : max2Count / ((length * (length - 1)) / 2);
+}
