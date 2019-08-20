@@ -30,3 +30,14 @@ int getNumOfSquaresFittingInChessBoardWithSize(int chessBoardSize, int squareSiz
     int numOfSquaresFittingInOneAxis = chessBoardSize - squareSize + 1;
     return numOfSquaresFittingInOneAxis * numOfSquaresFittingInOneAxis;
 }
+
+int getNumOfSquaresWithOddSizeFittingInChessBoard(int chessBoardSize)
+{
+    int count = 0;
+    for (int squareSize = 1; squareSize < chessBoardSize; squareSize = squareSize + 2)
+    {
+        count = count + getNumOfSquaresFittingInChessBoardWithSize(chessBoardSize, squareSize);
+    }
+    
+    return count + 1 // 1 is for squareSize = chessBoardSize
+}
