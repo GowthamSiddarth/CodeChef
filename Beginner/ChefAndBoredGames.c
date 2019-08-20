@@ -24,3 +24,9 @@ Sample Output:
 
 https://www.codechef.com/problems/PCJ18B
 */
+
+int getNumOfSquaresFittingInChessBoardWithSize(int chessBoardSize, int squareSize)
+{
+    int numOfSquaresFittingInOneAxis = chessBoardSize - squareSize + 1;
+    return numOfSquaresFittingInOneAxis * numOfSquaresFittingInOneAxis;
+}
