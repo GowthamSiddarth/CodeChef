@@ -34,3 +34,26 @@ Example case 2: There is no sequence of operations which would make S equal to R
 
 https://www.codechef.com/problems/PLAYSTR
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int getNumOfOccurrences(char *string, char ch)
+{
+    int sum = 0, idx = 0;
+    while ('\0' != string[idx])
+    {
+        sum++;
+        idx++;
+    }
+
+    return sum;
+}
+
+enum Boolean areIdentical(char *string1, char *string2)
+{
+    return getNumOfOccurrences(string1, '0') == getNumOfOccurrences(string2, '0') && getNumOfOccurrences(string1, '1') == getNumOfOccurrences(string2, '1');
+}
