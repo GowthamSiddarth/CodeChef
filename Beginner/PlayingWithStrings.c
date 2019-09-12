@@ -34,6 +34,10 @@ Example case 2: There is no sequence of operations which would make S equal to R
 
 https://www.codechef.com/problems/PLAYSTR
 */
+#define MAX_LEN 100
+
+#include <stdio.h>
+#include <string.h>
 
 enum Boolean
 {
@@ -58,4 +62,16 @@ int getNumOfOccurrences(char *string, char ch)
 enum Boolean areIdentical(char *string1, char *string2)
 {
     return getNumOfOccurrences(string1, '0') == getNumOfOccurrences(string2, '0') && getNumOfOccurrences(string1, '1') == getNumOfOccurrences(string2, '1');
+}
+
+int main()
+{
+    char string1[MAX_LEN], string2[MAX_LEN];
+    memcpy(string1, "11000", 6);
+    memcpy(string2, "01001", 6);
+
+    enum Boolean identical = areIdentical(string1, string2);
+    printf("%s\n", identical ? "YES" : "NO");
+
+    return 0;
 }
