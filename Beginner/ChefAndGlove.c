@@ -57,13 +57,14 @@ However, if Chef tries to wear the glove with its back facing her, then the leng
 
 https://www.codechef.com/problems/CHEGLOVE
 */
+#include <stdio.h>
 
 enum Direction
 {
-    FRONT,
-    BACK,
-    BOTH,
-    NONE
+    FRONT = 1,
+    BACK = 2,
+    BOTH = 3,
+    NONE = 0
 };
 
 enum Boolean
@@ -84,4 +85,35 @@ enum Boolean doesFingersFitInGloves(int *fingersLengths, int *sheathsLengths, in
     }
 
     return fingersIdx == numOfFingers ? TRUE : FALSE;
+}
+
+enum Direction getDirectionOfGloves(int *fingersLengths, int *sheathsLengths, int numOfFingers)
+{
+    return doesFingersFitInGloves(fingersLengths, sheathsLengths, numOfFingers, FRONT) + 2 * doesFingersFitInGloves(fingersLengths, sheathsLengths, numOfFingers, BACK);
+}
+
+int main()
+{
+    int fingersLengths[] = {1, 3, 2, 4};
+    int sheathsLengths[] = {1, 2, 3, 5};
+    int numOfFingers = sizeof(fingersLengths) / sizeof(fingersLengths[0]);
+
+    enum Direction directionOfGloves = getDirectionOfGloves(fingersLengths, sheathsLengths, numOfFingers);
+    switch (directionOfGloves)
+    {
+    case FRONT:
+        printf("front\n");
+        break;
+    case BACK:
+        printf("back\n");
+        break;
+    case BOTH:
+        printf("both\n");
+        break;
+    case NONE:
+        printf("none\n");
+        break;
+    }
+
+    return 0;
 }
