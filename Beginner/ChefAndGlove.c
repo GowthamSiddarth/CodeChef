@@ -57,3 +57,31 @@ However, if Chef tries to wear the glove with its back facing her, then the leng
 
 https://www.codechef.com/problems/CHEGLOVE
 */
+
+enum Direction
+{
+    FRONT,
+    BACK,
+    BOTH,
+    NONE
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean doesFingersFitInGloves(int *fingersLengths, int *sheathsLengths, int numOfFingers, enum Direction direction)
+{
+    int fingersIdx = 0;
+    int sheathsIdx = FRONT == direction ? 0 : numOfFingers - 1;
+
+    while (fingersIdx < numOfFingers && fingersLengths[fingersIdx] <= sheathsLengths[sheathsIdx])
+    {
+        fingersIdx++;
+        sheathsIdx = FRONT == direction ? sheathsIdx + 1 : sheathsIdx - 1;
+    }
+
+    return fingersIdx == numOfFingers ? TRUE : FALSE;
+}
