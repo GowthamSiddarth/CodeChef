@@ -39,6 +39,7 @@ https://www.codechef.com/problems/EID
 */
 #include <stdlib.h>
 #include <limits.h>
+#include <stdio.h>
 
 int compare(const void *x, const void *y)
 {
@@ -65,4 +66,15 @@ int getMinPossibleDiff(int *coins, int numOfCoins)
     }
 
     return minConsDiff;
+}
+
+int main()
+{
+    int coins[] = {1, 3, 3};
+    int numOfCoins = sizeof(coins) / sizeof(coins[0]);
+
+    int minDiff = getMinPossibleDiff(coins, numOfCoins);
+    printf("%d\n", minDiff);
+
+    return 0;
 }
