@@ -46,7 +46,9 @@ int getNumOfOccurrences(char *string, char ch)
     int sum = 0, idx = 0;
     while ('\0' != string[idx])
     {
-        sum++;
+        if (ch == string[idx]) {
+            sum++;
+        }
         idx++;
     }
 
