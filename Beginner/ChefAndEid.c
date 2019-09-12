@@ -37,3 +37,32 @@ Example case 2: Chef gives each of his children a coin with value 3, so the diff
 
 https://www.codechef.com/problems/EID
 */
+#include <stdlib.h>
+#include <limits.h>
+
+int compare(const void *x, const void *y)
+{
+    return *(int *)x - *(int *)y;
+}
+
+int getMinPossibleDiff(int *coins, int numOfCoins)
+{
+    qsort(coins, numOfCoins, sizeof(coins[0]), compare);
+    int minConsDiff = INT_MAX, idx = 1;
+    while (idx < numOfCoins)
+    {
+        int currDiff = coins[idx] - coins[idx - 1];
+        if (0 == currDiff)
+        {
+            return 0;
+        }
+        else if (currDiff < minConsDiff)
+        {
+            minConsDiff = currDiff;
+        }
+
+        idx++;
+    }
+
+    return minConsDiff;
+}
