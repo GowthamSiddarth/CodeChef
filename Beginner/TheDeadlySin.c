@@ -50,3 +50,19 @@ Total candies left: 8
 
 https://www.codechef.com/problems/SINS#
 */
+
+int getTotalCandiesLeft(int meliodasChocolates, int banChocolates)
+{
+    if (0 == meliodasChocolates * banChocolates || meliodasChocolates == banChocolates)
+    {
+        return meliodasChocolates + banChocolates;
+    }
+    else if (meliodasChocolates < banChocolates)
+    {
+        return getTotalCandiesLeft(meliodasChocolates, banChocolates - meliodasChocolates);
+    }
+    else
+    {
+        return getTotalCandiesLeft(meliodasChocolates - banChocolates, banChocolates);
+    }
+}
