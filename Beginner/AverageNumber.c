@@ -35,6 +35,7 @@ Example Output
 
 https://www.codechef.com/problems/AVG
 */
+#include <stdio.h>
 
 int sumOfIntArray(int *arr, int len)
 {
@@ -54,4 +55,15 @@ int getValueOfDeletedItems(int *residualItems, int numOfResidualItems, int numOf
     int sumOfDeletedItems = sumOfAllItems - sumOfResidualItems;
 
     return sumOfDeletedItems > 0 && 0 == sumOfDeletedItems % numOfDeletedItems ? sumOfDeletedItems / numOfDeletedItems : -1;
+}
+
+int main()
+{
+    int numOfResidualItems = 3, numOfDeletedItems = 1, meanOfAllItems = 4;
+    int residualItems[] = {7, 6, 5};
+
+    int valueOfDeletedItems = getValueOfDeletedItems(residualItems, numOfResidualItems, numOfDeletedItems, meanOfAllItems);
+    printf("%d\n", valueOfDeletedItems);
+
+    return 0;
 }
