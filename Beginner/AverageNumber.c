@@ -47,11 +47,11 @@ int sumOfIntArray(int *arr, int len)
     return sum;
 }
 
-int getValueOfDeleteItems(int *residualItems, int numOfResidualItems, int numOfDeletedItems, int meanOfAllItems)
+int getValueOfDeletedItems(int *residualItems, int numOfResidualItems, int numOfDeletedItems, int meanOfAllItems)
 {
     int sumOfAllItems = (numOfResidualItems + numOfDeletedItems) * meanOfAllItems;
     int sumOfResidualItems = sumOfIntArray(residualItems, numOfResidualItems);
     int sumOfDeletedItems = sumOfAllItems - sumOfResidualItems;
 
-    return 0 == sumOfDeletedItems % numOfDeletedItems ? sumOfDeletedItems / numOfDeletedItems : -1;
+    return sumOfDeletedItems > 0 && 0 == sumOfDeletedItems % numOfDeletedItems ? sumOfDeletedItems / numOfDeletedItems : -1;
 }
