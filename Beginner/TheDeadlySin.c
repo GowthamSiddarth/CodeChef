@@ -50,6 +50,7 @@ Total candies left: 8
 
 https://www.codechef.com/problems/SINS#
 */
+#include <stdio.h>
 
 int maxOfTwoNums(int x, int y)
 {
@@ -74,4 +75,13 @@ long int getTotalCandiesLeft(int meliodasChocolates, int banChocolates)
 
         return 0 == maxCandies % minCandies ? 2 * minCandies : getTotalCandiesLeft(maxCandies % minCandies, minCandies);
     }
+}
+
+int main()
+{
+    int meliodasChocolates = 5, banChocolates = 3;
+    int totalCandiesLeft = getTotalCandiesLeft(meliodasChocolates, banChocolates);
+
+    printf("%d\n", totalCandiesLeft);
+    return 0;
 }
