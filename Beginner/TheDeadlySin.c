@@ -51,18 +51,27 @@ Total candies left: 8
 https://www.codechef.com/problems/SINS#
 */
 
-int getTotalCandiesLeft(int meliodasChocolates, int banChocolates)
+int maxOfTwoNums(int x, int y)
 {
-    if (0 == meliodasChocolates * banChocolates || meliodasChocolates == banChocolates)
+    return x > y ? x : y;
+}
+
+int minOfTwoNums(int x, int y)
+{
+    return x < y ? x : y;
+}
+
+long int getTotalCandiesLeft(int meliodasChocolates, int banChocolates)
+{
+    if (0 == meliodasChocolates * banChocolates)
     {
-        return meliodasChocolates + banChocolates;
-    }
-    else if (meliodasChocolates < banChocolates)
-    {
-        return getTotalCandiesLeft(meliodasChocolates, banChocolates - meliodasChocolates);
+        return (long)meliodasChocolates + banChocolates;
     }
     else
     {
-        return getTotalCandiesLeft(meliodasChocolates - banChocolates, banChocolates);
+        int maxCandies = maxOfTwoNums(meliodasChocolates, banChocolates);
+        int minCandies = minOfTwoNums(meliodasChocolates, banChocolates);
+
+        return 0 == maxCandies % minCandies ? 2 * minCandies : getTotalCandiesLeft(maxCandies % minCandies, minCandies);
     }
 }
