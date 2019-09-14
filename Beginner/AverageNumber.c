@@ -35,3 +35,23 @@ Example Output
 
 https://www.codechef.com/problems/AVG
 */
+
+int sumOfIntArray(int *arr, int len)
+{
+    int sum = 0;
+    for (int idx = 0; idx < len; idx++)
+    {
+        sum = sum + arr[idx];
+    }
+
+    return sum;
+}
+
+int getValueOfDeleteItems(int *residualItems, int numOfResidualItems, int numOfDeletedItems, int meanOfAllItems)
+{
+    int sumOfAllItems = (numOfResidualItems + numOfDeletedItems) * meanOfAllItems;
+    int sumOfResidualItems = sumOfIntArray(residualItems, numOfResidualItems);
+    int sumOfDeletedItems = sumOfAllItems - sumOfResidualItems;
+
+    return 0 == sumOfDeletedItems % numOfDeletedItems ? sumOfDeletedItems / numOfDeletedItems : -1;
+}
