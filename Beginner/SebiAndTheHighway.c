@@ -54,3 +54,44 @@ The situation of this example is depicted in the image provided in the statement
 
 https://www.codechef.com/problems/SEBIHWY
 */
+
+const int DIST_BTW_MARKERS_MTS = 50;
+
+enum Winner
+{
+    SEBI,
+    FATHER,
+    DRAW
+};
+
+double mpsToKph(double mps)
+{
+    return mps * 5 / 18;
+}
+
+double secondsToHours(int seconds)
+{
+    return seconds / 3600.0;
+}
+
+double metersToKiloMeters(int meters)
+{
+    return meters / 1000.0;
+}
+
+double absOfDouble(double value)
+{
+    return value < 0 ? -value : value;
+}
+
+enum Winner getWinner(int sebiCarSpeed, int sebiGuess, int fatherGuess, int numOfMarkersInBtw, int timeAtMarkers)
+{
+    double timeForTravel = secondsToHours(timeAtMarkers);
+    double sebiDistInKms = sebiCarSpeed * timeForTravel;
+    double otherCarDistInKms = metersToKiloMeters(numOfMarkersInBtw * DIST_BTW_MARKERS_MTS) + sebiDistInKms;
+    double otherCarSpeedInKph = otherCarDistInKms / timeForTravel;
+    double errInSebiGuess = absOfDouble(sebiGuess - otherCarSpeedInKph);
+    double errInFatherGuess = absOfDouble(fatherGuess - otherCarSpeedInKph);
+
+    return errInFatherGuess > errInSebiGuess ? SEBI : errInFatherGuess < errInSebiGuess ? FATHER : DRAW;
+}
