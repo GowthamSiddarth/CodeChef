@@ -35,3 +35,30 @@ hasan khateeb
 
 https://www.codechef.com/problems/ATTND
 */
+#include <set>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+string getFirstName(string fullName)
+{
+    return fullName.substr(0, fullName.find(" "));
+}
+
+vector<bool> canUseFirstNameOnly(vector<string> fullNames)
+{
+    set<string> existingFirstNames;
+    vector<bool> useFirstNameOnly(fullNames.size(), false);
+    for (int idx = 0; idx < fullNames.size(); idx++)
+    {
+        string firstName = getFirstName(fullNames[idx]);
+        if (existingFirstNames.find(firstName) == existingFirstNames.end())
+        {
+            existingFirstNames.insert(firstName);
+            useFirstNameOnly[idx] = true;
+        }
+    }
+
+    return useFirstNameOnly;
+}
