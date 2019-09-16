@@ -35,7 +35,7 @@ hasan khateeb
 
 https://www.codechef.com/problems/ATTND
 */
-#include <set>
+#include <map>
 #include <vector>
 #include <string>
 
@@ -46,19 +46,22 @@ string getFirstName(string fullName)
     return fullName.substr(0, fullName.find(" "));
 }
 
-vector<bool> canUseFirstNameOnly(vector<string> fullNames)
+map<string, int> getFirstNamesCount(vector<string> fullNames)
 {
-    set<string> existingFirstNames;
-    vector<bool> useFirstNameOnly(fullNames.size(), false);
+    map<string, int> firstNamesCount;
     for (int idx = 0; idx < fullNames.size(); idx++)
     {
         string firstName = getFirstName(fullNames[idx]);
-        if (existingFirstNames.find(firstName) == existingFirstNames.end())
+        map<string, int>::iterator firstNameIdx = firstNamesCount.find(firstName);
+        if (firstNameIdx == firstNamesCount.end())
         {
-            existingFirstNames.insert(firstName);
-            useFirstNameOnly[idx] = true;
+            firstNamesCount.insert(make_pair(firstName, 1));
+        }
+        else
+        {
+            firstNameIdx->second++;
         }
     }
 
-    return useFirstNameOnly;
+    return firstNamesCount;
 }
