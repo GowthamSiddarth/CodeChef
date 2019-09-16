@@ -35,6 +35,7 @@ hasan khateeb
 
 https://www.codechef.com/problems/ATTND
 */
+#include <iostream>
 #include <map>
 #include <vector>
 #include <string>
@@ -64,4 +65,32 @@ map<string, int> getFirstNamesCount(vector<string> fullNames)
     }
 
     return firstNamesCount;
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        int numOfStudents;
+        cin >> numOfStudents;
+        cin.ignore();
+
+        vector<string> fullNames(numOfStudents);
+        for (size_t idx = 0; idx < numOfStudents; idx++)
+        {
+            getline(cin, fullNames[idx]);
+        }
+
+        map<string, int> firstNamesCount = getFirstNamesCount(fullNames);
+        for (size_t idx = 0; idx < numOfStudents; idx++)
+        {
+            string firstName = getFirstName(fullNames[idx]);
+            cout << (firstNamesCount[firstName] > 1) ? fullNames[idx] : firstName;
+        }
+    }
+
+    return 0;
 }
