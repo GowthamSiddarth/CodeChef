@@ -40,7 +40,10 @@ Example case 3: Chef can choose 9 and 11. Their product is 99 and the sum of its
 
 https://www.codechef.com/problems/RPD
 */
+#define MAX_SIZE 100
+
 #include <limits.h>
+#include <stdio.h>
 
 int sumOfDigits(int num)
 {
@@ -68,4 +71,25 @@ int getMaxSumOfProdOf2Nums(int *nums, int count)
     }
 
     return max;
+}
+
+int main()
+{
+    int t;
+    scanf("%d", &t);
+
+    int nums[MAX_SIZE];
+    while (t--)
+    {
+        int n;
+        scanf("%d", &n);
+        for (size_t idx = 0; idx < n; idx++)
+        {
+            scanf("%d", &nums[idx]);
+        }
+        
+        int maxSumOfProdOf2Nums = getMaxSumOfProdOf2Nums(nums, n);
+    }
+    
+    return 0;
 }
