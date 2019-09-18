@@ -41,3 +41,25 @@ after the fourth swap, the coin is in box 1
 
 https://www.codechef.com/problems/MAGICHF
 */
+
+struct CoinSwap
+{
+    int boxA, boxB;
+};
+
+int getBoxWithGoldCoin(struct CoinSwap *coinSwaps, int numOfSwaps, int currPos)
+{
+    for (int idx = 0; idx < numOfSwaps; idx++)
+    {
+        if (coinSwaps[idx].boxA == currPos)
+        {
+            currPos = coinSwaps[idx].boxB;
+        }
+        else if (coinSwaps[idx].boxB == currPos)
+        {
+            currPos = coinSwaps[idx].boxA;
+        }
+    }
+
+    return currPos;
+}
