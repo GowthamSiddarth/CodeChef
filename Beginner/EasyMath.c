@@ -40,6 +40,7 @@ Example case 3: Chef can choose 9 and 11. Their product is 99 and the sum of its
 
 https://www.codechef.com/problems/RPD
 */
+#include <limits.h>
 
 int sumOfDigits(int num)
 {
@@ -49,4 +50,22 @@ int sumOfDigits(int num)
 int maxOf2Nums(int x, int y)
 {
     return x > y ? x : y;
+}
+
+int getMaxSumOfProdOf2Nums(int *nums, int count)
+{
+    int max = INT_MIN;
+    for (size_t idx = 0; idx < count - 1; idx++)
+    {
+        for (size_t idx2 = idx + 1; idx2 < count; idx2++)
+        {
+            int sumOfProd = sumOfDigits(nums[idx] * nums[idx2]);
+            if (sumOfProd > max)
+            {
+                max = sumOfProd;
+            }
+        }
+    }
+
+    return max;
 }
