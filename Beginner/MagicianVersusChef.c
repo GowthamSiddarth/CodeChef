@@ -41,6 +41,7 @@ after the fourth swap, the coin is in box 1
 
 https://www.codechef.com/problems/MAGICHF
 */
+#include <stdio.h>
 
 struct CoinSwap
 {
@@ -62,4 +63,15 @@ int getBoxWithGoldCoin(struct CoinSwap *coinSwaps, int numOfSwaps, int currPos)
     }
 
     return currPos;
+}
+
+int main()
+{
+    struct CoinSwap coinSwaps[] = {{4, 2}, {3, 4}, {3, 2}, {1, 2}};
+    int numOfSwaps = 4, currPos = 2;
+
+    int boxWithGoldCoin = getBoxWithGoldCoin(coinSwaps, numOfSwaps, currPos);
+    printf("%d\n", boxWithGoldCoin);
+
+    return 0;
 }
