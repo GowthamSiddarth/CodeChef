@@ -45,3 +45,8 @@ int sumOfDigits(int num)
 {
     return 0 == num ? 0 : num % 10 + sumOfDigits(num / 10);
 }
+
+int maxOf2Nums(int x, int y)
+{
+    return x > y ? x : y;
+}
