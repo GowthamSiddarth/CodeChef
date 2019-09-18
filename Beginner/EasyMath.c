@@ -40,3 +40,8 @@ Example case 3: Chef can choose 9 and 11. Their product is 99 and the sum of its
 
 https://www.codechef.com/problems/RPD
 */
+
+int sumOfDigits(int num)
+{
+    return 0 == num ? 0 : num % 10 + sumOfDigits(num / 10);
+}
