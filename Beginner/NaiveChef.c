@@ -37,6 +37,7 @@ Example Output
 
 https://www.codechef.com/problems/NAICHEF
 */
+#include <stdio.h>
 
 int countOfOcc(int *arr, int len, int item)
 {
@@ -48,4 +49,16 @@ double getProbabilityOfChefWinning(int *facesOfDice, int numOfFaces, int target1
     int target1Occ = countOfOcc(facesOfDice, numOfFaces, target1);
     double target1Prob = (double)target1Occ / numOfFaces;
     return target1 == target2 ? target1Prob * target1Prob : target1Prob * countOfOcc(facesOfDice, numOfFaces, target2) / numOfFaces;
+}
+
+int main()
+{
+    int facesOfDice[] = {1, 2};
+    int numOfFaces = sizeof(facesOfDice) / sizeof(facesOfDice[0]);
+    int target1 = 1, target2 = 1;
+
+    double probabilityOfChefWinning = getProbabilityOfChefWinning(facesOfDice, numOfFaces, target1, target2);
+    printf("%.10lf\n", probabilityOfChefWinning);
+
+    return 0;
 }
