@@ -37,3 +37,15 @@ Example Output
 
 https://www.codechef.com/problems/NAICHEF
 */
+
+int countOfOcc(int *arr, int len, int item)
+{
+    return 0 == len ? 0 : arr[len - 1] == item ? 1 + countOfOcc(arr, len - 1, item) : countOfOcc(arr, len - 1, item);
+}
+
+double getProbabilityOfChefWinning(int *facesOfDice, int numOfFaces, int target1, int target2)
+{
+    int target1Occ = countOfOcc(facesOfDice, numOfFaces, target1);
+    double target1Prob = (double)target1Occ / numOfFaces;
+    return target1 == target2 ? target1Prob * target1Prob : target1Prob * countOfOcc(facesOfDice, numOfFaces, target2) / numOfFaces;
+}
