@@ -38,6 +38,7 @@ Chef can hire 2 workers: worker 1, who is a translator, and worker 2, who is an 
 https://www.codechef.com/problems/CHEFWORK
 */
 #include <limits.h>
+#include <stdio.h>
 
 enum WorkerType
 {
@@ -62,7 +63,7 @@ int getMinCostForChef(int *costsOfWorkers, int numOfWorkers, enum WorkerType *wo
         switch (workerTypes[idx])
         {
         case TRANSLATOR:
-            updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfAuthTranslator);
+            updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfTranslator);
             break;
         case AUTHOR:
             updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfAuthor);
@@ -73,6 +74,18 @@ int getMinCostForChef(int *costsOfWorkers, int numOfWorkers, enum WorkerType *wo
         }
     }
 
-    int minCostOfAuthorWithTranslator = minCostOfTranslator + minCostOfAuthor;
+    int minCostOfAuthorWithTranslator = INT_MAX != minCostOfTranslator && INT_MAX != minCostOfAuthor ? minCostOfTranslator + minCostOfAuthor : INT_MAX;
     return minCostOfAuthorWithTranslator < minCostOfAuthTranslator ? minCostOfAuthorWithTranslator : minCostOfAuthTranslator;
+}
+
+int main()
+{
+    int costOfWorkers[] = {1, 3, 4, 6, 8};
+    int numOfWorkers = sizeof(costOfWorkers) / sizeof(costOfWorkers[0]);
+    enum WorkerType workerTypes[] = {1, 2, 1, 2, 3};
+
+    int minCostForChef = getMinCostForChef(costOfWorkers, numOfWorkers, workerTypes);
+    printf("%d\n", minCostForChef);
+
+    return 0;
 }
