@@ -37,3 +37,42 @@ Chef can hire 2 workers: worker 1, who is a translator, and worker 2, who is an 
 
 https://www.codechef.com/problems/CHEFWORK
 */
+#include <limits.h>
+
+enum WorkerType
+{
+    TRANSLATOR = 1,
+    AUTHOR,
+    AUTHOR_TRANSLATOR
+};
+
+void updateMinCostOfWorker(int currWorkerCost, int *minCostTillNow)
+{
+    if (currWorkerCost < *minCostTillNow)
+    {
+        *minCostTillNow = currWorkerCost;
+    }
+}
+
+int getMinCostForChef(int *costsOfWorkers, int numOfWorkers, enum WorkerType *workerTypes)
+{
+    int minCostOfAuthor = INT_MAX, minCostOfTranslator = INT_MAX, minCostOfAuthTranslator = INT_MAX;
+    for (size_t idx = 0; idx < numOfWorkers; idx++)
+    {
+        switch (workerTypes[idx])
+        {
+        case TRANSLATOR:
+            updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfAuthTranslator);
+            break;
+        case AUTHOR:
+            updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfAuthor);
+            break;
+        case AUTHOR_TRANSLATOR:
+            updateMinCostOfWorker(costsOfWorkers[idx], &minCostOfAuthTranslator);
+            break;
+        }
+    }
+
+    int minCostOfAuthorWithTranslator = minCostOfTranslator + minCostOfAuthor;
+    return minCostOfAuthorWithTranslator < minCostOfAuthTranslator ? minCostOfAuthorWithTranslator : minCostOfAuthTranslator;
+}
