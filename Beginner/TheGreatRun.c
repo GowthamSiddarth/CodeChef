@@ -34,6 +34,7 @@ He can impress 4+8=12 girls if he runs at his best speed between the 2nd and the
 https://www.codechef.com/problems/PROC18A
 */
 #include <limits.h>
+#include <stdio.h>
 
 int getSumOfSubArr(int *arr, int start, int end)
 {
@@ -49,9 +50,9 @@ int getSumOfSubArr(int *arr, int start, int end)
 int getMaxNumOfGirlsVishalCanImpress(int *numOfGirlsForEveryKm, int lengthOfTrack, int maxDistWithMaxSpeed)
 {
     int start = 0, end = maxDistWithMaxSpeed, prevSum = 0, maxSum = INT_MIN;
-    while (end < lengthOfTrack)
+    while (end <= lengthOfTrack)
     {
-        int currSum = 0 == prevSum ? getSumOfSubArr(numOfGirlsForEveryKm, start, end) : prevSum + numOfGirlsForEveryKm[end] - numOfGirlsForEveryKm[start - 1];
+        int currSum = 0 == prevSum ? getSumOfSubArr(numOfGirlsForEveryKm, start, end) : prevSum + numOfGirlsForEveryKm[end - 1] - numOfGirlsForEveryKm[start - 1];
         if (currSum > maxSum)
         {
             maxSum = currSum;
@@ -63,4 +64,16 @@ int getMaxNumOfGirlsVishalCanImpress(int *numOfGirlsForEveryKm, int lengthOfTrac
     }
 
     return maxSum;
+}
+
+int main()
+{
+    int numOfGirlsForEveryKm[] = {2, 4, 8, 1, 2, 1, 8};
+    int lengthOfTrack = sizeof(numOfGirlsForEveryKm) / sizeof(numOfGirlsForEveryKm[0]);
+    int maxDistWithMaxSpeed = 5;
+
+    int maxNumOfGirlsVishalCanImpress = getMaxNumOfGirlsVishalCanImpress(numOfGirlsForEveryKm, lengthOfTrack, maxDistWithMaxSpeed);
+    printf("%d\n", maxNumOfGirlsVishalCanImpress);
+
+    return 0;
 }
