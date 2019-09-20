@@ -33,3 +33,34 @@ He can impress 4+8=12 girls if he runs at his best speed between the 2nd and the
 
 https://www.codechef.com/problems/PROC18A
 */
+#include <limits.h>
+
+int getSumOfSubArr(int *arr, int start, int end)
+{
+    int sum = 0;
+    for (int idx = start; idx < end; idx++)
+    {
+        sum = sum + arr[idx];
+    }
+
+    return sum;
+}
+
+int getMaxNumOfGirlsVishalCanImpress(int *numOfGirlsForEveryKm, int lengthOfTrack, int maxDistWithMaxSpeed)
+{
+    int start = 0, end = maxDistWithMaxSpeed, prevSum = 0, maxSum = INT_MIN;
+    while (end < lengthOfTrack)
+    {
+        int currSum = 0 == prevSum ? getSumOfSubArr(numOfGirlsForEveryKm, start, end) : prevSum + numOfGirlsForEveryKm[end] - numOfGirlsForEveryKm[start - 1];
+        if (currSum > maxSum)
+        {
+            maxSum = currSum;
+        }
+
+        prevSum = currSum;
+        start++;
+        end++;
+    }
+
+    return maxSum;
+}
