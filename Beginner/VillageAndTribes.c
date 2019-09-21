@@ -33,7 +33,11 @@ Output
 
 https://www.codechef.com/problems/VILTRIBE
 */
+#define MAX_SIZE 10000
+
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 enum VillageTribe
 {
@@ -87,4 +91,15 @@ struct VillagesPerTribe getCountOfVillagesPerTribe(char *villagesConfiguration)
     }
 
     return villagesPerTribe;
+}
+
+int main()
+{
+    char villagesConfiguration[MAX_SIZE];
+    memcpy(villagesConfiguration, "ABA..A", 7);
+
+    struct VillagesPerTribe villagesPerTribe = getCountOfVillagesPerTribe(villagesConfiguration);
+    printf("%d %d\n", villagesPerTribe.numOfVillagesForTribeA, villagesPerTribe.numOfVillagesForTribeB);
+
+    return 0;
 }
