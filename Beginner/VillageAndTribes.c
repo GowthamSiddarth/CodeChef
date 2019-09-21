@@ -33,3 +33,40 @@ Output
 
 https://www.codechef.com/problems/VILTRIBE
 */
+#include <stdlib.h>
+
+enum VillageTribe
+{
+    TRIBE_A = 'A',
+    TRIBE_B = 'B',
+    EMPTY = '.'
+};
+
+struct VillagesPerTribe
+{
+    int numOfVillagesForTribeA, numOfVillagesForTribeB;
+};
+
+struct VillagesPerTribe getCountOfVillagesPerTribe(char *villagesConfiguration)
+{
+    size_t idx = 0;
+    struct VillagesPerTribe villagesPerTribe = {0, 0};
+    while ('\0' != villagesConfiguration[idx])
+    {
+        char currVillage = villagesConfiguration[idx];
+        if (EMPTY == currVillage)
+        {
+            idx++;
+            continue;
+        }
+
+        int *currVillageCount = TRIBE_A == currVillage ? &villagesPerTribe.numOfVillagesForTribeA : &villagesPerTribe.numOfVillagesForTribeB;
+        while (currVillage == villagesConfiguration[idx] || EMPTY == villagesConfiguration[idx])
+        {
+            idx++;
+            (*currVillageCount)++;
+        }
+    }
+
+    return villagesPerTribe;
+}
