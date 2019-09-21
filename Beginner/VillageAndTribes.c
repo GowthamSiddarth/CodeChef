@@ -53,19 +53,37 @@ struct VillagesPerTribe getCountOfVillagesPerTribe(char *villagesConfiguration)
     struct VillagesPerTribe villagesPerTribe = {0, 0};
     while ('\0' != villagesConfiguration[idx])
     {
-        char currVillage = villagesConfiguration[idx];
-        if (EMPTY == currVillage)
+        enum VillageTribe currVillageTribe = villagesConfiguration[idx];
+        enum VillageTribe otherTribe = '\0';
+        int *villagesCountForCurrTribe = NULL;
+        if (EMPTY == currVillageTribe)
         {
             idx++;
             continue;
         }
-
-        int *currVillageCount = TRIBE_A == currVillage ? &villagesPerTribe.numOfVillagesForTribeA : &villagesPerTribe.numOfVillagesForTribeB;
-        while (currVillage == villagesConfiguration[idx] || EMPTY == villagesConfiguration[idx])
+        else if (TRIBE_A == currVillageTribe)
         {
-            idx++;
-            (*currVillageCount)++;
+            otherTribe = TRIBE_B;
+            villagesCountForCurrTribe = &villagesPerTribe.numOfVillagesForTribeA;
         }
+        else
+        {
+            otherTribe = TRIBE_A;
+            villagesCountForCurrTribe = &villagesPerTribe.numOfVillagesForTribeB;
+        }
+
+        int firstOccupiedVillage = idx, lastOccupiedVillagePos = idx;
+        while ('\0' != villagesConfiguration[idx] && otherTribe != villagesConfiguration[idx])
+        {
+            if (currVillageTribe == villagesConfiguration[idx])
+            {
+                lastOccupiedVillagePos = idx;
+            }
+
+            idx++;
+        }
+
+        *villagesCountForCurrTribe = *villagesCountForCurrTribe + lastOccupiedVillagePos - firstOccupiedVillage + 1;
     }
 
     return villagesPerTribe;
