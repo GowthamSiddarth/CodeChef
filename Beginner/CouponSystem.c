@@ -48,6 +48,7 @@ https://www.codechef.com/problems/COUPSYS
 
 #include <stdlib.h>
 #include <limits.h>
+#include <stdio.h>
 #include <malloc.h>
 
 enum DifficultyLevel
@@ -83,4 +84,18 @@ struct Exam *getExamsWithMaxDiscountForEachDifficulty(struct Exam *exams, int nu
     }
 
     return examsWithMaxDiscount;
+}
+
+int main()
+{
+    struct Exam exams[] = {{2, 1, 0}, {1, 1, 20}, {3, 2, 100}, {2, 3, 50}, {2, 2, 100}, {5, 3, 75}, {100, 3, 75}};
+    int numOfExams = sizeof(exams) / sizeof(exams[0]);
+
+    struct Exam *examsWithMaxDiscount = getExamsWithMaxDiscountForEachDifficulty(exams, numOfExams);
+    for (size_t idx = 0; idx < 3; idx++)
+    {
+        printf("%d %d\n", examsWithMaxDiscount[idx].discount, examsWithMaxDiscount[idx].city);
+    }
+
+    return 0;
 }
