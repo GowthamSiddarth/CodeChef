@@ -37,6 +37,8 @@ Example case 3: There is no way for Chef to spell out "bob".
 
 https://www.codechef.com/problems/SPELLBOB
 */
+#define LEN 3
+
 #include <stdlib.h>
 
 enum Boolean
@@ -51,24 +53,24 @@ void binaryOperation(int *resultArr, char *inputArr, char operator)
     while ('\0' != inputArr[idx])
     {
         resultArr[idx] = inputArr[idx] ^ operator;
+        idx++;
     }
 }
 
 enum Boolean isBobPossible(char *frontFace, char *backFace)
 {
     int exclOrFFWith_b[] = {0, 0, 0}, exclOrBFWith_b[] = {0, 0, 0}, exclOrFFWith_o[] = {0, 0, 0}, exclOrBFWith_o[] = {0, 0, 0};
-    const size_t len = 3;
 
     binaryOperation(exclOrFFWith_b, frontFace, 'b');
     binaryOperation(exclOrFFWith_o, frontFace, 'o');
     binaryOperation(exclOrBFWith_b, backFace, 'b');
     binaryOperation(exclOrBFWith_o, backFace, 'o');
 
-    int bobNotPossible = TRUE;
-    for (size_t i = 0; bobNotPossible && i < len; i++)
+    int bobPossible = 0;
+    for (size_t i = 0; i < LEN; i++)
     {
-        bobNotPossible = exclOrBFWith_b[i] && exclOrFFWith_b[i] && exclOrBFWith_o[i] && exclOrFFWith_o[i];
+        bobPossible = bobPossible + (exclOrBFWith_b[i] && exclOrFFWith_b[i] && exclOrBFWith_o[i] && exclOrFFWith_o[i]);
     }
 
-    return bobNotPossible;
+    return 0 == bobPossible ? TRUE : FALSE;
 }
