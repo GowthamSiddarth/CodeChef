@@ -44,3 +44,34 @@ For Level 3, there are three discount coupons, which give discounts of 50, 75 an
 
 https://www.codechef.com/problems/COUPSYS
 */
+#include <stdlib.h>
+#include <limits.h>
+
+enum DifficultyLevel
+{
+    EASY = 1,
+    MEDIUM,
+    HARD
+};
+
+struct Exam
+{
+    int city, difficultyLevel, discount;
+};
+
+struct Exam *getExamsWithMaxDiscountForEachDifficulty(struct Exam *exams, int numOfExams)
+{
+    struct Exam examsWithMaxDiscount[] = {{INT_MAX, 0, 0}, {INT_MAX, 0, 0}, {INT_MAX, 0, 0}};
+    for (size_t idx = 0; idx < numOfExams; idx++)
+    {
+        struct Exam currExam = exams[idx];
+        if (currExam.discount > examsWithMaxDiscount[currExam.difficultyLevel - 1].discount || (currExam.discount == examsWithMaxDiscount[currExam.difficultyLevel - 1].discount && currExam.city < examsWithMaxDiscount[currExam.difficultyLevel - 1].city))
+        {
+            examsWithMaxDiscount[currExam.difficultyLevel - 1].discount = currExam.discount;
+            examsWithMaxDiscount[currExam.difficultyLevel - 1].city = currExam.city;
+            examsWithMaxDiscount[currExam.difficultyLevel - 1].difficultyLevel = currExam.difficultyLevel;
+        }
+    }
+
+    return examsWithMaxDiscount;
+}
