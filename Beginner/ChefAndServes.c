@@ -32,6 +32,7 @@ Example case 1: Chef serves for the first two points, Cook serves for the next t
 
 https://www.codechef.com/problems/CHSERVE
 */
+#include <stdio.h>
 
 enum Player
 {
@@ -53,4 +54,13 @@ enum Boolean isEven(long int num)
 enum Player getNextServer(int chefPoints, int cookPoints, int pointsPerServeChange)
 {
     return isEven(((long int)chefPoints + cookPoints) / pointsPerServeChange) ? CHEF : COOK;
+}
+
+int main()
+{
+    int chefPoints = 34, cookPoints = 55, pointsPerServeChange = 2;
+    enum Player nextServer = getNextServer(chefPoints, cookPoints, pointsPerServeChange);
+
+    printf("%s\n", CHEF == nextServer ? "CHEF" : "COOK");
+    return 0;
 }
