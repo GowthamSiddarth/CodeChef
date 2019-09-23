@@ -37,10 +37,12 @@ Example case 2: The robot followed the path 0→−1→−2.
 https://www.codechef.com/problems/TSTROBOT
 */
 #include <set>
+#include <string>
+#include <iostream>
 
 using namespace std;
 
-int getNumOfPointsVisited(int start, char *instructions, int numOfInstructions)
+int getNumOfPointsVisited(int start, string instructions, int numOfInstructions)
 {
     set<int> pointsVisited;
     pointsVisited.insert(start);
@@ -52,4 +54,15 @@ int getNumOfPointsVisited(int start, char *instructions, int numOfInstructions)
     }
 
     return pointsVisited.size();
+}
+
+int main()
+{
+    int start = 0, numOfInstructions = 2;
+    string instructions = "LL";
+
+    int numOfPointsVisited = getNumOfPointsVisited(start, instructions, numOfInstructions);
+    cout << numOfPointsVisited << endl;
+
+    return 0;
 }
