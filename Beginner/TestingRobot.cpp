@@ -36,3 +36,20 @@ Example case 2: The robot followed the path 0→−1→−2.
 
 https://www.codechef.com/problems/TSTROBOT
 */
+#include <set>
+
+using namespace std;
+
+int getNumOfPointsVisited(int start, char *instructions, int numOfInstructions)
+{
+    set<int> pointsVisited;
+    pointsVisited.insert(start);
+
+    for (size_t idx = 0; idx < numOfInstructions; idx++)
+    {
+        start = 'L' == instructions[idx] ? start - 1 : start + 1;
+        pointsVisited.insert(start);
+    }
+
+    return pointsVisited.size();
+}
