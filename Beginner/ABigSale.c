@@ -65,7 +65,7 @@ double getTotalLoss(struct Recipe *recipes, int numOfRecipes)
     {
         struct Recipe currRecipe = recipes[idx];
         double inflatedPrice = currRecipe.price * (100.0 + currRecipe.discount) / 100;
-        double finalPrice = (100.0 - currRecipe.discount) * inflatedPrice;
+        double finalPrice = (100.0 - currRecipe.discount) / 100 * inflatedPrice;
         loss = loss + (currRecipe.price - finalPrice) * currRecipe.quantity;
     }
 
