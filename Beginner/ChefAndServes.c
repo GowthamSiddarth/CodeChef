@@ -32,3 +32,25 @@ Example case 1: Chef serves for the first two points, Cook serves for the next t
 
 https://www.codechef.com/problems/CHSERVE
 */
+
+enum Player
+{
+    CHEF,
+    COOK
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(long int num)
+{
+    return 0 == num % 2 ? TRUE : FALSE;
+}
+
+enum Player getNextServer(int chefPoints, int cookPoints, int pointsPerServeChange)
+{
+    return isEven(((long int)chefPoints + cookPoints) / pointsPerServeChange) ? CHEF : COOK;
+}
