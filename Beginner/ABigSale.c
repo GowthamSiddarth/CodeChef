@@ -51,6 +51,7 @@ Overall, the amount of money Chef loses is 30.
 
 https://www.codechef.com/problems/BIGSALE
 */
+#include <stdio.h>
 #include <stdlib.h>
 
 struct Recipe
@@ -70,4 +71,15 @@ double getTotalLoss(struct Recipe *recipes, int numOfRecipes)
     }
 
     return loss;
+}
+
+int main()
+{
+    struct Recipe recipes[] = {{10, 10, 0}, {79, 79, 79}, {100, 1, 100}};
+    int numOfRecipes = sizeof(recipes) / sizeof(recipes[0]);
+
+    double totalLoss = getTotalLoss(recipes, numOfRecipes);
+    printf("%.11lf\n", totalLoss);
+
+    return 0;
 }
