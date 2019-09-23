@@ -44,8 +44,11 @@ For Level 3, there are three discount coupons, which give discounts of 50, 75 an
 
 https://www.codechef.com/problems/COUPSYS
 */
+#define NUM_OF_LEVELS 3
+
 #include <stdlib.h>
 #include <limits.h>
+#include <malloc.h>
 
 enum DifficultyLevel
 {
@@ -61,7 +64,13 @@ struct Exam
 
 struct Exam *getExamsWithMaxDiscountForEachDifficulty(struct Exam *exams, int numOfExams)
 {
-    struct Exam examsWithMaxDiscount[] = {{INT_MAX, 0, 0}, {INT_MAX, 0, 0}, {INT_MAX, 0, 0}};
+    struct Exam *examsWithMaxDiscount = (struct Exam *)malloc(NUM_OF_LEVELS * sizeof(struct Exam));
+    for (size_t idx = 0; idx < NUM_OF_LEVELS; idx++)
+    {
+        examsWithMaxDiscount[idx].city = INT_MAX;
+        examsWithMaxDiscount[idx].difficultyLevel = examsWithMaxDiscount[idx].discount = 0;
+    }
+
     for (size_t idx = 0; idx < numOfExams; idx++)
     {
         struct Exam currExam = exams[idx];
