@@ -25,3 +25,46 @@ Example case 2: an=81 and bn=16.
 
 https://www.codechef.com/problems/NUMCOMP
 */
+
+enum Comparsion
+{
+    ZERO,
+    ONE,
+    TWO
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2 ? TRUE : FALSE;
+}
+
+int abs(int num)
+{
+    return num < 0 ? -num : num;
+}
+
+enum Comparsion compare(int a, int b, int n)
+{
+    if (a == b)
+    {
+        return ZERO;
+    }
+    else if (a >= 0 && b >= 0)
+    {
+        return a > b ? ONE : TWO;
+    }
+    else if (a < 0 && b < 0)
+    {
+        return isEven(n) ? abs(a) > abs(b) ? ONE : TWO : abs(a) < abs(b) ? ONE : TWO;
+    }
+    else
+    {
+        return isEven(n) ? abs(a) > abs(b) ? ONE : abs(a) < abs(b) ? TWO : ZERO : a > b ? ONE : TWO;
+    }
+}
