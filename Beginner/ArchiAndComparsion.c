@@ -25,6 +25,7 @@ Example case 2: an=81 and bn=16.
 
 https://www.codechef.com/problems/NUMCOMP
 */
+#include <stdio.h>
 
 enum Comparsion
 {
@@ -67,4 +68,13 @@ enum Comparsion compare(int a, int b, int n)
     {
         return isEven(n) ? abs(a) > abs(b) ? ONE : abs(a) < abs(b) ? TWO : ZERO : a > b ? ONE : TWO;
     }
+}
+
+int main()
+{
+    int a = -3, b = 2, n = 4;
+    enum Comparsion res = compare(a, b, n);
+
+    printf("%d\n", res);
+    return 0;
 }
