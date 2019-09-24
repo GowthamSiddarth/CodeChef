@@ -49,16 +49,6 @@ Example case 3: Chef can't jump to second hill because it's too high for him
 https://www.codechef.com/problems/HILLS
 */
 
-int abs(int num)
-{
-    return num < 0 ? -num : num;
-}
-
-int getAbsHeightDiffWithNextHill(int *heightsOfHills, int currHillIdx)
-{
-    return abs(heightsOfHills[currHillIdx] - heightsOfHills[currHillIdx + 1]);
-}
-
 int getMaxHillPosReached(int *heightsOfHills, int numOfHills, int maxHeight, int maxDepth, int numOfParachutes)
 {
     if (1 == numOfHills)
@@ -67,11 +57,16 @@ int getMaxHillPosReached(int *heightsOfHills, int numOfHills, int maxHeight, int
     }
 
     int currHillIdx = 0;
-    int heightDiff = getAbsHeightDiffWithNextHill(heightsOfHills, currHillIdx);
-    while (currHillIdx < numOfHills - 1 && (heightDiff <= maxDepth || heightDiff <= maxHeight || numOfParachutes-- > 0))
+    while (currHillIdx < numOfHills - 1)
     {
-        currHillIdx++;
-        heightDiff = getAbsHeightDiffWithNextHill(heightsOfHills, currHillIdx);
+        if ((heightsOfHills[currHillIdx] < heightsOfHills[currHillIdx + 1] && (heightsOfHills[currHillIdx + 1] - heightsOfHills[currHillIdx] <= maxHeight)) || (heightsOfHills[currHillIdx] > heightsOfHills[currHillIdx + 1] && (heightsOfHills[currHillIdx] - heightsOfHills[currHillIdx + 1] <= maxDepth || numOfParachutes-- > 0)) || heightsOfHills[currHillIdx] == heightsOfHills[currHillIdx + 1])
+        {
+            currHillIdx++;
+        }
+        else
+        {
+            break;
+        }
     }
 
     return currHillIdx + 1;
