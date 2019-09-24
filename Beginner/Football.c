@@ -38,11 +38,12 @@ Example case 1: The first player gets 800 points for scoring goals and has 20 po
 
 https://www.codechef.com/problems/MSNSADM1
 */
-#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int getMaxPointsScored(int *goals, int *fouls, int numOfPlayers)
 {
-    int maxPointsScored = INT_MIN;
+    int maxPointsScored = 0;
     for (size_t idx = 0; idx < numOfPlayers; idx++)
     {
         int currPlayerScore = goals[idx] * 20 - fouls[idx] * 10;
@@ -53,4 +54,16 @@ int getMaxPointsScored(int *goals, int *fouls, int numOfPlayers)
     }
 
     return maxPointsScored;
+}
+
+int main()
+{
+    int goals[] = {0};
+    int fouls[] = {1};
+    int numOfPlayers = sizeof(goals) / sizeof(goals[0]);
+
+    int maxPointsScored = getMaxPointsScored(goals, fouls, numOfPlayers);
+    printf("%d\n", maxPointsScored);
+
+    return 0;
 }
