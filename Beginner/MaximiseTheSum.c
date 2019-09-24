@@ -32,6 +32,7 @@ But suppose you permute it differently and get the array {−3,2,1,−3}. Then t
 
 https://www.codechef.com/problems/NOMATCH
 */
+#include <stdio.h>
 #include <stdlib.h>
 
 int compareInts(const void *x, const void *y)
@@ -52,4 +53,15 @@ long int getMaxSumWithConsecutiveSubtraction(int *array, int len)
     }
 
     return maxSum;
+}
+
+int main()
+{
+    int array[] = {1, -3, 2, -3, 8, 9};
+    int len = sizeof(array) / sizeof(array[0]);
+
+    long int maxSum = getMaxSumWithConsecutiveSubtraction(array, len);
+    printf("%ld\n", maxSum);
+
+    return 0;
 }
