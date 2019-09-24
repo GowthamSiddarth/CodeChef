@@ -34,6 +34,9 @@ https://www.codechef.com/problems/FANCY
 */
 #define MAX_LEN 100
 
+#include <stdio.h>
+#include <string.h>
+
 enum QuoteType
 {
     REAL_FANCY,
@@ -79,4 +82,16 @@ enum QuoteType getQuoteType(char *quotation, char *fancyWord)
     }
 
     return REGULAR_FANCY;
+}
+
+int main()
+{
+    char quotation[MAX_LEN];
+    memcpy(quotation, "i do not have any fancy quotes", 31);
+
+    char fancyWord[] = {'n', 'o', 't', '\0'};
+    enum QuoteType quoteType = getQuoteType(quotation, fancyWord);
+
+    printf("%s %d\n", REAL_FANCY == quoteType ? "Real Fancy" : "regularly fancy", quoteType);
+    return 0;
 }
