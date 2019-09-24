@@ -32,3 +32,24 @@ But suppose you permute it differently and get the array {−3,2,1,−3}. Then t
 
 https://www.codechef.com/problems/NOMATCH
 */
+#include <stdlib.h>
+
+int compareInts(const void *x, const void *y)
+{
+    return *(int *)x - *(int *)y;
+}
+
+long int getMaxSumWithConsecutiveSubtraction(int *array, int len)
+{
+    qsort(array, len, sizeof(array[0]), compareInts);
+    long int maxSum = 0;
+    int left = 0, right = len - 1;
+    while (left < right)
+    {
+        maxSum = maxSum + (array[right] - array[left]);
+        left++;
+        right--;
+    }
+
+    return maxSum;
+}
