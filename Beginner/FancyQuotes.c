@@ -32,6 +32,7 @@ Example case 2: The word "not" does not appear in the given quote.
 
 https://www.codechef.com/problems/FANCY
 */
+#define MAX_LEN 100
 
 enum QuoteType
 {
@@ -47,7 +48,7 @@ enum Boolean
 
 int getNextCharPos(char *string, char ch, int idx, enum Boolean match)
 {
-    while ('\0' != string[idx] && (match && ch != string[idx]) || (!match && ch == string[idx]))
+    while ('\0' != string[idx] && ((match && ch != string[idx]) || (!match && ch == string[idx])))
     {
         idx++;
     }
@@ -61,15 +62,15 @@ enum QuoteType getQuoteType(char *quotation, char *fancyWord)
     int idx = getNextCharPos(quotation, WHITESPACE, 0, FALSE);
     while ('\0' != quotation[idx])
     {
-        idx = getNextCharPos(quotation, WHITESPACE, 0, FALSE);
+        idx = getNextCharPos(quotation, WHITESPACE, idx, FALSE);
         int fancyWordIdx = 0;
         while ('\0' != fancyWord[fancyWordIdx] && '\0' != quotation[idx] && fancyWord[fancyWordIdx] == quotation[idx])
         {
             idx++;
             fancyWordIdx++;
         }
-
-        if ('\0' == fancyWord[fancyWordIdx])
+        
+        if ('\0' == fancyWord[fancyWordIdx] && (WHITESPACE == quotation[idx] || '\0' == quotation[idx]))
         {
             return REAL_FANCY;
         }
