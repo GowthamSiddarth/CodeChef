@@ -32,3 +32,50 @@ Example case 2: The word "not" does not appear in the given quote.
 
 https://www.codechef.com/problems/FANCY
 */
+
+enum QuoteType
+{
+    REAL_FANCY,
+    REGULAR_FANCY
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int getNextCharPos(char *string, char ch, int idx, enum Boolean match)
+{
+    while ('\0' != string[idx] && (match && ch != string[idx]) || (!match && ch == string[idx]))
+    {
+        idx++;
+    }
+
+    return idx;
+}
+
+enum QuoteType getQuoteType(char *quotation, char *fancyWord)
+{
+    char WHITESPACE = ' ';
+    int idx = getNextCharPos(quotation, WHITESPACE, 0, FALSE);
+    while ('\0' != quotation[idx])
+    {
+        idx = getNextCharPos(quotation, WHITESPACE, 0, FALSE);
+        int fancyWordIdx = 0;
+        while ('\0' != fancyWord[fancyWordIdx] && '\0' != quotation[idx] && fancyWord[fancyWordIdx] == quotation[idx])
+        {
+            idx++;
+            fancyWordIdx++;
+        }
+
+        if ('\0' == fancyWord[fancyWordIdx])
+        {
+            return REAL_FANCY;
+        }
+
+        idx = getNextCharPos(quotation, WHITESPACE, idx, TRUE);
+    }
+
+    return REGULAR_FANCY;
+}
