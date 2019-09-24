@@ -48,6 +48,7 @@ Example case 3: Chef can't jump to second hill because it's too high for him
 
 https://www.codechef.com/problems/HILLS
 */
+#include <stdio.h>
 
 int getMaxHillPosReached(int *heightsOfHills, int numOfHills, int maxHeight, int maxDepth, int numOfParachutes)
 {
@@ -70,4 +71,16 @@ int getMaxHillPosReached(int *heightsOfHills, int numOfHills, int maxHeight, int
     }
 
     return currHillIdx + 1;
+}
+
+int main()
+{
+    int heightsOfHills[] = {4, 4, 4, 4, 4};
+    int numOfHills = sizeof(heightsOfHills) / sizeof(heightsOfHills[0]);
+    int maxHeight = 2, maxDepth = 3, numOfParachutes = 1;
+
+    int maxHillPosReached = getMaxHillPosReached(heightsOfHills, numOfHills, maxHeight, maxDepth, numOfParachutes);
+    printf("%d\n", maxHillPosReached);
+
+    return 0;
 }
