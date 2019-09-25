@@ -34,3 +34,25 @@ Example case 1: Chef served for the first three games, after that Paja started s
 
 https://www.codechef.com/problems/PAJAPONG
 */
+
+enum Player
+{
+    CHEF,
+    PAJA
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2 ? TRUE : FALSE;
+}
+
+enum Player getNextServer(int chefScore, int pajaScore, int numOfGamesForServerChange)
+{
+    return isEven(((long int)chefScore + pajaScore) / numOfGamesForServerChange) ? CHEF : PAJA;
+}
