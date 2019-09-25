@@ -34,6 +34,7 @@ Example case 1: Chef served for the first three games, after that Paja started s
 
 https://www.codechef.com/problems/PAJAPONG
 */
+#include <stdio.h>
 
 enum Player
 {
@@ -47,7 +48,7 @@ enum Boolean
     TRUE
 };
 
-enum Boolean isEven(int num)
+enum Boolean isEven(long int num)
 {
     return 0 == num % 2 ? TRUE : FALSE;
 }
@@ -55,4 +56,13 @@ enum Boolean isEven(int num)
 enum Player getNextServer(int chefScore, int pajaScore, int numOfGamesForServerChange)
 {
     return isEven(((long int)chefScore + pajaScore) / numOfGamesForServerChange) ? CHEF : PAJA;
+}
+
+int main()
+{
+    int chefScore = 38657, pajaScore = 76322, numOfGamesForServerChange = 564;
+    enum Player nextServer = getNextServer(chefScore, pajaScore, numOfGamesForServerChange);
+
+    printf("%s\n", CHEF == nextServer ? "Chef" : "Paja");
+    return 0;
 }
