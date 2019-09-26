@@ -30,15 +30,18 @@ Example Output 2
 
 https://www.codechef.com/problems/MAXREM
 */
-#include <stdlib.h>
 
-int compare(const void *x, const void *y)
+int getMaxMod(int *array, int len)
 {
-    return *(int *)x - *(int *)y;
-}
+    int max1 = 0, max2 = 0;
+    for (size_t i = 0; i < len; i++)
+    {
+        if (array[i] > max1)
+        {
+            max2 = max1;
+            max1 = array[i];
+        }
+    }
 
-int maxMod(int *array, int len)
-{
-    qsort(array, len, sizeof(array[0]), compare);
-    return array[len - 2] % array[len - 1];
+    return max2;
 }
