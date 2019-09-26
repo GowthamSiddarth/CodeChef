@@ -42,6 +42,9 @@ Example case 3: Chef did not answer the first question and he answered the last 
 
 https://www.codechef.com/problems/EXAM1
 */
+#define MAX_SIZE 100
+
+#include <stdio.h>
 
 int getChefScore(char *correctAnswers, char *chefAnswers, int numOfAnswers)
 {
@@ -61,4 +64,16 @@ int getChefScore(char *correctAnswers, char *chefAnswers, int numOfAnswers)
     }
 
     return chefScore;
+}
+
+int main()
+{
+    char correctAnwers[] = {'D', 'D', 'C', 'A', 'B', 'C', 'C', 'A'};
+    char chefAnswers[] = {'D', 'N', 'C', 'B', 'B', 'B', 'B', 'A'};
+    int numOfAnswers = sizeof(correctAnwers) / sizeof(correctAnwers[0]);
+
+    int chefScore = getChefScore(correctAnwers, chefAnswers, numOfAnswers);
+    printf("%d\n", chefScore);
+
+    return 0;
 }
