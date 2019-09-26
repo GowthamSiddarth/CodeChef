@@ -42,3 +42,23 @@ Example case 3: Chef did not answer the first question and he answered the last 
 
 https://www.codechef.com/problems/EXAM1
 */
+
+int getChefScore(char *correctAnswers, char *chefAnswers, int numOfAnswers)
+{
+    int currAnsIdx = 0, chefScore = 0;
+    while (currAnsIdx < numOfAnswers)
+    {
+        if (correctAnswers[currAnsIdx] == chefAnswers[currAnsIdx])
+        {
+            chefScore++;
+        }
+        else if ('N' != chefAnswers[currAnsIdx])
+        {
+            currAnsIdx++;
+        }
+
+        currAnsIdx++;
+    }
+
+    return chefScore;
+}
