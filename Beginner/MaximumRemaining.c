@@ -30,6 +30,7 @@ Example Output 2
 
 https://www.codechef.com/problems/MAXREM
 */
+#include <stdio.h>
 
 int getMaxMod(int *array, int len)
 {
@@ -44,4 +45,15 @@ int getMaxMod(int *array, int len)
     }
 
     return max2;
+}
+
+int main()
+{
+    int array[] = {5, 5, 5, 2, 3, 8};
+    int len = sizeof(array) / sizeof(array[0]);
+
+    int maxMod = getMaxMod(array, len);
+    printf("%d\n", maxMod);
+
+    return 0;
 }
