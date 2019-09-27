@@ -52,3 +52,53 @@ Example case 5: No four contiguous characters can be reordered to form Chef's na
 
 https://www.codechef.com/problems/CHEFCHR
 */
+#define NUM_OF_ALPHABETS 26
+
+#include <stdlib.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isCharInChef(char ch)
+{
+    return 'c' == ch || 'h' == ch || 'e' == ch || 'f' == ch ? TRUE : FALSE;
+}
+
+void resetArray(enum Boolean *booleanArray, int numOfItems)
+{
+    for (size_t idx = 0; idx < numOfItems; idx++)
+    {
+        booleanArray[idx] = FALSE;
+    }
+}
+
+int getNumOfAnagramsForChef(char *sentence)
+{
+    int numOfAnagramsForChef = 0, idx = 0;
+    enum Boolean occurrence[NUM_OF_ALPHABETS] = {FALSE};
+    while ('\0' != sentence[idx])
+    {
+        if (isCharInChef(sentence[idx]))
+        {
+            occurrence[sentence[idx] - 'a'] = TRUE;
+        }
+        else if (idx > 0 && isCharInChef(sentence[idx - 1]))
+        {
+            if (occurrence['c' - 'a'] && occurrence['h' - 'a'] && occurrence['e' - 'a'] && occurrence['f' - 'a'])
+            {
+                numOfAnagramsForChef++;
+            }
+            else
+            {
+                resetArray(occurrence, NUM_OF_ALPHABETS);
+            }
+        }
+
+        idx++;
+    }
+
+    return numOfAnagramsForChef;
+}
