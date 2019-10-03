@@ -48,13 +48,14 @@ Example case 2: After mixing, the cauldron contains the letter 'c' 4 times, 'o' 
 https://www.codechef.com/problems/CFMM
 */
 #define NUM_OF_ALPHABETS_IN_CODECHEF 6
+#define MAX_LEN_OF_INGREDIENT 1000
+#define MAX_NUM_OF_INGREDIENTS 100
 
-#include <stdlib.h>
 #include <limits.h>
 
 int getCharIdx(char ch)
 {
-    switch (ch - 'a')
+    switch (ch)
     {
     case 'c':
         return 0;
@@ -79,7 +80,7 @@ int getCharIdx(char ch)
     }
 }
 
-void updateAlphaCount(int *alphaCount, char *string)
+void updateAlphaCount(int (*alphaCount)[NUM_OF_ALPHABETS_IN_CODECHEF], char *string)
 {
     size_t idx = 0;
     while ('\0' != string[idx])
@@ -87,7 +88,7 @@ void updateAlphaCount(int *alphaCount, char *string)
         int currCharPos = getCharIdx(string[idx]);
         if (currCharPos >= 0)
         {
-            alphaCount[currCharPos]++;
+            (*alphaCount)[currCharPos]++;
         }
 
         idx++;
@@ -108,12 +109,12 @@ int minOfArray(int *array, int len)
     return min;
 }
 
-int getNumOfCompleteMeals(char **ingredients, int numOfIngredients)
+int getNumOfCompleteMeals(char ingredients[MAX_NUM_OF_INGREDIENTS][MAX_LEN_OF_INGREDIENT], int numOfIngredients)
 {
     int alphaCount[NUM_OF_ALPHABETS_IN_CODECHEF] = {0};
     for (size_t idx = 0; idx < numOfIngredients; idx++)
     {
-        updateAlphaCount(alphaCount, ingredients[idx]);
+        updateAlphaCount(&alphaCount, ingredients[idx]);
     }
 
     if (alphaCount[getCharIdx('c')] >= 2 && alphaCount[getCharIdx('e')] >= 2)
