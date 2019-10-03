@@ -51,6 +51,7 @@ https://www.codechef.com/problems/CFMM
 #define MAX_LEN_OF_INGREDIENT 1000
 #define MAX_NUM_OF_INGREDIENTS 100
 
+#include <stdio.h>
 #include <limits.h>
 
 int getCharIdx(char ch)
@@ -121,4 +122,16 @@ int getNumOfCompleteMeals(char ingredients[MAX_NUM_OF_INGREDIENTS][MAX_LEN_OF_IN
     alphaCount[getCharIdx('e')] = alphaCount[getCharIdx('e')] / 2;
 
     return minOfArray(alphaCount, NUM_OF_ALPHABETS_IN_CODECHEF);
+}
+
+int main()
+{
+    char ingredients[MAX_NUM_OF_INGREDIENTS][MAX_LEN_OF_INGREDIENT] = {
+        "codechef", "chefcode", "fehcedoc", "cceeohfd", "cceeohfd"};
+    int numOfIngredients = 5;
+
+    int numOfCompleteMeals = getNumOfCompleteMeals(ingredients, numOfIngredients);
+    printf("%d\n", numOfCompleteMeals);
+
+    return 0;
 }
