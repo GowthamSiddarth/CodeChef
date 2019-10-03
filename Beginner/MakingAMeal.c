@@ -117,12 +117,8 @@ int getNumOfCompleteMeals(char ingredients[MAX_NUM_OF_INGREDIENTS][MAX_LEN_OF_IN
         updateAlphaCount(&alphaCount, ingredients[idx]);
     }
 
-    if (alphaCount[getCharIdx('c')] >= 2 && alphaCount[getCharIdx('e')] >= 2)
-    {
-        return minOfArray(alphaCount, NUM_OF_ALPHABETS_IN_CODECHEF);
-    }
-    else
-    {
-        return 0;
-    }
+    alphaCount[getCharIdx('c')] = alphaCount[getCharIdx('c')] / 2;
+    alphaCount[getCharIdx('e')] = alphaCount[getCharIdx('e')] / 2;
+
+    return minOfArray(alphaCount, NUM_OF_ALPHABETS_IN_CODECHEF);
 }
