@@ -51,6 +51,10 @@ Case 2: DANGER
 
 https://www.codechef.com/problems/ZUBREACH
 */
+#define MAX_LEN 10000
+
+#include <string.h>
+#include <stdio.h>
 
 enum LocationStatus
 {
@@ -103,4 +107,16 @@ enum LocationStatus getLocationStatus(char *directions, int maxX, int maxY, int 
     }
 
     return hasReached(currX, currY, destX, destY) ? REACHED : isDangerous(currX, currY, maxX, maxY) ? DANGER : SOMEWHERE;
+}
+
+int main()
+{
+    int maxX = 10, maxY = 10, destX = 3, destY = 4;
+    char directions[MAX_LEN];
+    memcpy(directions, "UDUDDRR", 8);
+
+    enum LocationStatus locStatus = getLocationStatus(directions, maxX, maxY, destX, destY);
+    printf("%s\n", REACHED == locStatus ? "REACHED" : DANGER == locStatus ? "DANGER" : "SOMEWHERE");
+
+    return 0;
 }
