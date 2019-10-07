@@ -25,6 +25,9 @@ Testcase 2: You first push something, and then pop it out. So now you have an em
 
 https://www.codechef.com/problems/VALIDSTK
 */
+#define MAX_NUM_OF_OPERATIONS 100000
+
+#include <stdio.h>
 
 enum StackOpType
 {
@@ -63,4 +66,15 @@ enum StackOpType getStackOperationType(int *stackOperations, int numOfOperations
     }
 
     return VALID;
+}
+
+int main()
+{
+    int stackOperations[MAX_NUM_OF_OPERATIONS] = {1, 0, 0, 1, 1};
+    int numOfOperations = 5;
+
+    enum StackOpType stackOpType = getStackOperationType(stackOperations, numOfOperations);
+    printf("%s\n", VALID == stackOpType ? "Valid" : "Invalid");
+
+    return 0;
 }
