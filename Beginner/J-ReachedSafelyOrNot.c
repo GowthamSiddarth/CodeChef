@@ -51,3 +51,56 @@ Case 2: DANGER
 
 https://www.codechef.com/problems/ZUBREACH
 */
+
+enum LocationStatus
+{
+    DANGER = 2,
+    REACHED,
+    SOMEWHERE
+};
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isDangerous(int currX, int currY, int maxX, int maxY)
+{
+    return currX < 0 || currY < 0 || currX > maxX || currY > maxY ? TRUE : FALSE;
+}
+
+enum Boolean hasReached(int currX, int currY, int destX, int destY)
+{
+    return currX == destX && currY == destY ? TRUE : FALSE;
+}
+
+enum LocationStatus getLocationStatus(char *directions, int maxX, int maxY, int destX, int destY)
+{
+    int idx = 0, currX = 0, currY = 0;
+    while ('\0' != directions[idx])
+    {
+        switch (directions[idx])
+        {
+        case 'L':
+            currX = currX - 1;
+            break;
+
+        case 'R':
+            currX = currX + 1;
+            break;
+
+        case 'U':
+            currY = currY + 1;
+            break;
+
+        case 'D':
+            currY = currY - 1;
+            break;
+        }
+
+        idx++;
+    }
+
+    return hasReached(currX, currY, destX, destY) ? REACHED : isDangerous(currX, currY, maxX, maxY) ? DANGER : SOMEWHERE;
+}
