@@ -25,3 +25,42 @@ Testcase 2: You first push something, and then pop it out. So now you have an em
 
 https://www.codechef.com/problems/VALIDSTK
 */
+
+enum StackOpType
+{
+    INVALID,
+    VALID
+};
+
+enum StackOp
+{
+    POP,
+    PUSH
+};
+
+enum StackOpType getStackOperationType(int *stackOperations, int numOfOperations)
+{
+    int top = 0, idx = 0;
+    while (top >= 0 && idx < numOfOperations)
+    {
+        switch (stackOperations[idx])
+        {
+        case PUSH:
+            top++;
+            break;
+
+        case POP:
+            top--;
+            break;
+        }
+
+        if (top < 0)
+        {
+            return INVALID;
+        }
+
+        idx++;
+    }
+
+    return VALID;
+}
