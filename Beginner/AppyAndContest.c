@@ -31,3 +31,31 @@ Example case 1: Appy is solving the problems with codes 2 and 4, Chef is solving
 
 https://www.codechef.com/problems/HMAPPY2
 */
+
+enum Result
+{
+    LOSE,
+    WIN
+};
+
+int getLCM(int a, int b)
+{
+    if (a > b)
+    {
+        return getLCM(b, a);
+    }
+
+    int lcm = b;
+    while (lcm <= a * b && (0 != lcm % a || 0 != lcm % b))
+    {
+        lcm++;
+    }
+
+    return lcm;
+}
+
+enum Result getContestResult(int numOfProblems, int appyFactor, int chefFactor, int minProblemsToSolve)
+{
+    int numOfProblemsSovled = numOfProblems / appyFactor + numOfProblems / chefFactor - numOfProblems / getLCM(appyFactor, chefFactor);
+    return numOfProblemsSovled >= minProblemsToSolve ? WIN : LOSE;
+}
