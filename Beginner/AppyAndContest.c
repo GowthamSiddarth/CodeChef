@@ -38,24 +38,21 @@ enum Result
     WIN
 };
 
-int getLCM(int a, int b)
-{
-    if (a > b)
-    {
-        return getLCM(b, a);
+long long int getGCD(long long int a, long long int b) {
+    if (0 == b) { 
+        return a;
+    } else {
+        return getGCD(b, a % b);
     }
-
-    int lcm = b;
-    while (lcm <= a * b && (0 != lcm % a || 0 != lcm % b))
-    {
-        lcm++;
-    }
-
-    return lcm;
 }
 
-enum Result getContestResult(int numOfProblems, int appyFactor, int chefFactor, int minProblemsToSolve)
+long long int getLCM(long long int a, long long int b)
 {
-    int numOfProblemsSovled = numOfProblems / appyFactor + numOfProblems / chefFactor - numOfProblems / getLCM(appyFactor, chefFactor);
+    return (a * b) / getGCD(a, b);
+}
+
+enum Result getContestResult(long long int numOfProblems, long long int appyFactor, long long int chefFactor, long long int minProblemsToSolve)
+{
+    long long int numOfProblemsSovled = numOfProblems / appyFactor + numOfProblems / chefFactor - 2 * (numOfProblems / getLCM(appyFactor, chefFactor));
     return numOfProblemsSovled >= minProblemsToSolve ? WIN : LOSE;
 }
