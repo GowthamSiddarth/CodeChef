@@ -31,6 +31,7 @@ Example case 1: Appy is solving the problems with codes 2 and 4, Chef is solving
 
 https://www.codechef.com/problems/HMAPPY2
 */
+#include <stdio.h>
 
 enum Result
 {
@@ -55,4 +56,13 @@ enum Result getContestResult(long long int numOfProblems, long long int appyFact
 {
     long long int numOfProblemsSovled = numOfProblems / appyFactor + numOfProblems / chefFactor - 2 * (numOfProblems / getLCM(appyFactor, chefFactor));
     return numOfProblemsSovled >= minProblemsToSolve ? WIN : LOSE;
+}
+
+int main()
+{
+    long long int numOfProblems = 55, minProblemsToSolve = 37, applyFactor = 2, chefFactor = 3;
+    enum Result result = getContestResult(numOfProblems, applyFactor, chefFactor, minProblemsToSolve);
+
+    printf("%s\n", WIN == result ? "Win" : "Lose");
+    return 0;
 }
