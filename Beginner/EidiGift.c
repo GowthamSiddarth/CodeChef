@@ -40,3 +40,32 @@ Example case 4: First and third children have same age, but didn't get same amou
 
 https://www.codechef.com/problems/EID2
 */
+#include <stdlib.h>
+
+struct Gift
+{
+    int age, amount;
+};
+
+struct Gift *getElderChildGift(struct Gift *child1, struct Gift *child2)
+{
+    return child1->age > child2->age && child1->amount > child2->amount ? child1 : child2->age > child1->age && child2->amount > child1->amount ? child2 : NULL;
+}
+
+enum GiftDistribution
+{
+    NOT_FAIR,
+    FAIR
+};
+
+enum GiftDistribution getGiftDistribution(struct Gift child1, struct Gift child2, struct Gift child3)
+{
+    struct Gift *elderChildGift = getElderChildGift(&child1, &child2);
+    if (NULL == elderChildGift)
+    {
+        return NOT_FAIR;
+    }
+
+    elderChildGift = getElderChildGift(&child3, elderChildGift);
+    return NULL == elderChildGift ? NOT_FAIR : FAIR;
+}
