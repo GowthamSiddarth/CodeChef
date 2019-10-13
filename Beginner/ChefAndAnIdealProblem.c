@@ -29,3 +29,15 @@ You                     Grader
 
 https://www.codechef.com/problems/CHFIDEAL
 */
+#include <stdio.h>
+
+int main()
+{
+    printf("1\n");
+    fflush(stdout);
+    int n;
+    scanf("%d", &n);
+    printf("%d", 2 == n ? 3 : 2);
+
+    return 0;
+}
