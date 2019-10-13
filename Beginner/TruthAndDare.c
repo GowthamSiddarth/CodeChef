@@ -83,6 +83,8 @@ https://www.codechef.com/problems/TRUEDARE
 */
 #define MAX_NUM_OF_TASKS 100
 
+#include <stdio.h>
+
 enum Boolean
 {
     FALSE,
@@ -128,4 +130,20 @@ enum Boolean canRamWin(struct Tasks *truthTasksOfRam, struct Tasks *dareTasksOfR
     updateTasksOfRam(dareTasksOfRam, dareTasksRamCanDo);
 
     return canRamDoTasksByShyam(truthTasksByShyam, truthTasksRamCanDo) && canRamDoTasksByShyam(dareTasksByShyam, dareTasksRamCanDo);
+}
+
+int main()
+{
+    int numOfTruthTasksOfRam = 2, numOfDareTasksOfRam = 3;
+    struct Tasks truthTasksOfRam = {{1, 2}, numOfTruthTasksOfRam};
+    struct Tasks dareTasksOfRam = {{1, 3, 2}, numOfDareTasksOfRam};
+
+    int numOfTruthTasksByShyam = 1, numOfDareTasksByShyam = 2;
+    struct Tasks truthTasksByShyam = {{2}, 1};
+    struct Tasks dareTasksByShyam = {{3, 2}, 2};
+
+    enum Boolean ramWin = canRamWin(&truthTasksOfRam, &dareTasksOfRam, &truthTasksByShyam, &dareTasksByShyam);
+    printf("%s\n", ramWin ? "yes" : "no");
+
+    return 0;
 }
