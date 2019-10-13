@@ -91,7 +91,7 @@ enum Boolean
 
 struct Tasks
 {
-    int *tasks, numOfTasks;
+    int tasks[MAX_NUM_OF_TASKS], numOfTasks;
 };
 
 int encodeTaskIdToIdx(int taskId)
@@ -111,7 +111,7 @@ void updateTasksOfRam(struct Tasks *tasksOfRam, enum Boolean *tasksRamCanDo)
 enum Boolean canRamDoTasksByShyam(struct Tasks *tasksByShyam, enum Boolean *tasksRamCanDo)
 {
     int idx = 0;
-    while (tasksRamCanDo[encodeTaskIdToIdx(tasksByShyam->tasks[idx])])
+    while (idx < tasksByShyam->numOfTasks && tasksRamCanDo[encodeTaskIdToIdx(tasksByShyam->tasks[idx])])
     {
         idx++;
     }
