@@ -81,3 +81,51 @@ Example case 2: Ram's truth tasks are [1,2] and his dare tasks are [1,3,2]. Shya
 
 https://www.codechef.com/problems/TRUEDARE
 */
+#define MAX_NUM_OF_TASKS 100
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+struct Tasks
+{
+    int *tasks, numOfTasks;
+};
+
+int encodeTaskIdToIdx(int taskId)
+{
+    return taskId - 1;
+}
+
+void updateTasksOfRam(struct Tasks *tasksOfRam, enum Boolean *tasksRamCanDo)
+{
+    for (int idx = 0; idx < tasksOfRam->numOfTasks; idx++)
+    {
+        int taskIdx = encodeTaskIdToIdx(tasksOfRam->tasks[idx]);
+        tasksRamCanDo[taskIdx] = TRUE;
+    }
+}
+
+enum Boolean canRamDoTasksByShyam(struct Tasks *tasksByShyam, enum Boolean *tasksRamCanDo)
+{
+    int idx = 0;
+    while (tasksRamCanDo[encodeTaskIdToIdx(tasksByShyam->tasks[idx])])
+    {
+        idx++;
+    }
+
+    return tasksByShyam->numOfTasks == idx ? TRUE : FALSE;
+}
+
+enum Boolean canRamWin(struct Tasks *truthTasksOfRam, struct Tasks *dareTasksOfRam, struct Tasks *truthTasksByShyam, struct Tasks *dareTasksByShyam)
+{
+    enum Boolean truthTasksRamCanDo[MAX_NUM_OF_TASKS] = {FALSE};
+    enum Boolean dareTasksRamCanDo[MAX_NUM_OF_TASKS] = {FALSE};
+
+    updateTasksOfRam(truthTasksOfRam, truthTasksRamCanDo);
+    updateTasksOfRam(dareTasksOfRam, dareTasksRamCanDo);
+
+    return canRamDoTasksByShyam(truthTasksByShyam, truthTasksRamCanDo) && canRamDoTasksByShyam(dareTasksByShyam, dareTasksRamCanDo);
+}
