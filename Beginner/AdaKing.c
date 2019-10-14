@@ -26,6 +26,7 @@ https://codechef_shared.s3.amazonaws.com/download/Images/CK102TST/ADAKNG/ADAKNG.
 
 https://www.codechef.com/problems/ADAKNG
 */
+#include <stdio.h>
 
 int max(int x, int y)
 {
@@ -45,4 +46,13 @@ int getNumOfMovesAvailable(int row, int col, int numOfMovesLeft)
     int minCol = max(col - numOfMovesLeft, 1);
 
     return (maxRow - minRow + 1) * (maxCol - minCol + 1);
+}
+
+int main()
+{
+    int row = 1, col = 3, numOfMovesLeft = 1;
+    int numOfMovesAvailable = getNumOfMovesAvailable(row, col, numOfMovesLeft);
+
+    printf("%d\n", numOfMovesAvailable);
+    return 0;
 }
