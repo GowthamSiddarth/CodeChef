@@ -26,3 +26,20 @@ https://codechef_shared.s3.amazonaws.com/download/Images/CK102TST/ADAKNG/ADAKNG.
 
 https://www.codechef.com/problems/ADAKNG
 */
+
+int getNumOfMovesAvailable(int row, int col, int numOfMovesLeft)
+{
+    if (row < 1 || col > 8)
+    {
+        return 0;
+    }
+    else if (0 == numOfMovesLeft)
+    {
+        return 1;
+    }
+    else
+    {
+        --numOfMovesLeft;
+        return getNumOfMovesAvailable(row - 1, col, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col, numOfMovesLeft) + getNumOfMovesAvailable(row, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row, col + 1, numOfMovesLeft) + getNumOfMovesAvailable(row - 1, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row - 1, col + 1, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col + 1, numOfMovesLeft);
+    }
+}
