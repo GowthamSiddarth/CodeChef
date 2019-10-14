@@ -27,19 +27,22 @@ https://codechef_shared.s3.amazonaws.com/download/Images/CK102TST/ADAKNG/ADAKNG.
 https://www.codechef.com/problems/ADAKNG
 */
 
+int max(int x, int y)
+{
+    return x > y ? x : y;
+}
+
+int min(int x, int y)
+{
+    return x < y ? x : y;
+}
+
 int getNumOfMovesAvailable(int row, int col, int numOfMovesLeft)
 {
-    if (row < 1 || col > 8)
-    {
-        return 0;
-    }
-    else if (0 == numOfMovesLeft)
-    {
-        return 1;
-    }
-    else
-    {
-        --numOfMovesLeft;
-        return getNumOfMovesAvailable(row - 1, col, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col, numOfMovesLeft) + getNumOfMovesAvailable(row, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row, col + 1, numOfMovesLeft) + getNumOfMovesAvailable(row - 1, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col - 1, numOfMovesLeft) + getNumOfMovesAvailable(row - 1, col + 1, numOfMovesLeft) + getNumOfMovesAvailable(row + 1, col + 1, numOfMovesLeft);
-    }
+    int maxRow = min(row + numOfMovesLeft, 8);
+    int minRow = max(row - numOfMovesLeft, 1);
+    int maxCol = min(col + numOfMovesLeft, 8);
+    int minCol = max(col - numOfMovesLeft, 1);
+
+    return (maxRow - minRow + 1) * (maxCol - minCol + 1);
 }
