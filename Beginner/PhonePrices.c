@@ -31,3 +31,50 @@ Example case 1: Chef considers the price to be good on day 1, because he has not
 
 https://www.codechef.com/problems/S10E
 */
+#define MAX_RANGE 5
+
+#include <limits.h>
+
+void swap(int *x, int *y)
+{
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+int getNumOfGoodPrices(int *prices, int numOfPrices)
+{
+    int start = 0, end = 1, min1PriceIdx = start, min2PriceIdx = -1, numOfGoodPrices = 1;
+    while (end < numOfPrices)
+    {
+        while (end - start < MAX_RANGE)
+        {
+            if (prices[end] < prices[min1PriceIdx])
+            {
+                numOfGoodPrices++;
+                min2PriceIdx = min1PriceIdx;
+                min1PriceIdx = end;
+            }
+
+            end++;
+        }
+
+        int _min2PriceIdx = min2PriceIdx;
+        if (prices[end] < prices[min1PriceIdx])
+        {
+            numOfGoodPrices++;
+            min2PriceIdx = min1PriceIdx;
+            min1PriceIdx = end;
+        }
+
+        if (min2PriceIdx == start)
+        {
+            min2PriceIdx = _min2PriceIdx;
+        }
+
+        end++;
+        start++;
+    }
+
+    return numOfGoodPrices;
+}
