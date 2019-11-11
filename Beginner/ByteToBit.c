@@ -34,6 +34,7 @@ Immediately before the time 2ms, there is only one Bit. At 2ms, this Bit grows u
 https://www.codechef.com/problems/BITOBYT
 */
 #include <math.h>
+#include <stdio.h>
 
 struct CitizensCount
 {
@@ -60,4 +61,13 @@ struct CitizensCount getCitizensCountBeforNthInstance(int currInstance)
     }
 
     return citizensCount;
+}
+
+int main()
+{
+    int instant = 27;
+    struct CitizensCount citizensCount = getCitizensCountBeforNthInstance(instant);
+
+    printf("%d %d %d\n", citizensCount.bit, citizensCount.nibble, citizensCount.byte);
+    return 0;
 }
