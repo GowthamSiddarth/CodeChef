@@ -33,3 +33,31 @@ Immediately before the time 2ms, there is only one Bit. At 2ms, this Bit grows u
 
 https://www.codechef.com/problems/BITOBYT
 */
+#include <math.h>
+
+struct CitizensCount
+{
+    int bit, nibble, byte;
+};
+
+struct CitizensCount getCitizensCountBeforNthInstance(int currInstance)
+{
+    int prevInstance = currInstance - 1;
+    int numOfChainReactions = prevInstance / 26;
+    int timeSinceLastChainReaction = prevInstance % 26;
+    struct CitizensCount citizensCount = {0, 0, 0};
+    if (timeSinceLastChainReaction >= 0 && timeSinceLastChainReaction < 2)
+    {
+        citizensCount.bit = pow(2, numOfChainReactions);
+    }
+    else if (timeSinceLastChainReaction >= 2 && timeSinceLastChainReaction < 10)
+    {
+        citizensCount.nibble = pow(2, numOfChainReactions);
+    }
+    else
+    {
+        citizensCount.byte = pow(2, numOfChainReactions);
+    }
+
+    return citizensCount;
+}
