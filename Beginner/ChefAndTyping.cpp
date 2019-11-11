@@ -35,3 +35,77 @@ Example Output
 
 https://www.codechef.com/problems/TYPING
 */
+#include <vector>
+#include <map>
+#include <string>
+
+using namespace std;
+
+enum Hand
+{
+    LEFT,
+    RIGHT
+};
+
+enum Hand getHandToUse(char ch)
+{
+    if ('d' == ch || 'f' == ch)
+    {
+        return LEFT;
+    }
+    else if ('j' == ch || 'k' == ch)
+    {
+        return RIGHT;
+    }
+}
+
+int getTimeTakenForWord(string word)
+{
+    float timeTaken = 0.0f;
+    char prevChar = '\0';
+    enum Hand prevHandUsed;
+
+    for (int idx = 0; idx < word.length(); ++idx)
+    {
+        char currChar = word[idx];
+        enum Hand currHandUsed = getHandToUse(currChar);
+        if (0 == idx)
+        {
+            timeTaken = 0.2f;
+        }
+        else if (prevHandUsed != currHandUsed)
+        {
+            timeTaken = timeTaken + 0.2f;
+        }
+        else
+        {
+            timeTaken = timeTaken + 0.4f;
+        }
+
+        prevHandUsed = currHandUsed;
+    }
+
+    return timeTaken;
+}
+
+int getTimeTakenForAllWords(vector<string> words)
+{
+    map<string, int> wordCount;
+    float totalTimeTaken = 0.0f;
+    for (int idx = 0; idx < words.size(); idx++)
+    {
+        string currWord = words[idx];
+        if (wordCount.find(currWord) != wordCount.end())
+        {
+            totalTimeTaken = totalTimeTaken + wordCount.find(currWord)->second / 2;
+        }
+        else
+        {
+            float timeTakenForCurrWord = getTimeTakenForWord(currWord);
+            wordCount[currWord] = timeTakenForCurrWord;
+            totalTimeTaken = totalTimeTaken + timeTakenForCurrWord;
+        }
+    }
+
+    return totalTimeTaken;
+}
