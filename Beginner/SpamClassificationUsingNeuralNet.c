@@ -49,3 +49,14 @@ You can see that all of these are odd and hence signify that they are spammers. 
 
 https://www.codechef.com/problems/SPAMCLAS
 */
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+enum Boolean isEven(int num)
+{
+    return 0 == num % 2;
+}
