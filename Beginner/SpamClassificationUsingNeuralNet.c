@@ -60,3 +60,19 @@ enum Boolean isEven(int num)
 {
     return 0 == num % 2;
 }
+
+enum Boolean isOutputEven(int weight, int input, int bias)
+{
+    if (isEven(weight))
+    {
+        return isEven(bias);
+    }
+    else if (isEven(bias))
+    {
+        return isEven(input);
+    }
+    else
+    {
+        return !isEven(input);
+    }
+}
