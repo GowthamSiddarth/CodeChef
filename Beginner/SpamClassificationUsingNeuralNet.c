@@ -50,6 +50,12 @@ You can see that all of these are odd and hence signify that they are spammers. 
 https://www.codechef.com/problems/SPAMCLAS
 */
 
+enum UserType
+{
+    SPAM,
+    NON_SPAM
+};
+
 enum Boolean
 {
     FALSE,
@@ -61,7 +67,7 @@ enum Boolean isEven(int num)
     return 0 == num % 2;
 }
 
-enum Boolean isOutputEven(int weight, int input, int bias)
+enum Boolean isOutputEven(int weight, enum Boolean isInputEven, int bias)
 {
     if (isEven(weight))
     {
@@ -69,10 +75,21 @@ enum Boolean isOutputEven(int weight, int input, int bias)
     }
     else if (isEven(bias))
     {
-        return isEven(input);
+        return isInputEven;
     }
     else
     {
-        return !isEven(input);
+        return !isInputEven;
     }
+}
+
+enum UserType getUserType(int *weights, int *bias, int numOfLayers, int input)
+{
+    enum Boolean outputEven = isEven(input);
+    for (int idx = 0; idx < numOfLayers; idx++)
+    {
+        outputEven = isOutputEven(weights[idx], outputEven, bias[idx]);
+    }
+
+    return outputEven ? NON_SPAM : SPAM;
 }
