@@ -83,13 +83,31 @@ enum Boolean isOutputEven(int weight, enum Boolean isInputEven, int bias)
     }
 }
 
-enum UserType getUserType(int *weights, int *bias, int numOfLayers, int input)
+enum UserType getUserType(int *weights, int *bias, int numOfLayers, enum Boolean isInputEven)
 {
-    enum Boolean outputEven = isEven(input);
+    enum Boolean outputEven = isInputEven;
     for (int idx = 0; idx < numOfLayers; idx++)
     {
         outputEven = isOutputEven(weights[idx], outputEven, bias[idx]);
     }
 
     return outputEven ? NON_SPAM : SPAM;
+}
+
+int getNumOfOddsInRange(int min, int max)
+{
+    int numOfItems = max - min + 1;
+    return isEven(numOfItems) ? numOfItems / 2 : !isEven(min) ? numOfItems / 2 + 1 : numOfItems / 2;
+}
+
+void countSpammersAndNonSpammers(int *weights, int *bias, int numOfLayers, int minInput, int maxInput, int *spamCount, int *nonSpamCount)
+{
+    enum UserType oddInputUserType = getUserType(weights, bias, numOfLayers, FALSE);
+    enum UserType evenInputUserType = getUserType(weights, bias, numOfLayers, TRUE);
+
+    int numOfOddsInRange = getNumOfOddsInRange(minInput, maxInput);
+    int numOfEvensInRange = (maxInput - minInput + 1) - numOfOddsInRange;
+
+    *spamCount = (SPAM == oddInputUserType) * numOfOddsInRange + (SPAM == evenInputUserType) * numOfEvensInRange;
+    *nonSpamCount = (NON_SPAM == oddInputUserType) * numOfOddsInRange + (NON_SPAM == evenInputUserType) * numOfEvensInRange;
 }
