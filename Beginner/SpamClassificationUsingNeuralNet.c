@@ -49,6 +49,9 @@ You can see that all of these are odd and hence signify that they are spammers. 
 
 https://www.codechef.com/problems/SPAMCLAS
 */
+#define MAX_NUM_OF_LAYERS 100000
+
+#include <stdio.h>
 
 enum UserType
 {
@@ -110,4 +113,18 @@ void countSpammersAndNonSpammers(int *weights, int *bias, int numOfLayers, int m
 
     *spamCount = (SPAM == oddInputUserType) * numOfOddsInRange + (SPAM == evenInputUserType) * numOfEvensInRange;
     *nonSpamCount = (NON_SPAM == oddInputUserType) * numOfOddsInRange + (NON_SPAM == evenInputUserType) * numOfEvensInRange;
+}
+
+int main()
+{
+    int numOfLayers = 3, minInput = 2, maxInput = 1000000000;
+    int weights[MAX_NUM_OF_LAYERS] = {2, 2, 5};
+    int bias[MAX_NUM_OF_LAYERS] = {4, 2, 4};
+
+    int spamCount, nonSpamCount;
+    countSpammersAndNonSpammers(weights, bias, numOfLayers, minInput, maxInput, &spamCount, &nonSpamCount);
+
+    printf("%d %d\n", nonSpamCount, spamCount);
+
+    return 0;
 }
