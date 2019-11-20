@@ -44,19 +44,37 @@ The third and fourth element in the new list is 0 since third and fourth element
 
 https://www.codechef.com/problems/BIT2A
 */
+#define MAX_NUM_OF_ITEMS 100
+
+#include <stdio.h>
 
 void countNumOfItemsStrictlyGreaterThanCurrItem(int *arr, int len, int *count)
 {
-    count[len - 1] = 0;
     for (int idx = len - 2; idx >= 0; --idx)
     {
         if (arr[idx] < arr[idx + 1])
         {
-            count[idx] = count[idx + 1] + 1;
+            count[idx] = len - 1 - idx;
         }
         else
         {
             count[idx] = count[idx + 1];
         }
     }
+}
+
+int main()
+{
+    int arr[MAX_NUM_OF_ITEMS] = {1, 2, 2, 2, 3};
+    int count[MAX_NUM_OF_ITEMS] = {0};
+    int numOfItems = 5;
+    countNumOfItemsStrictlyGreaterThanCurrItem(arr, numOfItems, count);
+
+    for (int idx = 0; idx < numOfItems; ++idx)
+    {
+        printf("%d ", count[idx]);
+    }
+    printf("\n");
+
+    return 0;
 }
