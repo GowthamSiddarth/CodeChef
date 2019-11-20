@@ -44,3 +44,19 @@ The third and fourth element in the new list is 0 since third and fourth element
 
 https://www.codechef.com/problems/BIT2A
 */
+
+void countNumOfItemsStrictlyGreaterThanCurrItem(int *arr, int len, int *count)
+{
+    count[len - 1] = 0;
+    for (int idx = len - 2; idx >= 0; --idx)
+    {
+        if (arr[idx] < arr[idx + 1])
+        {
+            count[idx] = count[idx + 1] + 1;
+        }
+        else
+        {
+            count[idx] = count[idx + 1];
+        }
+    }
+}
