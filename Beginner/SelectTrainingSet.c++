@@ -54,6 +54,7 @@ https://www.codechef.com/problems/TRAINSET
 #include <string>
 #include <map>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -95,4 +96,40 @@ int getMaxSizeOfTrainSet(vector<Sample> samples)
     }
 
     return count;
+}
+
+bool isSpam(int spam)
+{
+    return 1 == spam;
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+
+    while (t--)
+    {
+        int numOfSamples;
+        cin >> numOfSamples;
+        cin.ignore();
+
+        vector<Sample> samples(numOfSamples);
+        for (int idx = 0; idx < numOfSamples; ++idx)
+        {
+            string word;
+            int spam;
+
+            cin >> word;
+            cin >> spam;
+
+            Sample sample = {word, isSpam(spam)};
+            samples[idx] = sample;
+        }
+
+        int maxSizeOfTrainSet = getMaxSizeOfTrainSet(samples);
+        cout << maxSizeOfTrainSet << "\n";
+    }
+
+    return 0;
 }
