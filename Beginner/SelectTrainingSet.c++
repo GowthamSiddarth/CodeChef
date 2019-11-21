@@ -51,3 +51,48 @@ Example case 2: You can include all the items except the second item in the trai
 
 https://www.codechef.com/problems/TRAINSET
 */
+#include <string>
+#include <map>
+#include <vector>
+
+using namespace std;
+
+struct Count
+{
+    int spamCount, notSpamCount;
+};
+
+struct Sample
+{
+    string word;
+    bool isSpam;
+};
+
+int getMaxSizeOfTrainSet(vector<Sample> samples)
+{
+    map<string, Count> wordSpamCount;
+    for (int idx = 0; idx < samples.size(); idx++)
+    {
+        Sample currSample = samples[idx];
+        map<string, Count>::iterator item = wordSpamCount.find(currSample.word);
+        if (item != wordSpamCount.end())
+        {
+            currSample.isSpam ? ++item->second.spamCount : ++item->second.notSpamCount;
+        }
+        else
+        {
+            Count count = {0, 0};
+            currSample.isSpam ? ++count.spamCount : ++count.notSpamCount;
+            wordSpamCount.insert(make_pair(currSample.word, count));
+        }
+    }
+
+    map<string, Count>::iterator itr;
+    int count = 0;
+    for (itr = wordSpamCount.begin(); itr != wordSpamCount.end(); ++itr)
+    {
+        count = count + max(itr->second.spamCount, itr->second.notSpamCount);
+    }
+
+    return count;
+}
