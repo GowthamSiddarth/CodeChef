@@ -31,6 +31,13 @@ Example case 3: I can remove the digit 1 and then I only have to pay 4 Rs.
 https://www.codechef.com/problems/DISCSHOP
 */
 #include <math.h>
+#include <stdio.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
 
 int getMinCost(int actualCost)
 {
@@ -51,18 +58,33 @@ int getMinCost(int actualCost)
         previousDigit = currDigit;
         actualCost = actualCost / 10;
     }
-
-    int minCost = 0, placeValue = 0, base = 10;
+    
+    int minCost = 0, placeValue = idx - 1, base = 10;
+    enum Boolean removed = FALSE;
+    
     while (idx >= 0)
     {
-        if (digitToRemove != digits[idx])
+        if ((digitToRemove != digits[idx] || removed) && !(0 == digits[idx] && 0 == placeValue))
         {
             minCost = minCost + digits[idx] * (int)pow(base, placeValue);
+            --placeValue;
+        }
+        else
+        {
+            removed = TRUE;
         }
 
-        ++placeValue;
         --idx;
     }
 
     return minCost;
+}
+
+int main()
+{
+    int num = 1442;
+    int minCost = getMinCost(num);
+
+    printf("%d\n", minCost);
+    return 0;
 }
