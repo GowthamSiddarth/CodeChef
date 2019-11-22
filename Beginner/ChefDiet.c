@@ -36,6 +36,9 @@ Example case 2: Chef needs to eat 4 grams of protein on the first day, but he on
 
 https://www.codechef.com/problems/DIET
 */
+#define MAX_NUM_OF_DAYS 100
+
+#include <stdio.h>
 
 int getDayWithoutKProteins(int *proteinsDays, int numOfDays, int k)
 {
@@ -46,5 +49,23 @@ int getDayWithoutKProteins(int *proteinsDays, int numOfDays, int k)
         currDayIdx++;
     }
 
-    return currDayIdx == numOfDays ? -1 : currDayIdx;
+    return currDayIdx == numOfDays ? -1 : currDayIdx + 1;
+}
+
+int main()
+{
+    int proteinsDays[MAX_NUM_OF_DAYS] = {8, 1, 1};
+    int numOfDays = 3, k = 4;
+
+    int dayWithoutKProteins = getDayWithoutKProteins(proteinsDays, numOfDays, k);
+    if (-1 == dayWithoutKProteins)
+    {
+        printf("YES\n");
+    }
+    else
+    {
+        printf("NO %d\n", dayWithoutKProteins);
+    }
+
+    return 0;
 }
