@@ -30,13 +30,19 @@ Example case 3: I can remove the digit 1 and then I only have to pay 4 Rs.
 
 https://www.codechef.com/problems/DISCSHOP
 */
+#include <math.h>
 
 int getMinCost(int actualCost)
 {
     int previousDigit = 0, currDigit, digitToRemove;
+    int digits[10] = {0}, idx = -1;
+
     while (0 != actualCost)
     {
+        ++idx;
         currDigit = actualCost % 10;
+        digits[idx] = currDigit;
+
         if (currDigit > previousDigit)
         {
             digitToRemove = currDigit;
@@ -46,5 +52,17 @@ int getMinCost(int actualCost)
         actualCost = actualCost / 10;
     }
 
-    return digitToRemove;
+    int minCost = 0, placeValue = 0, base = 10;
+    while (idx >= 0)
+    {
+        if (digitToRemove != digits[idx])
+        {
+            minCost = minCost + digits[idx] * (int)pow(base, placeValue);
+        }
+
+        ++placeValue;
+        --idx;
+    }
+
+    return minCost;
 }
