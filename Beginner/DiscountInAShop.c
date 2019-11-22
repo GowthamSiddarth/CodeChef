@@ -30,3 +30,21 @@ Example case 3: I can remove the digit 1 and then I only have to pay 4 Rs.
 
 https://www.codechef.com/problems/DISCSHOP
 */
+
+int getMinCost(int actualCost)
+{
+    int previousDigit = 0, currDigit, digitToRemove;
+    while (0 != actualCost)
+    {
+        currDigit = actualCost % 10;
+        if (currDigit > previousDigit)
+        {
+            digitToRemove = currDigit;
+        }
+
+        previousDigit = currDigit;
+        actualCost = actualCost / 10;
+    }
+
+    return digitToRemove;
+}
