@@ -32,6 +32,10 @@ NO
 https://www.codechef.com/problems/LAPIN
 */
 #define NUM_OF_ALPHABETS 26
+#define MAX_LEN 1000
+
+#include <string.h>
+#include <stdio.h>
 
 enum Boolean
 {
@@ -77,4 +81,15 @@ enum Boolean isLapindrome(char *string)
     }
 
     return NUM_OF_ALPHABETS == idx ? TRUE : FALSE;
+}
+
+int main()
+{
+    char string[MAX_LEN] = {'\0'};
+    memcpy(string, "ababc", 6);
+
+    enum Boolean lapindrome = isLapindrome(string);
+    printf("%s\n", lapindrome ? "YES" : "NO");
+
+    return 0;
 }
