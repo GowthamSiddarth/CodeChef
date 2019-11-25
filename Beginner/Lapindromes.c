@@ -31,3 +31,50 @@ NO
 
 https://www.codechef.com/problems/LAPIN
 */
+#define NUM_OF_ALPHABETS 26
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int mapLowerCaseCharToIdx(char ch)
+{
+    return ch - 'a';
+}
+
+enum Boolean isLapindrome(char *string)
+{
+    int idx = 0, fastIdx = 0;
+    int charCount[NUM_OF_ALPHABETS] = {0};
+
+    while ('\0' != string[fastIdx] && '\0' != string[fastIdx + 1])
+    {
+        int charCountIdx = mapLowerCaseCharToIdx(string[idx]);
+        charCount[charCountIdx]++;
+
+        idx++;
+        fastIdx = fastIdx + 2;
+    }
+
+    if ('\0' != string[fastIdx] && '\0' == string[fastIdx + 1])
+    {
+        idx++;
+    }
+
+    while ('\0' != string[idx])
+    {
+        int charCountIdx = mapLowerCaseCharToIdx(string[idx]);
+        charCount[charCountIdx]--;
+        idx++;
+    }
+
+    idx = 0;
+    while (idx < NUM_OF_ALPHABETS && 0 == charCount[idx])
+    {
+        idx++;
+    }
+
+    return NUM_OF_ALPHABETS == idx ? TRUE : FALSE;
+}
