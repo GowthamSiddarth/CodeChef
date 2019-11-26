@@ -45,13 +45,10 @@ Example case 2: No matter which can Chef buys, when he gets home, its temperatur
 
 https://www.codechef.com/problems/COKE
 */
-#include <limits.h>
+#define MAX_NUM_OF_CANS 100
 
-enum Boolean
-{
-    FALSE,
-    TRUE
-};
+#include <limits.h>
+#include <stdio.h>
 
 struct CokeCan
 {
@@ -76,7 +73,6 @@ int getTempAfterReachingHome(int currTemp, int minutesToReachHome, int ambientTe
 int getPriceOfCanChefShouldBuy(struct CokeCan *cokeCans, int numOfCans, int minutesToReachHome, int ambientTemp, int lowTemp, int highTemp)
 {
     int minPrice = INT_MAX;
-    enum Boolean visited = FALSE;
     for (int idx = 0; idx < numOfCans; idx++)
     {
         struct CokeCan currCan = cokeCans[idx];
@@ -85,7 +81,6 @@ int getPriceOfCanChefShouldBuy(struct CokeCan *cokeCans, int numOfCans, int minu
             continue;
         }
 
-        visited = TRUE;
         int tempAfterReachingHome = getTempAfterReachingHome(currCan.initTemp, minutesToReachHome, ambientTemp);
         if (tempAfterReachingHome >= lowTemp && tempAfterReachingHome <= highTemp && currCan.price < minPrice)
         {
@@ -93,5 +88,16 @@ int getPriceOfCanChefShouldBuy(struct CokeCan *cokeCans, int numOfCans, int minu
         }
     }
 
-    return visited ? minPrice : -1;
+    return INT_MAX == minPrice ? -1 : minPrice;
+}
+
+int main()
+{
+    struct CokeCan cokeCans[MAX_NUM_OF_CANS] = {{21, 20}, {22, 22}, {23, 23}};
+    int numOfCans = 3, minutesToReachHome = 5, ambientTemp = 10, lowTemp = 20, highTemp = 30;
+
+    int priceOfCanChefShouldBuy = getPriceOfCanChefShouldBuy(cokeCans, numOfCans, minutesToReachHome, ambientTemp, lowTemp, highTemp);
+    printf("%d\n", priceOfCanChefShouldBuy);
+
+    return 0;
 }
