@@ -45,3 +45,53 @@ Example case 2: No matter which can Chef buys, when he gets home, its temperatur
 
 https://www.codechef.com/problems/COKE
 */
+#include <limits.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+struct CokeCan
+{
+    int initTemp, price;
+};
+
+int min(int x, int y)
+{
+    return x < y ? x : y;
+}
+
+int max(int x, int y)
+{
+    return x > y ? x : y;
+}
+
+int getTempAfterReachingHome(int currTemp, int minutesToReachHome, int ambientTemp)
+{
+    return currTemp <= ambientTemp ? min(currTemp + minutesToReachHome, ambientTemp) : max(currTemp - minutesToReachHome, ambientTemp);
+}
+
+int getPriceOfCanChefShouldBuy(struct CokeCan *cokeCans, int numOfCans, int minutesToReachHome, int ambientTemp, int lowTemp, int highTemp)
+{
+    int minPrice = INT_MAX;
+    enum Boolean visited = FALSE;
+    for (int idx = 0; idx < numOfCans; idx++)
+    {
+        struct CokeCan currCan = cokeCans[idx];
+        if ((lowTemp > ambientTemp && currCan.initTemp <= ambientTemp) || (highTemp < ambientTemp && currCan.initTemp >= ambientTemp))
+        {
+            continue;
+        }
+
+        visited = TRUE;
+        int tempAfterReachingHome = getTempAfterReachingHome(currCan.initTemp, minutesToReachHome, ambientTemp);
+        if (tempAfterReachingHome >= lowTemp && tempAfterReachingHome <= highTemp && currCan.price < minPrice)
+        {
+            minPrice = currCan.price;
+        }
+    }
+
+    return visited ? minPrice : -1;
+}
