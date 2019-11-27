@@ -50,3 +50,45 @@ Example case 7: The order is unfair because cat 1 will eat twice before cat 4 ea
 
 https://www.codechef.com/problems/CATFEED
 */
+#include <malloc.h>
+#include <limits.h>
+
+enum Boolean
+{
+    FALSE,
+    TRUE
+};
+
+int mapCanIdxToCatIdx(int canIdx)
+{
+    return canIdx - 1;
+}
+
+enum Boolean isFeedOrderFair(int numOfCats, int *feedOrder, int numOfCans)
+{
+    int *cats = (int *)calloc(numOfCats, sizeof(int));
+    int minFeed = INT_MAX, maxFeed = INT_MIN;
+
+    for (int idx = 0; idx < numOfCans; ++idx)
+    {
+        int catIdx = mapCanIdxToCatIdx(feedOrder[idx]);
+        cats[catIdx]++;
+
+        if (cats[catIdx] < minFeed)
+        {
+            minFeed = cats[catIdx];
+        }
+
+        if (cats[catIdx] > maxFeed)
+        {
+            maxFeed = cats[catIdx];
+        }
+
+        if (maxFeed - minFeed > 1)
+        {
+            return FALSE;
+        }
+    }
+
+    return TRUE;
+}
