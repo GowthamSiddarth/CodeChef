@@ -25,29 +25,55 @@ Example case 1: We remove the element 3 because it is the median of (2,5,3). The
 
 https://www.codechef.com/problems/MDL
 */
+#define MAX_SIZE 19
+
 #include <limits.h>
+#include <stdio.h>
 
 struct MinMax
 {
     int min, max;
 };
 
+int minOf2(int x, int y)
+{
+    return x < y ? x : y;
+}
+
+int maxOf2(int x, int y)
+{
+    return x > y ? x : y;
+}
+
 struct MinMax getMinMax(int *arr, int len)
 {
-    int min = INT_MAX, max = INT_MIN;
+    int minVal = INT_MAX, maxVal = INT_MIN, minIdx = -1, maxIdx = -1;
     for (int idx = 0; idx < len; ++idx)
     {
-        if (arr[idx] > max)
+        if (arr[idx] > maxVal)
         {
-            max = arr[idx];
+            maxVal = arr[idx];
+            maxIdx = idx;
         }
 
-        if (arr[idx] < min)
+        if (arr[idx] < minVal)
         {
-            min = arr[idx];
+            minVal = arr[idx];
+            minIdx = idx;
         }
     }
 
-    struct MinMax minMax = {min, max};
+    struct MinMax minMax = {arr[minOf2(minIdx, maxIdx)], arr[maxOf2(minIdx, maxIdx)]};
     return minMax;
+}
+
+int main()
+{
+    int nums[MAX_SIZE] = {38, 9, 102, 10, 96, 7, 46, 28, 88, 13};
+    int len = 10;
+
+    struct MinMax minMax = getMinMax(nums, len);
+    printf("%d %d\n", minMax.min, minMax.max);
+
+    return 0;
 }
