@@ -25,3 +25,29 @@ Example case 1: We remove the element 3 because it is the median of (2,5,3). The
 
 https://www.codechef.com/problems/MDL
 */
+#include <limits.h>
+
+struct MinMax
+{
+    int min, max;
+};
+
+struct MinMax getMinMax(int *arr, int len)
+{
+    int min = INT_MAX, max = INT_MIN;
+    for (int idx = 0; idx < len; ++idx)
+    {
+        if (arr[idx] > max)
+        {
+            max = arr[idx];
+        }
+
+        if (arr[idx] < min)
+        {
+            min = arr[idx];
+        }
+    }
+
+    struct MinMax minMax = {min, max};
+    return minMax;
+}
