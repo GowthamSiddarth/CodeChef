@@ -27,3 +27,28 @@ Example Output
 
 https://www.codechef.com/problems/QUALPREL
 */
+#include <stdlib.h>
+
+int compareInts(const void *x, const void *y)
+{
+    return *((int *)x) - *((int *)y);
+}
+
+int getNumOfQualifyingTeams(int *scores, int numOfScores, int qualifyingPos)
+{
+    qsort(scores, numOfScores, sizeof(scores[0]), compareInts);
+
+    int idx = numOfScores - 1, currKeyToMatch = scores[numOfScores - 1];
+    while (idx >= 0 && qualifyingPos > 0)
+    {
+        idx--;
+
+        if (scores[idx] != currKeyToMatch)
+        {
+            currKeyToMatch = scores[idx];
+            qualifyingPos--;
+        }
+    }
+
+    return numOfScores - qualifyingPos;
+}
