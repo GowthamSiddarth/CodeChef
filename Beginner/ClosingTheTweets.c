@@ -46,6 +46,7 @@ CLICK 1 : { 1, 0, 0 }, open count = 1
 https://www.codechef.com/problems/TWTCLOSE
 */
 #include <malloc.h>
+#include <stdio.h>
 
 enum TweetStatus
 {
@@ -65,7 +66,7 @@ struct Action
     int tweetId;
 };
 
-void resetTweetsStatus(enum TweetStatus *tweetsStatus, int numOfTweets, enum TweetStatus resetValue)
+void resetTweetsStatus(int *tweetsStatus, int numOfTweets, enum TweetStatus resetValue)
 {
     for (int idx = 0; idx < numOfTweets; ++idx)
     {
@@ -78,10 +79,10 @@ enum TweetStatus toggleTweetStatus(enum TweetStatus currStatus)
     return CLOSE == currStatus ? OPEN : CLOSE;
 }
 
-int *getOpenTweetCountForEveryAction(struct Action *actions, int numOfActions, int numOfTweets)
+int *getOpenTweetCountAfterEveryAction(struct Action *actions, int numOfActions, int numOfTweets)
 {
-    enum TweetStatus *tweetsStatus = (enum TweetStatus *)calloc(numOfTweets, sizeof(enum TweetStatus));
-    int *tweetsCount = (int *)calloc(numOfTweets, sizeof(int));
+    int *tweetsStatus = (int *)calloc(numOfTweets, sizeof(int));
+    int *tweetsCount = (int *)calloc(numOfActions, sizeof(int));
 
     for (int idx = 0; idx < numOfActions; ++idx)
     {
@@ -89,18 +90,56 @@ int *getOpenTweetCountForEveryAction(struct Action *actions, int numOfActions, i
         if (CLOSE_ALL == currAction.actionType)
         {
             resetTweetsStatus(tweetsStatus, numOfTweets, CLOSE);
-            continue;
         }
         else
         {
             int currTweetId = currAction.tweetId;
             tweetsStatus[currTweetId - 1] = toggleTweetStatus(tweetsStatus[currTweetId - 1]);
-
             int countTillPrevAction = idx > 0 ? tweetsCount[idx - 1] : 0;
             tweetsCount[idx] = OPEN == tweetsStatus[currTweetId - 1] ? countTillPrevAction + 1 : countTillPrevAction - 1;
         }
     }
-
+    
     free(tweetsStatus);
     return tweetsCount;
+}
+
+enum ActionType getActionType(char *action)
+{
+    return 'I' == action[2] ? CLICK : CLOSE_ALL;
+}
+
+int main()
+{
+    int numOfTweets, numOfActions;
+    scanf("%d %d\n", &numOfTweets, &numOfActions);
+    
+    struct Action *actions = (struct Action *)malloc(sizeof(struct Action) * numOfActions);
+
+    char buff[9];
+    int tweetId;
+    for (int idx = 0; idx < numOfActions; ++idx)
+    {
+        scanf("%s", buff);
+        enum ActionType actionType = getActionType(buff);
+        actions[idx].actionType = actionType;
+        
+        if (CLICK == actionType)
+        {
+            scanf("%d\n", &tweetId);
+            actions[idx].tweetId = tweetId;
+        }
+        else
+        {
+            actions[idx].tweetId = 0;
+        }
+        
+    }
+    
+    int *openTweetsCountAfterEveryAction = getOpenTweetCountAfterEveryAction(actions, numOfActions, numOfTweets);
+    for (int idx = 0; idx < numOfActions; ++idx) {
+        printf("%d\n", openTweetsCountAfterEveryAction[idx]);
+    }
+    
+    return 0;
 }
