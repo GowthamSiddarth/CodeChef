@@ -18,8 +18,18 @@ Sample Output:
 
 https://www.codechef.com/problems/DIFFSUM
 */
+#include <stdio.h>
 
 int getSumOrDifference(int firstNum, int secondNum)
 {
     return firstNum > secondNum ? firstNum - secondNum : firstNum + secondNum;
+}
+
+int main()
+{
+    int firstNum = 28, secondNum = 82;
+    int sumOrDifference = getSumOrDifference(firstNum, secondNum);
+
+    printf("%d\n", sumOrDifference);
+    return 0;
 }
