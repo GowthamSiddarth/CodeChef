@@ -45,3 +45,62 @@ CLICK 1 : { 1, 0, 0 }, open count = 1
 
 https://www.codechef.com/problems/TWTCLOSE
 */
+#include <malloc.h>
+
+enum TweetStatus
+{
+    CLOSE,
+    OPEN
+};
+
+enum ActionType
+{
+    CLOSE_ALL,
+    CLICK
+};
+
+struct Action
+{
+    enum ActionType actionType;
+    int tweetId;
+};
+
+void resetTweetsStatus(enum TweetStatus *tweetsStatus, int numOfTweets, enum TweetStatus resetValue)
+{
+    for (int idx = 0; idx < numOfTweets; ++idx)
+    {
+        tweetsStatus[idx] = resetValue;
+    }
+}
+
+enum TweetStatus toggleTweetStatus(enum TweetStatus currStatus)
+{
+    return CLOSE == currStatus ? OPEN : CLOSE;
+}
+
+int *getOpenTweetCountForEveryAction(struct Action *actions, int numOfActions, int numOfTweets)
+{
+    enum TweetStatus *tweetsStatus = (enum TweetStatus *)calloc(numOfTweets, sizeof(enum TweetStatus));
+    int *tweetsCount = (int *)calloc(numOfTweets, sizeof(int));
+
+    for (int idx = 0; idx < numOfActions; ++idx)
+    {
+        struct Action currAction = actions[idx];
+        if (CLOSE_ALL == currAction.actionType)
+        {
+            resetTweetsStatus(tweetsStatus, numOfTweets, CLOSE);
+            continue;
+        }
+        else
+        {
+            int currTweetId = currAction.tweetId;
+            tweetsStatus[currTweetId - 1] = toggleTweetStatus(tweetsStatus[currTweetId - 1]);
+
+            int countTillPrevAction = idx > 0 ? tweetsCount[idx - 1] : 0;
+            tweetsCount[idx] = OPEN == tweetsStatus[currTweetId - 1] ? countTillPrevAction + 1 : countTillPrevAction - 1;
+        }
+    }
+
+    free(tweetsStatus);
+    return tweetsCount;
+}
