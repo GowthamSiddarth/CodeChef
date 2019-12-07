@@ -18,3 +18,8 @@ Sample Output:
 
 https://www.codechef.com/problems/DIFFSUM
 */
+
+int getSumOrDifference(int firstNum, int secondNum)
+{
+    return firstNum > secondNum ? firstNum - secondNum : firstNum + secondNum;
+}
