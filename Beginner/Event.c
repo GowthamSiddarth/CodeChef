@@ -32,6 +32,7 @@ impossible
 
 https://www.codechef.com/problems/EVENT
 */
+#define NUM_OF_DAYS_IN_WEEK 7
 
 enum DAY_OF_WEEK
 {
@@ -61,4 +62,12 @@ enum DAY_OF_WEEK getDayOfWeek(char *day)
     case 'a':
         return SATURDAY;
     }
+}
+
+int getMinNumOfDaysInBetweenIncl(char *start, char *end)
+{
+    enum DAY_OF_WEEK startDay = getDayOfWeek(start);
+    enum DAY_OF_WEEK endDay = getDayOfWeek(end);
+
+    return endDay > startDay ? endDay - startDay + 1 : NUM_OF_DAYS_IN_WEEK - (startDay - endDay) + 1;
 }
