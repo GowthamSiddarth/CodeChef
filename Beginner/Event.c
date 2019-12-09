@@ -34,6 +34,12 @@ https://www.codechef.com/problems/EVENT
 */
 #define NUM_OF_DAYS_IN_WEEK 7
 
+enum DURATION_OF_COMPETITION
+{
+    MANY = -1,
+    IMPOSSIBLE
+};
+
 enum DAY_OF_WEEK
 {
     MONDAY,
@@ -69,5 +75,23 @@ int getMinNumOfDaysInBetweenIncl(char *start, char *end)
     enum DAY_OF_WEEK startDay = getDayOfWeek(start);
     enum DAY_OF_WEEK endDay = getDayOfWeek(end);
 
-    return endDay > startDay ? endDay - startDay + 1 : NUM_OF_DAYS_IN_WEEK - (startDay - endDay) + 1;
+    return endDay >= startDay ? endDay - startDay + 1 : NUM_OF_DAYS_IN_WEEK - (startDay - endDay) + 1;
+}
+
+int getDurationsOfEvent(char *start, char *end, int minDays, int maxDays)
+{
+    int minNumOfDaysForEvent = getMinNumOfDaysInBetweenIncl(start, end);
+
+    if (minNumOfDaysForEvent < minDays || minNumOfDaysForEvent > maxDays)
+    {
+        return IMPOSSIBLE;
+    }
+    else if (minNumOfDaysForEvent + NUM_OF_DAYS_IN_WEEK <= maxDays)
+    {
+        return MANY;
+    }
+    else
+    {
+        return minNumOfDaysForEvent;
+    }
 }
