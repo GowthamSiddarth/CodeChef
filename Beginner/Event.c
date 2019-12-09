@@ -32,3 +32,33 @@ impossible
 
 https://www.codechef.com/problems/EVENT
 */
+
+enum DAY_OF_WEEK
+{
+    MONDAY,
+    TUESDAY,
+    WEDNESDAY,
+    THURSDAY,
+    FRIDAY,
+    SATURDAY,
+    SUNDAY
+};
+
+enum DAY_OF_WEEK getDayOfWeek(char *day)
+{
+    switch (day[1])
+    {
+    case 'o':
+        return MONDAY;
+    case 'u':
+        return 't' == day[0] ? TUESDAY : SUNDAY;
+    case 'e':
+        return WEDNESDAY;
+    case 'h':
+        return THURSDAY;
+    case 'r':
+        return FRIDAY;
+    case 'a':
+        return SATURDAY;
+    }
+}
