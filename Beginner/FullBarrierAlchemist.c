@@ -59,6 +59,7 @@ He passes the first three barriers by either ducking or jumping. He uses alchemi
 
 https://www.codechef.com/problems/PIPSQUIK
 */
+#include <stdio.h>
 
 enum BARRIER_TYPE
 {
@@ -113,4 +114,15 @@ int getNumOfBarriersEdwardCanCross(struct Barrier *barriers, int numOfBarriers, 
     }
 
     return idx;
+}
+
+int main()
+{
+    struct Barrier barriers[] = {{2, 2}, {2, 1}, {1, 10}, {2, 8}, {2, 4}, {1, 2}};
+    int numOfBarriers = 6, heightOfEdward = 5, duckLimit = 1, jumpLimit = 2, alchemyUnits = 3;
+
+    int numOfBarriersEdwardCanCross = getNumOfBarriersEdwardCanCross(barriers, numOfBarriers, heightOfEdward, duckLimit, jumpLimit, alchemyUnits);
+    printf("%d\n", numOfBarriersEdwardCanCross);
+
+    return 0;
 }
