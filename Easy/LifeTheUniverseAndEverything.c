@@ -16,3 +16,22 @@ Output:
 
 https://www.codechef.com/problems/TEST
 */
+
+#include <stdio.h>
+
+int main()
+{
+    int num;
+    do
+    {
+        scanf("%d", &num);
+        if (42 != num)
+        {
+            printf("%d\n", num);
+        }
+        
+    } while (42 != num);
+    
+
+    return 0;
+}
