@@ -59,3 +59,58 @@ He passes the first three barriers by either ducking or jumping. He uses alchemi
 
 https://www.codechef.com/problems/PIPSQUIK
 */
+
+enum BARRIER_TYPE
+{
+    TYPE_1 = 1,
+    TYPE_2
+};
+
+struct Barrier
+{
+    enum BARRIER_TYPE barrierType;
+    int barrierPivot;
+};
+
+int getNumOfBarriersEdwardCanCross(struct Barrier *barriers, int numOfBarriers, int heightOfEdward, int duckLimit, int jumpLimit, int alchemyUnits)
+{
+    int idx = 0;
+    while (alchemyUnits > 0 && idx < numOfBarriers)
+    {
+        struct Barrier currBarrier = barriers[idx];
+        if (TYPE_1 == currBarrier.barrierType)
+        {
+            if (heightOfEdward - duckLimit <= currBarrier.barrierPivot)
+            {
+                idx++;
+            }
+            else if (alchemyUnits > 0)
+            {
+                alchemyUnits--;
+                idx++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        else
+        {
+            if (heightOfEdward + jumpLimit >= currBarrier.barrierPivot)
+            {
+                idx++;
+            }
+            else if (alchemyUnits > 0)
+            {
+                alchemyUnits--;
+                idx++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    return idx;
+}
