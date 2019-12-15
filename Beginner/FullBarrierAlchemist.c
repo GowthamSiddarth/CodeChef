@@ -84,7 +84,7 @@ int getNumOfBarriersEdwardCanCross(struct Barrier *barriers, int numOfBarriers, 
             {
                 idx++;
             }
-            else if (alchemyUnits > 0)
+            else if (alchemyUnits > 1)
             {
                 alchemyUnits--;
                 idx++;
@@ -96,11 +96,11 @@ int getNumOfBarriersEdwardCanCross(struct Barrier *barriers, int numOfBarriers, 
         }
         else
         {
-            if (heightOfEdward + jumpLimit >= currBarrier.barrierPivot)
+            if (jumpLimit >= currBarrier.barrierPivot)
             {
                 idx++;
             }
-            else if (alchemyUnits > 0)
+            else if (alchemyUnits > 1)
             {
                 alchemyUnits--;
                 idx++;
