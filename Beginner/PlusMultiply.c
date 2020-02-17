@@ -46,3 +46,11 @@ int getCountOfKey(int *arr, int len, int key)
 
     return count;    
 }
+
+int getNumOfPlusMultiplyPairs(int *arr, int len)
+{
+    int numOfZeroes = getCountOfKey(arr, len, 0);
+    int numOfTwos = getCountOfKey(arr, len, 2);
+
+    return numOfZeroes * (numOfZeroes - 1) / 2 + numOfTwos * (numOfTwos - 1) / 2;
+}
