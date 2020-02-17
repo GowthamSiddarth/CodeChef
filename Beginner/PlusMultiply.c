@@ -32,3 +32,17 @@ Example case 2: We can see that no valid pair exists.
 
 https://www.codechef.com/problems/PLMU
 */
+
+int getCountOfKey(int *arr, int len, int key)
+{
+    int count = 0;
+    for (int idx = 0; idx < len; ++idx)
+    {
+        if (arr[idx] == key)
+        {
+            count++;
+        }
+    }
+
+    return count;    
+}
