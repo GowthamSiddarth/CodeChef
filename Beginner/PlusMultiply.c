@@ -32,6 +32,9 @@ Example case 2: We can see that no valid pair exists.
 
 https://www.codechef.com/problems/PLMU
 */
+#define MAX_SIZE 40000 
+
+#include <stdio.h>
 
 int getCountOfKey(int *arr, int len, int key)
 {
@@ -53,4 +56,15 @@ int getNumOfPlusMultiplyPairs(int *arr, int len)
     int numOfTwos = getCountOfKey(arr, len, 2);
 
     return numOfZeroes * (numOfZeroes - 1) / 2 + numOfTwos * (numOfTwos - 1) / 2;
+}
+
+int main()
+{
+    int arr[MAX_SIZE] = {0, 2, 3};
+    int len = 3;
+
+    int numOfPlusMultiplyPairs = getNumOfPlusMultiplyPairs(arr, len);
+    printf("%d\n", numOfPlusMultiplyPairs);
+
+    return 0;
 }
